@@ -1,0 +1,20 @@
+.material-icons{
+  margin: 0px;
+  float: left;
+}
+
+h5 {
+  margin: 30px 45px 15px 45px;
+}
+
+.back-button {
+  margin: 15px 0 0 5px;
+}
+
+.new-job-btn {
+  margin: 15px 0 0 0;
+}
+
+.existing-job-btn {
+  margin: 5px 0 20px 0;
+}

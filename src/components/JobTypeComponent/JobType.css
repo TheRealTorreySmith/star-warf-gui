@@ -1,0 +1,29 @@
+.job-type-container {
+  margin-top: 20px;
+}
+
+.material-icons{
+  margin: 0px;
+  float: left;
+}
+
+h5 {
+  margin: 30px 45px 15px 45px;
+}
+
+.btn.waves-effect.waves-light {
+  margin-bottom: 20px;
+  width: 90%;
+}
+
+.forecast-btn {
+  margin: 15px 0 0 0;
+}
+
+.reanalysis-btn {
+  margin: 5px 0 20px 0;
+}
+
+.cyclingnwp-btn {
+  margin: 5px 0 0 0;
+}
