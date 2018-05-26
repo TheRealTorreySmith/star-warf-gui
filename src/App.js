@@ -43,6 +43,24 @@ class App extends Component {
     console.log(newOrExisting)
   }
 
+  backButton = () => {
+    this.state.cyclingNwpStandard === true ||
+    this.state.cyclingNwpEnsemble === true ?
+    this.setState({
+      cyclingNwpStandard: false,
+      cyclingNwpEnsemble: false
+    }) :
+    this.setState({
+      jobType: ''
+    })
+  }
+
+  standardEnsembleBackButton = () => {
+    this.setState({
+      jobType: ''
+    })
+  }
+
   render() {
     return (
       <div>
@@ -56,12 +74,14 @@ class App extends Component {
           jobTypeCyclingNwp={this.jobTypeCyclingNwp}
           cyclingNwpStandard= {this.state.cyclingNwpStandard}
           cyclingNwpEnsemble= {this.state.cyclingNwpEnsemble}
+          backButton={this.standardEnsembleBackButton}
         />
         <JobTypeNewExisting
           jobType={this.state.jobType}
           jobTypeNewExisting={this.newExisting}
-          cyclingNwpStandard= {this.state.cyclingNwpStandard}
-          cyclingNwpEnsemble= {this.state.cyclingNwpEnsemble}
+          cyclingNwpStandard={this.state.cyclingNwpStandard}
+          cyclingNwpEnsemble={this.state.cyclingNwpEnsemble}
+          backButton={this.backButton}
         />
         <Carousel />
       </div>
