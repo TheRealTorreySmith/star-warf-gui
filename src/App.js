@@ -5,6 +5,7 @@ import Carousel from './components/CarouselComponent/Carousel.js'
 import JobTypeCyclingNwp from './components/JobTypeCyclingNwpComponent/JobTypeCyclingNwp.js'
 import JobTypeNewExisting from './components/JobTypeNewExistingComponent/JobTypeNewExisting.js'
 import JobTypeHistory from './components/JobTypeHistoryComponent/JobTypeHistory.js'
+import NewJob from './components/NewJobComponent/NewJob.js'
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +21,8 @@ class App extends Component {
       forecastNewJob: false,
       forecastExistingJob: false,
       reanalysisNewJob: false,
-      reanalysisExistingJob: false
+      reanalysisExistingJob: false,
+      jobNames: []
     }
   }
 
@@ -44,28 +46,21 @@ class App extends Component {
     newOrExisting === 'new' ?
       this.state.jobType === 'cycling-nwp' ?
         this.state.cyclingNwpStandard === true ?
-          // console.log('new standard cycling-nwp')
           this.setState({ cyclingNwpStandardNewJob: true }) :
-          // console.log('new ensemble cycling-nwp')
           this.setState({ cyclingNwpEnsembleNewJob: true }) :
       this.state.jobType === 'forecast' ?
-      // console.log('new forecast')
       this.setState({ forecastNewJob: true }) :
-      // console.log('new reanalysis')
       this.setState({ reanalysisNewJob: true }) :
       this.state.jobType === 'cycling-nwp' ?
         this.state.cyclingNwpEnsemble === true ?
-          // console.log('existing ensemble cycling-nwp')
           this.setState({ cyclingNwpEnsembleExistingJob: true }) :
-          // console.log('existing standard cycling-nwp')
           this.setState({ cyclingNwpStandardExistingJob: true }) :
       this.state.jobType === 'forecast' ?
-      // console.log('existing forecast')
       this.setState({ forecastExistingJob: true }) :
-      // console.log('existing reanalysis')
       this.setState({ reanalysisExistingJob: true })
   }
 
+  // BACK BUTTON STATE HANDLERS
   backButton = () => {
     this.state.cyclingNwpStandard === true ||
     this.state.cyclingNwpEnsemble === true ?
@@ -82,6 +77,11 @@ class App extends Component {
     this.setState({
       jobType: ''
     })
+  }
+
+  // NEW JOB NAME STATE HANDLER
+  newJobName = (newJobName) => {
+    // console.log(newJobName)
   }
 
   render() {
@@ -124,7 +124,15 @@ class App extends Component {
           reanalysisNewJob={this.state.reanalysisNewJob}
           reanalysisExistingJob={this.state.reanalysisExistingJob}
         />
+        <NewJob
+          cyclingNwpStandardNewJob={this.state.cyclingNwpStandardNewJob}
+          cyclingNwpEnsembleNewJob={this.state.cyclingNwpEnsembleNewJob}
+          forecastNewJob={this.state.forecastNewJob}
+          reanalysisNewJob={this.state.reanalysisNewJob}
+          newJobName={this.newJobName}
+        />
         <Carousel />
+
       </div>
     )
   }
