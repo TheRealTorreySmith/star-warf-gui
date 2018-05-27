@@ -15,8 +15,8 @@ backButtonClick = () => {
   render() {
     return (
       <div className={`container ${ this.props.jobType === 'cycling-nwp' &&
-        this.props.cyclingNwpStandard === false &&
-        this.props.cyclingNwpEnsemble === false ? '' : 'hide'}`}>
+        !this.props.cyclingNwpStandard &&
+        !this.props.cyclingNwpEnsemble ? '' : 'hide'}`}>
         <div className="row">
           <div className="col s2 m2 l2">
           </div>

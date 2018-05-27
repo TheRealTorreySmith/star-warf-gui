@@ -4,6 +4,7 @@ import JobType from './components/JobTypeComponent/JobType.js'
 import Carousel from './components/CarouselComponent/Carousel.js'
 import JobTypeCyclingNwp from './components/JobTypeCyclingNwpComponent/JobTypeCyclingNwp.js'
 import JobTypeNewExisting from './components/JobTypeNewExistingComponent/JobTypeNewExisting.js'
+import JobTypeHistory from './components/JobTypeHistoryComponent/JobTypeHistory.js'
 
 class App extends Component {
   constructor(props) {
@@ -40,7 +41,29 @@ class App extends Component {
   }
 
   newExisting = (newOrExisting) => {
-    console.log(newOrExisting)
+    newOrExisting === 'new' ?
+      this.state.jobType === 'cycling-nwp' ?
+        this.state.cyclingNwpStandard === true ?
+          // console.log('new standard cycling-nwp')
+          this.setState({ cyclingNwpStandardNewJob: true }) :
+          // console.log('new ensemble cycling-nwp')
+          this.setState({ cyclingNwpEnsembleNewJob: true }) :
+      this.state.jobType === 'forecast' ?
+      // console.log('new forecast')
+      this.setState({ forecastNewJob: true }) :
+      // console.log('new reanalysis')
+      this.setState({ reanalysisNewJob: true }) :
+      this.state.jobType === 'cycling-nwp' ?
+        this.state.cyclingNwpEnsemble === true ?
+          // console.log('existing ensemble cycling-nwp')
+          this.setState({ cyclingNwpEnsembleExistingJob: true }) :
+          // console.log('existing standard cycling-nwp')
+          this.setState({ cyclingNwpStandardExistingJob: true }) :
+      this.state.jobType === 'forecast' ?
+      // console.log('existing forecast')
+      this.setState({ forecastExistingJob: true }) :
+      // console.log('existing reanalysis')
+      this.setState({ reanalysisExistingJob: true })
   }
 
   backButton = () => {
@@ -81,7 +104,25 @@ class App extends Component {
           jobTypeNewExisting={this.newExisting}
           cyclingNwpStandard={this.state.cyclingNwpStandard}
           cyclingNwpEnsemble={this.state.cyclingNwpEnsemble}
+          cyclingNwpStandardNewJob={this.state.cyclingNwpStandardNewJob}
+          cyclingNwpStandardExistingJob={this.state.cyclingNwpStandardExistingJob}
+          cyclingNwpEnsembleNewJob={this.state.cyclingNwpEnsembleNewJob}
+          cyclingNwpEnsembleExistingJob={this.state.cyclingNwpEnsembleExistingJob}
+          forecastNewJob={this.state.forecastNewJob}
+          forecastExistingJob={this.state.forecastExistingJob}
+          reanalysisNewJob={this.state.reanalysisNewJob}
+          reanalysisExistingJob={this.state.reanalysisExistingJob}
           backButton={this.backButton}
+        />
+        <JobTypeHistory
+          cyclingNwpStandardNewJob={this.state.cyclingNwpStandardNewJob}
+          cyclingNwpStandardExistingJob={this.state.cyclingNwpStandardExistingJob}
+          cyclingNwpEnsembleNewJob={this.state.cyclingNwpEnsembleNewJob}
+          cyclingNwpEnsembleExistingJob={this.state.cyclingNwpEnsembleExistingJob}
+          forecastNewJob={this.state.forecastNewJob}
+          forecastExistingJob={this.state.forecastExistingJob}
+          reanalysisNewJob={this.state.reanalysisNewJob}
+          reanalysisExistingJob={this.state.reanalysisExistingJob}
         />
         <Carousel />
       </div>
