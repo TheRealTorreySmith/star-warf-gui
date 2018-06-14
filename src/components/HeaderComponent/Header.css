@@ -6,6 +6,7 @@ body{
 
 .App {
   text-align: center;
+  margin: 0 0 25px 0;
 }
 
 .App-header {
@@ -29,7 +30,7 @@ body{
     -moz-border-radius: 50px;
     border-radius: 50px;
     overflow:hidden;
-    background:url(http://fengel.com/testing/earthMap_92h.png) top left no-repeat;
+    background:url(./blue-world.png) top left no-repeat;
     -webkit-animation: rotate 10s infinite linear;
     -moz-animation: rotate 10s infinite linear;
     -ms-animation: rotate 10s infinite linear;

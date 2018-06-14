@@ -1,29 +1,48 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 import Header from './components/HeaderComponent/Header.js'
+import Login from './components/LoginComponent/Login.js'
 import JobType from './components/JobTypeComponent/JobType.js'
-import Carousel from './components/CarouselComponent/Carousel.js'
-import JobTypeCyclingNwp from './components/JobTypeCyclingNwpComponent/JobTypeCyclingNwp.js'
 import JobTypeNewExisting from './components/JobTypeNewExistingComponent/JobTypeNewExisting.js'
-import JobTypeHistory from './components/JobTypeHistoryComponent/JobTypeHistory.js'
-import NewJob from './components/NewJobComponent/NewJob.js'
+import Dashboard from './components/DashboardComponent/Dashboard.js'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       jobType: '',
-      cyclingNwpStandard: false,
-      cyclingNwpEnsemble: false,
-      cyclingNwpStandardNewJob: false,
-      cyclingNwpStandardExistingJob: false,
-      cyclingNwpEnsembleNewJob: false,
-      cyclingNwpEnsembleExistingJob: false,
-      forecastNewJob: false,
-      forecastExistingJob: false,
-      reanalysisNewJob: false,
-      reanalysisExistingJob: false,
-      jobNames: []
+      // cyclingNwpStandard: false,
+      // cyclingNwpEnsemble: false,
+      // cyclingNwpStandardNewJob: false,
+      // cyclingNwpStandardExistingJob: false,
+      // cyclingNwpEnsembleNewJob: false,
+      // cyclingNwpEnsembleExistingJob: false,
+      // forecastNewJob: false,
+      // forecastExistingJob: false,
+      // reanalysisNewJob: false,
+      // reanalysisExistingJob: false,
+      currentJobName: undefined,
+      currentUser: undefined,
+      isLoggedIn: true,
+      jobs: [],
+      nwpFlipped: false,
+      wpsFlipped: false,
+      wrfFlipped: false,
+      wrfDaFlipped: false,
+      showNwp: true,
+      showWps: false,
+      showWrf: false,
+      showWrfDa: false,
+      runMainJob: false
     }
+  }
+
+  setCurrentUser = (username, password) => {
+    // console.log(username)
+    // console.log(password)
+    this.setState({
+      currentUser: username
+    })
   }
 
   jobTypeSelect = (jobType) => {
@@ -32,108 +51,152 @@ class App extends Component {
     })
   }
 
-  jobTypeCyclingNwp = (cyclingNwpOption) => {
-    cyclingNwpOption === 'standard' ?
-    this.setState({
-      cyclingNwpStandard: true
-    }) :
-    this.setState({
-      cyclingNwpEnsemble: true
-    })
-  }
-
-  newExisting = (newOrExisting) => {
-    newOrExisting === 'new' ?
-      this.state.jobType === 'cycling-nwp' ?
-        this.state.cyclingNwpStandard === true ?
-          this.setState({ cyclingNwpStandardNewJob: true }) :
-          this.setState({ cyclingNwpEnsembleNewJob: true }) :
-      this.state.jobType === 'forecast' ?
-      this.setState({ forecastNewJob: true }) :
-      this.setState({ reanalysisNewJob: true }) :
-      this.state.jobType === 'cycling-nwp' ?
-        this.state.cyclingNwpEnsemble === true ?
-          this.setState({ cyclingNwpEnsembleExistingJob: true }) :
-          this.setState({ cyclingNwpStandardExistingJob: true }) :
-      this.state.jobType === 'forecast' ?
-      this.setState({ forecastExistingJob: true }) :
-      this.setState({ reanalysisExistingJob: true })
-  }
-
   // BACK BUTTON STATE HANDLERS
   backButton = () => {
-    this.state.cyclingNwpStandard === true ||
-    this.state.cyclingNwpEnsemble === true ?
+    this.state.cyclingNwpStandard ||
+    this.state.cyclingNwpEnsemble ?
     this.setState({
       cyclingNwpStandard: false,
       cyclingNwpEnsemble: false
     }) :
     this.setState({
-      jobType: ''
+      jobType: '',
+      jobs: []
     })
   }
 
-  standardEnsembleBackButton = () => {
-    this.setState({
-      jobType: ''
-    })
-  }
+  // newExisting = (newOrExisting) => {
+  //
+  // }
+
 
   // NEW JOB NAME STATE HANDLER
   newJobName = (newJobName) => {
-    // console.log(newJobName)
+    document.title = newJobName
+    this.setState({
+      ...this.state,
+      jobs: [
+      ...this.state.jobs,
+      {
+        key: this.state.jobs.length,
+        name: newJobName,
+        jobType: this.state.jobType
+      }],
+      currentJobName: newJobName
+    })
+    console.log(this.state)
+    console.log(newJobName)
+  }
+
+  nwpFlipFunc = () => {
+    let flipStatus = this.state.nwpFlipped ? false : true
+    this.setState({
+      nwpFlipped: flipStatus
+    })
+  }
+
+  wpsFlipFunc = () => {
+    let flipStatus = this.state.wpsFlipped ? false : true
+    this.setState({
+      wpsFlipped: flipStatus
+    })
+  }
+
+  wrfFlipFunc = () => {
+    let flipStatus = this.state.wrfFlipped ? false : true
+    this.setState({
+      wrfFlipped: flipStatus
+    })
+  }
+
+  wrfDaFlipFunc = () => {
+    let flipStatus = this.state.wrfDaFlipped ? false : true
+    this.setState({
+      wrfDaFlipped: flipStatus
+    })
+  }
+
+  wpsShowClick = () => {
+    this.setState({
+      showNwp: false,
+      showWps: true,
+      showWrf: false,
+      showWrfDa: false
+    })
+  }
+
+  setMainJob = () => {
+    this.state.runMainJob ?
+    this.setState({
+      runMainJob: false
+    }) :
+    this.setState({
+      runMainJob: true
+    })
   }
 
   render() {
     return (
-      <div>
-        <Header />
-        <JobType
-          jobType={this.state.jobType}
-          jobTypeSelect={this.jobTypeSelect}
-        />
-        <JobTypeCyclingNwp
-          jobType={this.state.jobType}
-          jobTypeCyclingNwp={this.jobTypeCyclingNwp}
-          cyclingNwpStandard= {this.state.cyclingNwpStandard}
-          cyclingNwpEnsemble= {this.state.cyclingNwpEnsemble}
-          backButton={this.standardEnsembleBackButton}
-        />
-        <JobTypeNewExisting
-          jobType={this.state.jobType}
-          jobTypeNewExisting={this.newExisting}
-          cyclingNwpStandard={this.state.cyclingNwpStandard}
-          cyclingNwpEnsemble={this.state.cyclingNwpEnsemble}
-          cyclingNwpStandardNewJob={this.state.cyclingNwpStandardNewJob}
-          cyclingNwpStandardExistingJob={this.state.cyclingNwpStandardExistingJob}
-          cyclingNwpEnsembleNewJob={this.state.cyclingNwpEnsembleNewJob}
-          cyclingNwpEnsembleExistingJob={this.state.cyclingNwpEnsembleExistingJob}
-          forecastNewJob={this.state.forecastNewJob}
-          forecastExistingJob={this.state.forecastExistingJob}
-          reanalysisNewJob={this.state.reanalysisNewJob}
-          reanalysisExistingJob={this.state.reanalysisExistingJob}
-          backButton={this.backButton}
-        />
-        <JobTypeHistory
-          cyclingNwpStandardNewJob={this.state.cyclingNwpStandardNewJob}
-          cyclingNwpStandardExistingJob={this.state.cyclingNwpStandardExistingJob}
-          cyclingNwpEnsembleNewJob={this.state.cyclingNwpEnsembleNewJob}
-          cyclingNwpEnsembleExistingJob={this.state.cyclingNwpEnsembleExistingJob}
-          forecastNewJob={this.state.forecastNewJob}
-          forecastExistingJob={this.state.forecastExistingJob}
-          reanalysisNewJob={this.state.reanalysisNewJob}
-          reanalysisExistingJob={this.state.reanalysisExistingJob}
-        />
-        <NewJob
-          cyclingNwpStandardNewJob={this.state.cyclingNwpStandardNewJob}
-          cyclingNwpEnsembleNewJob={this.state.cyclingNwpEnsembleNewJob}
-          forecastNewJob={this.state.forecastNewJob}
-          reanalysisNewJob={this.state.reanalysisNewJob}
-          newJobName={this.newJobName}
-        />
-        <Carousel />
-
-      </div>
+      <BrowserRouter>
+        <div>
+          <Route exact path='/login'
+            render={()=> (
+            this.state.currentUser !== undefined ?
+            (<Redirect to={`/${this.state.currentUser}`} />)
+              :
+            <div>
+              <Login
+              setCurrentUser={this.setCurrentUser}/>
+            </div>)}
+          />
+          <Route exact path={`/${this.state.currentUser}`}
+            render={()=> (
+            this.state.currentJobName &&
+            this.state.currentUser ? (
+              <Redirect to={`/${this.state.currentUser}/${this.state.currentJobName}`}/>
+            ) : (
+            <div>
+              <Header />
+              <JobType jobType={this.state.jobType}
+                jobTypeSelect={this.jobTypeSelect}/>
+              <JobTypeNewExisting
+                jobs={this.state.jobs}
+                jobType={this.state.jobType}
+                newJobName={this.newJobName}
+                jobTypeNewExisting={this.newExisting}
+                backButton={this.backButton}
+              />
+            </div>))}
+            />
+          <Route
+            path='/'
+            // path={`/${this.state.currentUser}/${this.state.currentJobName}`}
+            render={()=> (
+            <div>
+              <Dashboard
+                nwpFlipped={this.state.nwpFlipped}
+                wpsFlipped={this.state.wpsFlipped}
+                wrfFlipped={this.state.wrfFlipped}
+                wrfDaFlipped={this.state.wrfDaFlipped}
+                nwpFlipFunc={this.nwpFlipFunc}
+                wpsFlipFunc={this.wpsFlipFunc}
+                wrfFlipFunc={this.wrfFlipFunc}
+                wrfDaFlipFunc={this.wrfDaFlipFunc}
+                currentJobName={this.state.currentJobName}
+                showNwp={this.state.showNwp}
+                showWps={this.state.showWps}
+                showWrf={this.state.showWrf}
+                showWrfDa={this.state.showWrfDa}
+                wpsShowClick={this.wpsShowClick}
+                runMainJob={this.state.runMainJob}
+                setMainJob={this.setMainJob}
+              />
+            </div>
+          )}
+          />
+          {/* {console.log(this.state)} */}
+        </div>
+      </BrowserRouter>
     )
   }
 }

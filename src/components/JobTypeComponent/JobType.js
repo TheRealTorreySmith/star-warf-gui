@@ -9,20 +9,17 @@ class JobType extends Component {
   }
   render() {
     return (
-      <div className={`container ${this.props.jobType ? 'hide' : 'none'}`}>
+      <div className={`animated fadeIn container ${this.props.jobType ? 'hide' : ''}`}>
         <div className="row">
           <div className="col s2 m2 l2">
           </div>
           <div className="col s8 m8 l8 card job-type-container center-align">
-            <h5>Job Type</h5>
-            <div>
-              <Button className="forecast-btn" onClick={this.jobTypeClick} name='forecast' waves='light'>Forecast</Button>
-            </div>
+            <h5 className="jobtype-title">JOB TYPE:</h5>
             <div className="cyclingnwp-btn">
-              <Button onClick={this.jobTypeClick} name='cycling-nwp' waves='light'>Cycling NWP</Button>
+              <Button onClick={this.jobTypeClick} name='cycling-nwp' className='cycling-nwp-button' waves='light'>Cycling NWP</Button>
             </div>
             <div className="reanalysis-btn">
-              <Button onClick={this.jobTypeClick} name='reanalysis' waves='light'>Reanalysis</Button>
+              <Button onClick={this.jobTypeClick} name='reanalysis' className='job-status-button' waves='light'>Job Status</Button>
             </div>
           </div>
           <div className="col s2 m2 l2">

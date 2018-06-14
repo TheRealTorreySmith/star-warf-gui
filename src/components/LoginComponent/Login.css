@@ -1,0 +1,20 @@
+.login-button {
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  width: 30% !important;
+}
+
+.login-container {
+  display: flex;
+}
+
+i.material-icons.prefix {
+  margin-top: 7px;
+}
+
+.login {
+  padding-left: 10px;
+}
+
+.login-input {
+  padding-left: 10px !important;
+}

@@ -27,3 +27,11 @@ h5 {
 .cyclingnwp-btn {
   margin: 5px 0 0 0;
 }
+
+.cycling-nwp-button {
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+}
+
+.job-status-button {
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+}

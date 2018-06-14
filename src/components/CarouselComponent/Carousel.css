@@ -1,0 +1,157 @@
+/* CARD */
+
+.main-card {
+  height: 280px;
+  margin: 20px 20px 0 20px !important;
+}
+
+.card {
+  margin: 20px;
+}
+
+.card-content {
+  padding: 0 !important;
+}
+
+.wps-main-component {
+  text-align: center;
+  padding: 10px 0 10px 76px;
+  background: -webkit-linear-gradient(top, rgba(23,95,144, 0.7) 0%,rgba(17,55,92, 0.2) 100%) !important;
+  margin: 0 0 10px 0;
+}
+
+.wps-main-container {
+  display: flex;
+  margin: 0;
+}
+
+.domain-main-box {
+  border: 1px solid black;
+  margin: 0 auto;
+  height: 200px;
+  width: 200px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.calendar-main-box {
+  border: 1px solid black;
+  margin: 0 auto;
+  height: 200px;
+  width: 200px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.time-main-box {
+  border: 1px solid black;
+  margin: 0 auto;
+  height: 200px;
+  width: 200px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+
+/* CAROUSEL CONTAINER */
+
+.col.s10.m10.l10 {
+  padding: 0;
+}
+
+.time {
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: all 1s ease-in-out;
+  width: 100%;
+}
+
+.flipper {
+  transform: rotateY(180deg);
+}
+
+.flip-back-btn {
+  float: right;
+  margin: 230px 0 0 10px;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+}
+
+.time .side {
+  backface-visibility: hidden;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+}
+
+.time .back {
+  transform: rotateY(180deg);
+  overflow-y: auto !important;
+}
+
+.side, div.side.back {
+  border-radius: 2px;
+}
+
+div.side.back {
+  background: -webkit-linear-gradient(top, rgba(23,95,144, 0.7) 0%,rgba(17,55,92, 0.2) 100%) !important;
+}
+
+.edit-btn {
+  margin: 230px 10px 0 10px;
+  float: right;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+}
+
+.play-component-btn {
+  margin: 230px 10px 0 0;
+  float: right;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+}
+
+.arrow-btn-container {
+  text-align: center;
+}
+
+.arrow-button-back, .arrow-button-forward {
+  margin: 0 10px;
+  padding: 0 10px;
+}
+
+.arrow-button-back {
+  margin: 160px 0 0 0;
+  float: right;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+}
+
+.arrow-button-forward {
+  margin: 160px 0 0 0;
+  float: left;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+}
+
+.flip-btn {
+  float: right;
+  margin: 10px 15px 0 15px;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  padding: 0 1rem;
+}
+
+/* MODAL */
+
+.modal-close, .modal-save-btn {
+  margin: 6px 10px !important;
+  padding: 0 15px;
+}
+
+button.btn.toast {
+  top: 0;
+  min-height: initial;
+  font-weight: 400;
+  line-height: 0;
+  padding: 0 15px;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+}
+
+
+
+/* ARROW TEST */

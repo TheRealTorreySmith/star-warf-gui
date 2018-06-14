@@ -1,0 +1,135 @@
+/* SUMMARY CONTAINER */
+
+.summary-container {
+  background-color: white;
+  display: flex;
+  height: 110px;
+}
+
+.summary-title {
+  text-align: center;
+}
+
+.summary-component {
+  height: 100px;
+  margin: 15px 0 0 0;
+  vertical-align: middle;
+  background: -webkit-linear-gradient(top, rgba(23,95,144, 0.7) 0%,rgba(17,55,92, 0.2) 100%) !important;
+}
+
+.summary-component:hover {
+  cursor: pointer;
+  -moz-box-shadow: inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow: inset 0 0 10px #000000;
+}
+
+.play-container {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.main-play-button {
+  margin: 10px 0 20px 0;
+  padding: 0 10px;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+}
+
+.material-icons {
+  float: none !important;
+}
+
+p.cycle-container {
+  font-size: 18px;
+  text-align: center;
+}
+
+.play-component-btn {
+  padding: 0 10px;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+}
+
+#wps-box {
+  margin-left: 30px;
+  float: left;
+}
+
+#nwp-box {
+  margin-left: 20px;
+}
+
+.wps-three-boxes {
+  text-align: center;
+}
+
+.wps-text {
+  text-align: center;
+  margin: 6px 0 1px 0;
+  padding-left: 25px;
+}
+
+.wps-job-icon {
+  float: right !important;
+}
+
+.icon-white {
+  color: white;
+}
+
+#domain-box {
+  height: 55px;
+  width: 55px;
+  border-radius: 2px;
+  display: inline-block;
+  margin: 0 10px 0 0;
+}
+
+#calendar-box {
+  height: 55px;
+  width: 55px;
+  border-radius: 2px;
+  display: inline-block;
+  margin: 0 10px 0 0;
+}
+
+#jobType-box {
+  height: 55px;
+  width: 55px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.bottom-cycle-arrow {
+  margin: 0 0 10px 0;
+  padding-top: 10px;
+  color: lightgray;
+}
+
+.bottom-right-corner-cycle-arrow {
+  float: right;
+  padding-top: 6px;
+  color: lightgray;
+}
+
+.bottom-right-arrow {
+  margin: 0 80px 10px 0;
+  padding-top: 10px;
+}
+
+.bottom-left-corner-cycle-arrow {
+  float: left;
+  transform: rotate(90deg);
+  margin: 0 0 15px 0;
+  color: lightgray;
+}
+
+.bottom-arrow-div {
+  display: flex;
+}
+
+.dot {
+  font-size: 6px;
+  padding: 19px 0;
+  margin: 0 auto;
+  color: lightgray;
+}

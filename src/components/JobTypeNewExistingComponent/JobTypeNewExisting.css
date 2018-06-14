@@ -9,12 +9,14 @@ h5 {
 
 .back-button {
   margin: 15px 0 0 5px;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
 }
 
-.new-job-btn {
-  margin: 15px 0 0 0;
+.new-job-continue-button {
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  font-family: 'Orbitron', sans-serif;
 }
 
-.existing-job-btn {
-  margin: 5px 0 20px 0;
+.job-name-title {
+  font-family: 'Orbitron', sans-serif;
 }
