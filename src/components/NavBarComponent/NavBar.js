@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Icon, Dropdown, NavItem, Button } from 'react-materialize'
+import { Row, Icon, Dropdown, NavItem } from 'react-materialize'
 import './NavBar.css'
 
 class NavBar extends Component {

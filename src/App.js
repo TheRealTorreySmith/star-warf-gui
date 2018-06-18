@@ -11,16 +11,6 @@ class App extends Component {
     super(props)
     this.state = {
       jobType: '',
-      // cyclingNwpStandard: false,
-      // cyclingNwpEnsemble: false,
-      // cyclingNwpStandardNewJob: false,
-      // cyclingNwpStandardExistingJob: false,
-      // cyclingNwpEnsembleNewJob: false,
-      // cyclingNwpEnsembleExistingJob: false,
-      // forecastNewJob: false,
-      // forecastExistingJob: false,
-      // reanalysisNewJob: false,
-      // reanalysisExistingJob: false,
       currentJobName: undefined,
       currentUser: undefined,
       isLoggedIn: true,
@@ -33,13 +23,14 @@ class App extends Component {
       showWps: false,
       showWrf: false,
       showWrfDa: false,
+      threeDvar: false,
+      threeDensvar: false,
+      fourDensvar: false,
       runMainJob: false
     }
   }
 
   setCurrentUser = (username, password) => {
-    // console.log(username)
-    // console.log(password)
     this.setState({
       currentUser: username
     })
@@ -51,7 +42,7 @@ class App extends Component {
     })
   }
 
-  // BACK BUTTON STATE HANDLERS
+  // BACK BUTTON STATE HANDLER
   backButton = () => {
     this.state.cyclingNwpStandard ||
     this.state.cyclingNwpEnsemble ?
@@ -64,11 +55,6 @@ class App extends Component {
       jobs: []
     })
   }
-
-  // newExisting = (newOrExisting) => {
-  //
-  // }
-
 
   // NEW JOB NAME STATE HANDLER
   newJobName = (newJobName) => {
@@ -84,10 +70,9 @@ class App extends Component {
       }],
       currentJobName: newJobName
     })
-    console.log(this.state)
-    console.log(newJobName)
   }
 
+  // FLIPS NWP CAROUSEL CARD
   nwpFlipFunc = () => {
     let flipStatus = this.state.nwpFlipped ? false : true
     this.setState({
@@ -95,6 +80,7 @@ class App extends Component {
     })
   }
 
+  // FLIPS WPS CAROUSEL CARD
   wpsFlipFunc = () => {
     let flipStatus = this.state.wpsFlipped ? false : true
     this.setState({
@@ -102,6 +88,7 @@ class App extends Component {
     })
   }
 
+  // FLIPS WRF CAROUSEL CARD
   wrfFlipFunc = () => {
     let flipStatus = this.state.wrfFlipped ? false : true
     this.setState({
@@ -109,6 +96,7 @@ class App extends Component {
     })
   }
 
+  // FLIPS WRFDA CAROUSEL CARD
   wrfDaFlipFunc = () => {
     let flipStatus = this.state.wrfDaFlipped ? false : true
     this.setState({
@@ -116,12 +104,59 @@ class App extends Component {
     })
   }
 
+  // SWITCHES TO NWP CAROUSEL CARD
+  nwpShowClick = () => {
+    this.setState({
+      showNwp: true,
+      showWps: false,
+      showWrf: false,
+      showWrfDa: false,
+      nwpFlipped: false,
+      wpsFlipped: false,
+      wrfFlipped: false,
+      wrfDaFlipped: false
+    })
+  }
+
+  // SWITCHES TO WPS CAROUSEL CARD
   wpsShowClick = () => {
     this.setState({
       showNwp: false,
       showWps: true,
       showWrf: false,
-      showWrfDa: false
+      showWrfDa: false,
+      nwpFlipped: false,
+      wpsFlipped: false,
+      wrfFlipped: false,
+      wrfDaFlipped: false
+    })
+  }
+
+  // SWITCHES TO WRF CAROUSEL CARD
+  wrfShowClick = () => {
+    this.setState({
+      showNwp: false,
+      showWps: false,
+      showWrf: true,
+      showWrfDa: false,
+      nwpFlipped: false,
+      wpsFlipped: false,
+      wrfFlipped: false,
+      wrfDaFlipped: false
+    })
+  }
+
+  // SWITCHES TO WRFDA CAROUSEL CARD
+  wrfDaShowClick = () => {
+    this.setState({
+      showNwp: false,
+      showWps: false,
+      showWrf: false,
+      showWrfDa: true,
+      nwpFlipped: false,
+      wpsFlipped: false,
+      wrfFlipped: false,
+      wrfDaFlipped: false
     })
   }
 
@@ -132,6 +167,46 @@ class App extends Component {
     }) :
     this.setState({
       runMainJob: true
+    })
+  }
+
+  // SETS 3DVAR AS SELECTED IN STATE
+  threeDvarSelect = () => {
+    this.state.threeDvar ?
+    this.setState({
+      threeDvar: false
+    }) :
+    this.setState({
+      threeDvar: true,
+      fourDensvar: false,
+      threeDensvar: false
+    })
+  }
+
+  // SETS 3DENSVAR AS SELECTED IN STATE
+  threeDensvarSelect = () => {
+    this.state.threeDensvar ?
+    this.setState({
+      threeDensvar: false
+    }) :
+    this.setState({
+      threeDensvar: true,
+      threeDvar: false,
+      fourDensvar: false
+    })
+  }
+
+
+  // SETS 4DENSVAR AS SELECTED IN STATE
+  fourDensvarSelect = () => {
+    this.state.fourDensvar ?
+    this.setState({
+      fourDensvar: false
+    }) :
+    this.setState({
+      fourDensvar: true,
+      threeDvar: false,
+      threeDensvar: false
     })
   }
 
@@ -187,14 +262,23 @@ class App extends Component {
                 showWps={this.state.showWps}
                 showWrf={this.state.showWrf}
                 showWrfDa={this.state.showWrfDa}
+                threeDvar={this.state.threeDvar}
+                threeDensvar={this.state.threeDensvar}
+                fourDensvar={this.state.fourDensvar}
+                threeDvarSelect={this.threeDvarSelect}
+                threeDensvarSelect={this.threeDensvarSelect}
+                fourDensvarSelect={this.fourDensvarSelect}
+                nwpShowClick={this.nwpShowClick}
                 wpsShowClick={this.wpsShowClick}
+                wrfShowClick={this.wrfShowClick}
+                wrfDaShowClick={this.wrfDaShowClick}
                 runMainJob={this.state.runMainJob}
                 setMainJob={this.setMainJob}
               />
             </div>
           )}
           />
-          {/* {console.log(this.state)} */}
+          {console.log(this.state)}
         </div>
       </BrowserRouter>
     )

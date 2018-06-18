@@ -1,0 +1,23 @@
+input[type=range] {
+  margin: 0 0 10px 0;
+}
+
+input[type=range]+.thumb {
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+}
+
+input[type=range]+.thumb .value, .range-field {
+  color: #11375c;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    background-color: #175f90;
+  }
+
+input[type=range]::-moz-range-thumb {
+  background-color: #175f90;
+}
+
+input[type=range]::-ms-thumb {
+  background-color: #175f90;
+}

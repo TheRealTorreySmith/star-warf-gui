@@ -1,9 +1,14 @@
 /* SUMMARY CONTAINER */
 
+html {
+  line-height: 1.2;
+}
+
 .summary-container {
   background-color: white;
   display: flex;
   height: 110px;
+  margin-bottom: 8px;
 }
 
 .summary-title {
@@ -30,7 +35,7 @@
 }
 
 .main-play-button {
-  margin: 10px 0 20px 0;
+  margin: 20px 0 20px 0;
   padding: 0 10px;
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
 }
@@ -49,13 +54,37 @@ p.cycle-container {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
 }
 
-#wps-box {
-  margin-left: 30px;
-  float: left;
+/* NWP CONTAINER */
+.nwp-three-dvar {
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  border-radius: 2px;
+  color: lightgray;
+  font-size: 12px;
+  margin: auto;
+  padding: 2px;
+  text-align: center;
+  width: 54px;
 }
 
-#nwp-box {
-  margin-left: 20px;
+.nwp-three-densvar,
+.nwp-four-densvar {
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  border-radius: 2px;
+  color: lightgray;
+  font-size: 12px;
+  margin: auto;
+  padding: 2px;
+  text-align: center;
+  width: 80px;
+}
+
+.nwp-summary-container-row {
+  margin-bottom: 3px;
+}
+
+/* WPS CONTAINER */
+#wps-box {
+  float: left;
 }
 
 .wps-three-boxes {
@@ -66,6 +95,7 @@ p.cycle-container {
   text-align: center;
   margin: 6px 0 1px 0;
   padding-left: 25px;
+  line-height: 1.5;
 }
 
 .wps-job-icon {
@@ -99,16 +129,49 @@ p.cycle-container {
   display: inline-block;
 }
 
+.top-left-corner-cycle-arrow {
+  transform: rotate(180deg);
+  color: lightgray;
+  margin: 55px 5px 0 0;
+}
+
+.top-right-corner-cycle-arrow {
+  color: lightgray;
+  margin: 55px 0 0 1px;
+  transform: rotate(270deg);
+}
+
+.top-right-arrow-div {
+  margin: 0 0 0 13px;
+  padding: 0 !important;
+  position: relative;
+  width: 20px;
+}
+
+.top-left-arrow-div {
+  margin: 0 12px;
+  padding: 0 !important;
+  position: relative;
+  width: 20px;
+}
+
+.top-cycle-arrow {
+  color: lightgray;
+  margin: 50px 1px;
+  transform: rotate(180deg);
+}
+
 .bottom-cycle-arrow {
+  color: lightgray;
   margin: 0 0 10px 0;
   padding-top: 10px;
-  color: lightgray;
 }
 
 .bottom-right-corner-cycle-arrow {
   float: right;
-  padding-top: 6px;
+  padding: 6px 10px 0 0;
   color: lightgray;
+  margin-right: 17px;
 }
 
 .bottom-right-arrow {
@@ -119,7 +182,7 @@ p.cycle-container {
 .bottom-left-corner-cycle-arrow {
   float: left;
   transform: rotate(90deg);
-  margin: 0 0 15px 0;
+  margin: 0 0 15px 5px;
   color: lightgray;
 }
 
@@ -132,4 +195,32 @@ p.cycle-container {
   padding: 19px 0;
   margin: 0 auto;
   color: lightgray;
+}
+
+.top-right-dot {
+  margin: 0 13px;
+  padding: 0;
+}
+
+.bottom-right-dot {
+  margin: 0 13px;
+  padding: 0;
+}
+
+.top-left-dot {
+  padding: 0 8px 0 2px;
+}
+
+.bottom-left-dot {
+  padding: 0 8px 0 2px;
+}
+
+.three-spinning-arrows {
+  position: relative;
+}
+
+.cycle-count {
+  position: absolute;
+  bottom: 42px;
+  right: 38px;
 }
