@@ -7,7 +7,7 @@ html {
 .summary-container {
   background-color: white;
   display: flex;
-  height: 110px;
+  height: 100px;
   margin-bottom: 8px;
 }
 
@@ -30,7 +30,8 @@ html {
 }
 
 .play-container {
-  margin: 10px 0;
+  margin: 30px 10px 0 0;
+  padding-left: 0 !important;
   text-align: center;
 }
 
@@ -54,16 +55,62 @@ p.cycle-container {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
 }
 
+.nwp-hours-title {
+  font-size: 13px;
+  text-align: right;
+  padding: 3px 0 !important;
+  color: lightgray;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.nwp-hours-container {
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  border-radius: 2px;
+  margin-bottom: 10px;
+  width: 70px;
+}
+
+.icon-white {
+  color: white;
+}
+
+.icon-black {
+  color: black;
+}
+
+.wps-text-white {
+  text-align: center;
+  margin: 6px 0 1px 0;
+  padding-left: 25px;
+  line-height: 1.5;
+  color: white;
+}
+
+.wps-text-black {
+  text-align: center;
+  margin: 6px 0 1px 0;
+  padding-left: 25px;
+  line-height: 1.5;
+}
+
+
 /* NWP CONTAINER */
+
+#nwp-box {
+  margin-right: 20px;
+  height: 130px;
+}
+
 .nwp-three-dvar {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   border-radius: 2px;
   color: lightgray;
-  font-size: 12px;
+  font-size: 13px;
   margin: auto;
-  padding: 2px;
+  padding: 3px;
   text-align: center;
-  width: 54px;
+  width: 60px;
 }
 
 .nwp-three-densvar,
@@ -71,42 +118,44 @@ p.cycle-container {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   border-radius: 2px;
   color: lightgray;
-  font-size: 12px;
+  font-size: 13px;
   margin: auto;
-  padding: 2px;
+  padding: 3px;
   text-align: center;
-  width: 80px;
+  width: 84px;
 }
 
 .nwp-summary-container-row {
   margin-bottom: 3px;
 }
 
+.cycling-arrows-container {
+  position: absolute;
+  bottom: 15px;
+  left: 3px;
+}
+
+.three-spinning-arrows {
+  position: absolute;
+  top: 0px;
+  left: 126px;
+}
+
+.three-static-arrows {
+  position: absolute;
+  top: 0px;
+  left: 126px;
+}
+
+.cycle-count {
+  position: absolute;
+  top: 6px;
+  left: 134px;
+}
+
 /* WPS CONTAINER */
-#wps-box {
-  float: left;
-}
 
-.wps-three-boxes {
-  text-align: center;
-}
-
-.wps-text {
-  text-align: center;
-  margin: 6px 0 1px 0;
-  padding-left: 25px;
-  line-height: 1.5;
-}
-
-.wps-job-icon {
-  float: right !important;
-}
-
-.icon-white {
-  color: white;
-}
-
-#domain-box {
+#calendar-box {
   height: 55px;
   width: 55px;
   border-radius: 2px;
@@ -114,7 +163,7 @@ p.cycle-container {
   margin: 0 10px 0 0;
 }
 
-#calendar-box {
+#domain-box {
   height: 55px;
   width: 55px;
   border-radius: 2px;
@@ -129,6 +178,18 @@ p.cycle-container {
   display: inline-block;
 }
 
+#wps-box {
+  float: left;
+}
+
+.wps-three-boxes {
+  text-align: center;
+}
+
+.wps-job-icon {
+  float: right !important;
+}
+
 .top-left-corner-cycle-arrow {
   transform: rotate(180deg);
   color: lightgray;
@@ -137,15 +198,16 @@ p.cycle-container {
 
 .top-right-corner-cycle-arrow {
   color: lightgray;
-  margin: 55px 0 0 1px;
+  margin: 55px 0 0 0;
   transform: rotate(270deg);
 }
 
 .top-right-arrow-div {
-  margin: 0 0 0 13px;
+  margin: 0;
   padding: 0 !important;
   position: relative;
   width: 20px;
+  line-height: .9;
 }
 
 .top-left-arrow-div {
@@ -153,6 +215,7 @@ p.cycle-container {
   padding: 0 !important;
   position: relative;
   width: 20px;
+  line-height: .9;
 }
 
 .top-cycle-arrow {
@@ -161,17 +224,38 @@ p.cycle-container {
   transform: rotate(180deg);
 }
 
+.three-wrf-arrows {
+  color: lightgray;
+  transform: rotate(180deg);
+  font-size: 18px;
+}
+
+.three-arrows-from-wrf {
+  margin: 0;
+}
+
+.three-wrf-arrows-top {
+  margin: 32px 0 0 0;
+  color: lightgray;
+  transform: rotate(180deg);
+  font-size: 18px;
+}
+
+.three-wrf-arrows-container {
+  padding: 0 2px 0 4px !important;
+}
+
 .bottom-cycle-arrow {
   color: lightgray;
-  margin: 0 0 10px 0;
+  margin: 10px 0 10px 0;
   padding-top: 10px;
 }
 
 .bottom-right-corner-cycle-arrow {
   float: right;
-  padding: 6px 10px 0 0;
+  margin: 10px 0 0 0;
+  padding: 6px 0 0 0;
   color: lightgray;
-  margin-right: 17px;
 }
 
 .bottom-right-arrow {
@@ -182,45 +266,117 @@ p.cycle-container {
 .bottom-left-corner-cycle-arrow {
   float: left;
   transform: rotate(90deg);
-  margin: 0 0 15px 5px;
+  margin: 26px 0 15px 20px;
   color: lightgray;
 }
 
 .bottom-arrow-div {
   display: flex;
+  padding: 0 0 0 44px !important;
+  height: 10px;
 }
 
 .dot {
-  font-size: 6px;
+  font-size: 5px;
   padding: 19px 0;
+  margin: 10px auto;
+  color: lightgray;
+}
+
+.small-dot {
+  font-size: 3px;
+  padding: 20px 0;
   margin: 0 auto;
   color: lightgray;
 }
 
 .top-right-dot {
-  margin: 0 13px;
+  margin: 0 12px;
   padding: 0;
 }
 
 .bottom-right-dot {
-  margin: 0 13px;
+  margin: 0 12px;
   padding: 0;
 }
 
 .top-left-dot {
   padding: 0 8px 0 2px;
+  margin: 0;
 }
 
 .bottom-left-dot {
   padding: 0 8px 0 2px;
+  margin: 0 !important;
 }
 
-.three-spinning-arrows {
-  position: relative;
+.far-right-straight-arrow {
+  padding: 0;
 }
 
-.cycle-count {
-  position: absolute;
-  bottom: 42px;
-  right: 38px;
+.arrow-placeholder {
+  height: 42px;
+}
+
+.top-left-arrow-div-placeholder {
+  width: 20px;
+  padding: 0 !important;
+  height: 100px;
+  margin: 0 12px;
+}
+
+.top-cycle-arrow-placeholder {
+  width: 47.75px;
+  height: 100px;
+}
+
+.bottom-cycle-arrow-small {
+  color: lightgray;
+  margin: 3px 0 10px 0;
+  padding-top: 10px;
+  font-size: 16px;
+}
+
+.bottom-left-corner-cycle-arrow-small {
+  float: left;
+  transform: rotate(90deg);
+  margin: 16px 0 15px 5px;
+  color: lightgray;
+  font-size: 16px;
+}
+
+.bottom-right-corner-cycle-arrow-small {
+  float: right;
+  padding: 10px 0 0 0;
+  color: lightgray;
+  font-size: 16px;
+}
+
+.top-right-corner-cycle-arrow-small {
+  transform: rotate(270deg);
+  padding: 0 !important;
+  margin: 79px 0 0 0;
+  color: lightgray;
+  font-size: 16px;
+}
+
+.top-small-arrow-container {
+  margin: 0;
+  height: 10px;
+}
+
+.small-arrow-container-two {
+  padding: 0 30px;
+}
+
+.small-arrow-container-three {
+  padding: 0 15px;
+}
+
+.bottom-arrow-spacer-threedensvar {
+  height: 12px;
+}
+
+.bottom-arrow-spacer-threedens {
+  height: 42px;
 }

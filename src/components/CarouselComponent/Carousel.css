@@ -23,13 +23,14 @@ h4 {
 .wps-main-component,
 .nwp-main-component {
   text-align: center;
-  padding: 10px 0 10px 76px;
+  padding: 10px 0;
   background: -webkit-linear-gradient(top, rgba(23,95,144, 0.7) 0%,rgba(17,55,92, 0.2) 100%) !important;
   margin: 0 0 10px 0;
 }
 
 .wps-main-container,
 .nwp-main-container {
+  display: flex;
   margin: 0;
 }
 
@@ -40,7 +41,7 @@ h4 {
 }
 
 .left-container {
-  margin: 0 0 0 20px;
+  margin: 0 0 0 30px;
   width: 45%;
 }
 
@@ -49,7 +50,7 @@ h4 {
 }
 
 .data-assimilation-options-title {
-  margin: 5px auto 15px auto;
+  margin: 20px auto 15px auto;
 }
 
 .three-dvar-btn,
@@ -57,6 +58,12 @@ h4 {
 .four-densvar-btn {
   background: -webkit-linear-gradient(top, rgba(23,95,144, 0.7) 0%,rgba(17,55,92, 0.2) 100%);
   margin: 0 10px;
+  width: 240px;
+}
+
+.three-dvar-btn-container,
+.three-densvar-btn-container {
+  margin: 5px 0 12px 0;
 }
 
 .three-dvar-btn:focus,
@@ -64,6 +71,7 @@ h4 {
 .four-densvar-btn:focus {
   background: -webkit-linear-gradient(top, rgba(23,95,144, 0.7) 0%,rgba(17,55,92, 0.2) 100%);
   margin: 0 10px;
+  width: 240px;
 }
 
 .three-dvar-btn:hover,
@@ -74,6 +82,7 @@ h4 {
   -moz-box-shadow: inset 0 0 10px #000000;
   -webkit-box-shadow: inset 0 0 10px #000000;
   box-shadow: inset 0 0 10px #000000;
+  width: 240px;
 }
 
 .three-dvar-btn-selected,
@@ -81,6 +90,7 @@ h4 {
 .four-densvar-btn-selected {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   margin: 0 10px;
+  width: 240px;
 }
 
 .nwp-back-main-container {
@@ -88,18 +98,75 @@ h4 {
 }
 
 .cycling-frequency-options-title {
-  margin: 5px auto 15px auto;
+  margin: 20px auto 45px auto;
+}
+
+.show-hours-container {
+  text-align: center;
+  margin: 30px auto;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  height: 30px;
+  width: 100px;
+  border-radius: 2px;
+}
+
+.hours-number {
+  text-align: left;
+  padding: 5px 0 0 5px !important;
+  font-size: 16px;
+  color: white;
+}
+
+.hours-title {
+  font-size: 16px;
+  text-align: right;
+  padding: 5px 5px 0 0 !important;
+  color: white;
+}
+
+.nwp-next-btn-container {
+  padding: 0 !important;
+}
+
+.nwp-next-btn-enabled {
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  float: left;
+  margin: 102px 0 10px 0;
+  padding: 0 10px;
+}
+
+.nwp-next-btn-disabled {
+  cursor: no-drop;
+  float: left;
+  margin: 102px 0 10px 0;
+  padding: 0 10px;
+}
+
+.nwp-next-btn-disabled,
+.nwp-next-btn-disabled:hover,
+.nwp-next-btn-disabled:focus {
+  background-color: lightgray;
+}
+
+/* NWP CAROUSEL CARD BACKSIDE */
+#nwp-day-range-slider {
+  margin: 40px 0 10px 0;
+}
+
+#nwp-year-range-slider {
+  margin: 40px 0 10px 0;
+}
+
+#nwp-minute-range-slider {
+  margin: 40px 0 10px 0;
+}
+
+#nwp-second-range-slider {
+  margin: 40px 0 10px 0;
 }
 
 /* WPS CAROUSEL CARD */
 .domain-main-box {
-  border: 1px solid black;
-  margin: 0 auto;
-  height: 200px;
-  width: 200px;
-}
-
-.calendar-main-box {
   border: 1px solid black;
   margin: 0 auto;
   height: 200px;
@@ -113,6 +180,40 @@ h4 {
   width: 200px;
 }
 
+.wps-back-arrow {
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  float: right;
+  margin: 157px 0 0 0;
+  padding: 0 10px;
+}
+
+.wps-forward-arrow {
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  float: left;
+  margin: 102px 0 10px 0;
+  padding: 0 10px;
+}
+
+.physics-btn {
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  margin: 20px 0;
+  width: 240px;
+}
+
+/* WRFDA CAROUSEL CARD */
+.wrfda-back-arrow {
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  float: right;
+  margin: 157px 0 0 0;
+  padding: 0 10px;
+}
+
+.wrfda-forward-arrow {
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  float: left;
+  margin: 102px 0 10px 0;
+  padding: 0 10px;
+}
 
 /* CAROUSEL CONTAINER */
 .col.s10.m10.l10 {
@@ -132,9 +233,9 @@ h4 {
 }
 
 .flip-back-btn {
-  float: right;
-  margin: 10px 10px 0 10px;
-  padding: 0 1rem;
+  float: left;
+  margin: 10px 0;
+  padding: 0 10px;
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
 }
 
@@ -153,11 +254,6 @@ h4 {
 
 .side, div.side.back {
   border-radius: 2px;
-}
-
-.physics-btn {
-  margin: 120px 10px 0 10px;
-  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
 }
 
 .edit-btn {
@@ -194,10 +290,10 @@ h4 {
 }
 
 .flip-btn {
-  float: right;
-  margin: 10px 15px 0 15px;
+  float: left;
+  margin: 10px 0;
+  padding: 0 10px;
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
-  padding: 0 1rem;
 }
 
 /* MODAL */

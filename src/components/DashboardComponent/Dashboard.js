@@ -25,12 +25,28 @@ class Dashboard extends Component {
           showWps={this.props.showWps}
           showWrf={this.props.showWrf}
           showWrfDa={this.props.showWrfDa}
+          nwpShowClick={this.props.nwpShowClick}
+          wpsShowClick={this.props.wpsShowClick}
+          wrfShowClick={this.props.wrfShowClick}
+          wrfDaShowClick={this.props.wrfDaShowClick}
           threeDvar={this.props.threeDvar}
           threeDensvar={this.props.threeDensvar}
           fourDensvar={this.props.fourDensvar}
           threeDvarSelect={this.props.threeDvarSelect}
           threeDensvarSelect={this.props.threeDensvarSelect}
           fourDensvarSelect={this.props.fourDensvarSelect}
+          hourFrequencyOnChange={this.props.hourFrequencyOnChange}
+          hourFrequency={this.props.hourFrequency}
+          yearFrequencyOnChange={this.props.yearFrequencyOnChange}
+          yearFrequency={this.props.yearFrequency}
+          dayFrequencyOnChange={this.props.dayFrequencyOnChange}
+          dayFrequency={this.props.dayFrequency}
+          minuteFrequencyOnChange={this.props.minuteFrequencyOnChange}
+          minuteFrequency={this.props.minuteFrequency}
+          secondFrequencyOnChange={this.props.secondFrequencyOnChange}
+          secondFrequency={this.props.secondFrequency}
+          continueToWps={this.props.continueToWps}
+          continueToWpsOnChange={this.props.continueToWpsOnChange}
         />
         <Summary
           nwpShowClick={this.props.nwpShowClick}
@@ -42,6 +58,7 @@ class Dashboard extends Component {
           threeDvar={this.props.threeDvar}
           threeDensvar={this.props.threeDensvar}
           fourDensvar={this.props.fourDensvar}
+          hourFrequency={this.props.hourFrequency}
         />
      </div>
     )

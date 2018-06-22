@@ -26,7 +26,13 @@ class App extends Component {
       threeDvar: false,
       threeDensvar: false,
       fourDensvar: false,
-      runMainJob: false
+      runMainJob: false,
+      hourFrequency: 3,
+      yearFrequency: 0,
+      dayFrequency: 0,
+      minuteFrequency: 0,
+      secondFrequency: 0,
+      continueToWps: false
     }
   }
 
@@ -210,6 +216,43 @@ class App extends Component {
     })
   }
 
+  hourFrequencyOnChange = (value) => {
+    this.setState({
+      hourFrequency: value
+    })
+  }
+
+  yearFrequencyOnChange = (value) => {
+    this.setState({
+      yearFrequency: value
+    })
+  }
+
+  dayFrequencyOnChange = (value) => {
+    this.setState({
+      dayFrequency: value
+    })
+  }
+
+  minuteFrequencyOnChange = (value) => {
+    this.setState({
+      minuteFrequency: value
+    })
+  }
+
+  secondFrequencyOnChange = (value) => {
+    this.setState({
+      secondFrequency: value
+    })
+  }
+
+  continueToWpsOnChange = () => {
+    let value = this.state.continueToWps ? false : true
+    this.setState({
+      continueToWps: value
+    })
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -274,11 +317,23 @@ class App extends Component {
                 wrfDaShowClick={this.wrfDaShowClick}
                 runMainJob={this.state.runMainJob}
                 setMainJob={this.setMainJob}
+                hourFrequencyOnChange={this.hourFrequencyOnChange}
+                hourFrequency={this.state.hourFrequency}
+                yearFrequencyOnChange={this.yearFrequencyOnChange}
+                yearFrequency={this.state.yearFrequency}
+                dayFrequencyOnChange={this.dayFrequencyOnChange}
+                dayFrequency={this.state.dayFrequency}
+                minuteFrequencyOnChange={this.minuteFrequencyOnChange}
+                minuteFrequency={this.state.minuteFrequency}
+                secondFrequencyOnChange={this.secondFrequencyOnChange}
+                secondFrequency={this.state.secondFrequency}
+                continueToWps={this.state.continueToWps}
+                continueToWpsOnChange={this.continueToWpsOnChange}
               />
             </div>
           )}
           />
-          {console.log(this.state)}
+          {/* {console.log(this.state)} */}
         </div>
       </BrowserRouter>
     )

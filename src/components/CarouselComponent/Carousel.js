@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { Button, Modal, Card, Toast, Row } from 'react-materialize'
+import React, {Component} from 'react'
+import {Button, Modal, Card, Toast, Row} from 'react-materialize'
+import Calendar from './CalendarMain/CalendarMain'
 import './Carousel.css'
 import './Slider.css'
 
@@ -7,6 +8,16 @@ class CarouselContainer extends Component {
 
   nwpFlipClick = () => {
     this.props.nwpFlipFunc()
+    let slider = document.getElementById('nwp-hour-range-slider')
+    if (!this.props.nwpFlipped) {
+      setTimeout(function() {
+        slider.classList = 'hide'
+      }, 500)
+    } else {
+      setTimeout(function() {
+        slider.classList = 'range-field'
+      }, 500)
+    }
   }
 
   wpsFlipClick = () => {
@@ -33,162 +44,319 @@ class CarouselContainer extends Component {
     this.props.fourDvarSelect()
   }
 
+  hourFrequencyOnChange = (e) => {
+    let value = e.currentTarget.value
+    this.props.hourFrequencyOnChange(value)
+  }
+
+  dayFrequencyOnChange = (e) => {
+    let value = e.currentTarget.value
+    this.props.dayFrequencyOnChange(value)
+  }
+
+  yearFrequencyOnChange = (e) => {
+    let value = e.currentTarget.value
+    this.props.yearFrequencyOnChange(value)
+  }
+
+  minuteFrequencyOnChange = (e) => {
+    let value = e.currentTarget.value
+    this.props.minuteFrequencyOnChange(value)
+  }
+
+  secondFrequencyOnChange = (e) => {
+    let value = e.currentTarget.value
+    this.props.secondFrequencyOnChange(value)
+  }
+
+  wpsShowClick = () => {
+    if (this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar) {
+      this.props.wpsShowClick()
+    }
+  }
+
+  nwpShowClick = () => {
+    this.props.nwpShowClick()
+  }
+
+  wrfDaShowClick = () => {
+    this.props.wrfDaShowClick()
+  }
+
+  wrfShowClick = () => {
+    this.props.wrfShowClick()
+  }
+
   render() {
-    return (
-      <div>
+    return (<div>
       <div className="row carousel-background">
 
         {/* SPACER */}
-        <div className='col s1 m1 l1 arrow-btn-container'>
-          <Button className="arrow-button-back waves-effect"><i className="material-icons">arrow_back</i></Button>
-        </div>
+        <div className='col s1 m1 l1 arrow-btn-container'></div>
         <div className='col s10 m10 l10'>
 
-        {/* NWP CAROUSEL CARD */}
-        <Card className={`main-card ${this.props.showNwp ? 'animated fadeIn' : 'hide'}`}>
-          <div className={`time ${this.props.nwpFlipped ? 'flipper' : ''}`}>
-            <div className="side nwp-front">
-              <Button id='1' onClick={this.nwpFlipClick} className='flip-btn'><i className="material-icons">rotate_left</i></Button>
-              <h4 className="nwp-main-component">NWP</h4>
-              <div className="main-container">
-                <div className="left-container">
-                  <div className="row nwp-main-container">
-                    <div className="data-assimilation-options-title">
-                      Data Assimilation Options:
-                    </div>
+          {/* NWP CAROUSEL CARD */}
+          <Card className={`main-card ${this.props.showNwp
+              ? 'animated fadeIn'
+              : 'hide'}`}>
+            <div className={`time ${this.props.nwpFlipped
+                ? 'flipper'
+                : ''}`}>
+              <div className="side nwp-front">
+                <h4 className="nwp-main-component">NWP</h4>
+                <Row>
+                  <div className="col s11 m11 l11">
+                    <Row>
+                      <div className="col s6 m6 l6">
+                        <div className="row nwp-main-container">
+                          <div className="data-assimilation-options-title">
+                            Data Assimilation Options:
+                          </div>
+                        </div>
+                        <div className="row three-dvar-btn-container">
+                          <Button className={`${this.props.threeDvar
+                              ? 'three-dvar-btn-selected'
+                              : 'three-dvar-btn'}`} onClick={this.threeDvarSelect}>3DVar</Button>
+                        </div>
+                        <Row className="row three-densvar-btn-container">
+                          <Button className={`${this.props.threeDensvar
+                              ? 'three-densvar-btn-selected'
+                              : 'three-densvar-btn'}`} onClick={this.threeDensvarSelect}>3DEnsVar</Button>
+                        </Row>
+                        <Row>
+                          <Button className={`${this.props.fourDensvar
+                              ? 'four-densvar-btn-selected'
+                              : 'four-densvar-btn'}`} onClick={this.props.fourDensvarSelect}>4DEnsVar</Button>
+                        </Row>
+                      </div>
+                      <div className="col s6 m6 l6">
+                        <Row>
+                          <div className="col s12 m12 l12 cycling-frequency-options-title">
+                            Cycling Frequency:
+                          </div>
+                          <div className="col s12 m12 l12">
+                            <div id="nwp-hour-range-slider" className="range-field">
+                              <input type="range" id="hour-cycling-frequency" min="0" max="24" onChange={this.hourFrequencyOnChange} onInput={this.hourFrequencyOnChange} value={this.props.hourFrequency}/>
+                            </div>
+                            <div className="show-hours-container">
+                              <div className="col s8 m8 l8 hours-title">Hours:</div>
+                              <div className="col s4 m4 l4 hours-number">{this.props.hourFrequency}</div>
+                            </div>
+                          </div>
+                        </Row>
+                      </div>
+                    </Row>
                   </div>
-                  <div className="row">
-                    <Button className={`${this.props.threeDvar ? 'three-dvar-btn-selected' : 'three-dvar-btn'}`} onClick={this.threeDvarSelect}>3DVAR</Button>
-                  </div>
-                  <Row>
-                    <Button className={`${this.props.threeDensvar ? 'three-densvar-btn-selected' : 'three-densvar-btn'}`} onClick={this.threeDensvarSelect}>3DENSVAR</Button>
-                  </Row>
-                  <Row>
-                    <Button className={`${this.props.fourDensvar ? 'four-densvar-btn-selected' : 'four-densvar-btn'}`} onClick={this.props.fourDensvarSelect}>4DENSVAR</Button>
-                  </Row>
-                </div>
-                <div className="range-slider-container">
-                  <Row>
-                    <div className="col s10 m10 l10 cycling-frequency-options-title">
-                      Cycling Frequency:
-                    </div>
-                    <div className="col s10 m10 l10">
-                      <form action="#">
-                        <p className="range-field">
-                          <input type="range" id="hour-cycling-frequency" min="0" max="24" defaultValue="3"/>
-                        </p>
-                      </form>
-                      <p>Hours:</p>
-                    </div>
-                    <div className="col s3 m3 l3"></div>
-                  </Row>
-                </div>
-              </div>
-            </div>
-            <div className="side back">
-              <Button onClick={this.nwpFlipClick} className='flip-back-btn'><i className="material-icons">rotate_left</i></Button>
-              <h4 className="nwp-main-component">NWP</h4>
-            </div>
-          </div>
-        </Card>
-
-        {/* WPS CAROUSEL CARD */}
-          <Card className={`main-card ${this.props.showWps ? 'animated fadeIn' : 'hide'}`}>
-            <div className={`time ${this.props.wpsFlipped ? 'flipper' : ''}`}>
-              <div className="side">
-                <Button id='1' onClick={this.wpsFlipClick} className='flip-btn'><i className="material-icons">rotate_left</i></Button>
-                <h4 className="wps-main-component">WPS</h4>
-                <Row className="wps-main-container">
-                  <div className="domain-main-box">
-                    Domain
-                  </div>
-                  <div className="calendar-main-box">
-                    Calendar
-                  </div>
-                  <div className="time-main-box">
-                    Initial/Boundary Conditions
+                  <div className="col s1 m1 l1">
+                    <Button id='1' className='nwp-advanced-btn flip-btn' onClick={this.nwpFlipClick}>
+                      <i className="material-icons">more_horiz</i>
+                    </Button>
+                    <Button className={!this.props.threeDvar && !this.props.threeDensvar && !this.props.fourDensvar
+                        ? "nwp-next-btn-disabled"
+                        : "nwp-next-btn-enabled"} onClick={this.wpsShowClick}>
+                      <i className="material-icons">arrow_forward</i>
+                    </Button>
                   </div>
                 </Row>
               </div>
               <div className="side back">
-                <Button onClick={this.wpsFlipClick} className='flip-back-btn'><i className="material-icons">rotate_left</i></Button>
-                <Button className="waves-effect btn play-component-btn align-right"><i className="material-icons">play_arrow</i></Button>
-                <Modal
-                  header='Physics:'
-                  actions={
-                    <div>
-                      <Toast className="modal-save-btn" toast="Saved successfully!">Save</Toast>
-                      <Button modal="close" className="modal-save-btn red darken-2">Close</Button>
+                <h4 className="nwp-main-component">NWP</h4>
+                <Row>
+                  <div className="col s1 m1 l1"></div>
+                  <div className="col s10 m10 l10">
+                    <Row>
+                      <div className="col s6 m6 l6">
+                        <div>Day Frequency:  {this.props.dayFrequency}</div>
+                        <div id="nwp-day-range-slider" className="range-field">
+                          <input type="range" id="day-cycling-frequency" min="0" max="356" onChange={this.dayFrequencyOnChange} onInput={this.dayFrequencyOnChange} value={this.props.dayFrequency}/>
+                        </div>
+                        <div>Year Frequency:  {this.props.yearFrequency}</div>
+                        <div id="nwp-year-range-slider" className="range-field">
+                          <input type="range" id="year-cycling-frequency" min="0" max="100" onChange={this.yearFrequencyOnChange} onInput={this.yearFrequencyOnChange} value={this.props.yearFrequency}/>
+                        </div>
+                      </div>
+                      <div className="col s6 m6 l6">
+                        <div>Minute Frequency:  {this.props.minuteFrequency}</div>
+                        <div id="nwp-minute-range-slider" className="range-field">
+                          <input type="range" id="minute-cycling-frequency" min="0" max="60" onChange={this.minuteFrequencyOnChange} onInput={this.minuteFrequencyOnChange} value={this.props.minuteFrequency}/>
+                        </div>
+                        <div>Second Frequency:  {this.props.secondFrequency}</div>
+                        <div id="nwp-second-range-slider" className="range-field">
+                          <input type="range" id="second-cycling-frequency" min="0" max="60" onChange={this.secondFrequencyOnChange} onInput={this.secondFrequencyOnChange} value={this.props.secondFrequency}/>
+                        </div>
+                      </div>
+                    </Row>
+                  </div>
+                  <div className="col s1 m1 l1">
+                    <Button onClick={this.nwpFlipClick} className='flip-back-btn'>
+                      <i className="material-icons">rotate_left</i>
+                    </Button>
+                    <Button className={!this.props.threeDvar && !this.props.threeDensvar && !this.props.fourDensvar
+                        ? "nwp-next-btn-disabled"
+                        : "nwp-next-btn-enabled"} onClick={this.wpsShowClick}>
+                      <i className="material-icons">arrow_forward</i>
+                    </Button>
+                  </div>
+                </Row>
+              </div>
+            </div>
+          </Card>
+
+          {/* WPS CAROUSEL CARD */}
+          <Card className={`main-card ${this.props.showWps
+              ? 'animated fadeIn'
+              : 'hide'}`}>
+            <div className={`time ${this.props.wpsFlipped
+                ? 'flipper'
+                : ''}`}>
+              <div className="side">
+                <h4 className="wps-main-component">WPS</h4>
+                <Row>
+                  <div className="col s1 m1 l1">
+                    <Button className="wps-back-arrow" onClick={this.nwpShowClick}>
+                      <i className="material-icons">arrow_back</i>
+                    </Button>
+                  </div>
+                  <div className="col s10 m10 l10 wps-main-container">
+                    <div className="domain-main-box">
+                      Domain
                     </div>
-                  }
-                  trigger={<Button className="physics-btn">Physics</Button>}>
-                  <div>
-                    Subheaders
+                    <div className="calendar-main-box">
+                      <Calendar />
+                    </div>
+                    <div className="time-main-box">
+                      Initial/Boundary Conditions
+                    </div>
                   </div>
-                </Modal>
-            </div>
-          </div>
-        </Card>
-
-        {/* WRFDA CAROUSEL CARD */}
-        <Card className={`main-card ${this.props.showWrfDa ? 'animated fadeIn' : 'hide'}`}>
-          <div className={`time ${this.props.wrfDaFlipped ? 'flipper' : ''}`}>
-            <div className="side">
-              <Button id='1' onClick={this.wrfDaFlipClick} className='flip-btn'><i className="material-icons">rotate_left</i></Button>
-              <h4 className="wps-main-component">WRF-DA</h4>
-            </div>
-            <div className="side back">
-              <Button onClick={this.wrfDaFlipClick} className='flip-back-btn'><i className="material-icons">rotate_left</i></Button>
-              <Button className="waves-effect btn play-component-btn align-right"><i className="material-icons">play_arrow</i></Button>
-              <Modal
-                header='Slidebar Header'
-                actions={
-                  <div>
-                    <Toast className="modal-save-btn" toast="Saved successfully!">Save</Toast>
-                    <Button modal="close" className="modal-save-btn red darken-2">Close</Button>
+                  <div className="col s1 m1 l1">
+                    <Button id='1' onClick={this.wpsFlipClick} className='wps-advanced-btn flip-btn'>
+                      <i className="material-icons">more_horiz</i>
+                    </Button>
+                    <Button className={"wps-forward-arrow"} onClick={this.wrfDaShowClick}>
+                      <i className="material-icons">arrow_forward</i>
+                    </Button>
                   </div>
-                }
-                trigger={<Button className="edit-btn">Edit</Button>}>
-                {/* <SliderComponent/> */}
-              </Modal>
-            </div>
-          </div>
-        </Card>
-
-        {/* WRF CAROUSEL CARD */}
-        <Card className={`main-card ${this.props.showWrf ? 'animated fadeIn' : 'hide'}`}>
-          <div className={`time ${this.props.wrfFlipped ? 'flipper' : ''}`}>
-            <div className="side">
-              <Button id='1' onClick={this.wrfFlipClick} className='flip-btn'><i className="material-icons">rotate_left</i></Button>
-              <h4 className="wps-main-component">WRF</h4>
-            </div>
-            <div className="side back">
-              <Button onClick={this.wrfFlipClick} className='flip-back-btn'><i className="material-icons">rotate_left</i></Button>
-              <Button className="waves-effect btn play-component-btn align-right"><i className="material-icons">play_arrow</i></Button>
-              <Modal
-                header='Slidebar Header'
-                actions={
-                  <div>
-                    <Toast className="modal-save-btn" toast="Saved successfully!">Save</Toast>
-                    <Button modal="close" className="modal-save-btn red darken-2">Close</Button>
+                </Row>
+              </div>
+              <div className="side back">
+                <h4 className="wps-main-component">WPS</h4>
+                <Row>
+                  <div className="col s1 m1 l1">
+                    <Button className="wps-back-arrow" onClick={this.nwpShowClick}>
+                      <i className="material-icons">arrow_back</i>
+                    </Button>
                   </div>
-                }
-                trigger={<Button className="edit-btn">Edit</Button>}>
-                {/* <SliderComponent/> */}
-              </Modal>
+                  <div className="col s5 m5 l5">
+                    <Modal header='Physics:' actions={<div > <Toast className="modal-save-btn" toast="Saved successfully!">Save</Toast>
+                      <Button modal="close" className="modal-save-btn red darken-2">Close</Button>
+                    </div>} trigger={<Button className = "physics-btn" > Physics</Button>}>
+                      <div>
+                        Subheaders
+                      </div>
+                    </Modal>
+                  </div>
+                  <div className="col s5 m5 l5"></div>
+                  <div className="col s1 m1 l1">
+                    <Button onClick={this.wpsFlipClick} className='flip-back-btn'>
+                      <i className="material-icons">rotate_left</i>
+                    </Button>
+                    <Button className={"wps-forward-arrow"} onClick={this.wrfDaShowClick}>
+                      <i className="material-icons">arrow_forward</i>
+                    </Button>
+                  </div>
+                </Row>
+              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
 
-        {/* FORWARD/BACK ARROW CONTAINER */}
+          {/* WRFDA CAROUSEL CARD */}
+          <Card className={`main-card ${this.props.showWrfDa
+              ? 'animated fadeIn'
+              : 'hide'}`}>
+            <div className={`time ${this.props.wrfDaFlipped
+                ? 'flipper'
+                : ''}`}>
+              <div className="side">
+                <h4 className="wps-main-component">WRF-DA</h4>
+                <Row>
+                  <div className="col s1 m1 l1">
+                    <Button className="wrfda-back-arrow" onClick={this.wpsShowClick}>
+                      <i className="material-icons">arrow_back</i>
+                    </Button>
+                  </div>
+                  <div className="col s10 m10 l10"></div>
+                  <div className="col s1 m1 l1">
+                    <Button id='1' onClick={this.wrfDaFlipClick} className='flip-btn'>
+                      <i className="material-icons">more_horiz</i>
+                    </Button>
+                    <Button className={"wrfda-forward-arrow"} onClick={this.wrfShowClick}>
+                      <i className="material-icons">arrow_forward</i>
+                    </Button>
+                  </div>
+                </Row>
+              </div>
+              <div className="side back">
+                <Button onClick={this.wrfDaFlipClick} className='flip-back-btn'>
+                  <i className="material-icons">rotate_left</i>
+                </Button>
+                <Button className="waves-effect btn play-component-btn align-right">
+                  <i className="material-icons">play_arrow</i>
+                </Button>
+                <Modal header='Slidebar Header' actions={<div > <Toast className="modal-save-btn" toast="Saved successfully!">Save</Toast>
+                  <Button modal="close" className="modal-save-btn red darken-2">Close</Button>
+                </div>} trigger={<Button className = "edit-btn" > Edit</Button>}></Modal>
+              </div>
+            </div>
+          </Card>
+
+          {/* WRF CAROUSEL CARD */}
+          <Card className={`main-card ${this.props.showWrf
+              ? 'animated fadeIn'
+              : 'hide'}`}>
+            <div className={`time ${this.props.wrfFlipped
+                ? 'flipper'
+                : ''}`}>
+              <div className="side">
+                <h4 className="wps-main-component">WRF</h4>
+                <Row>
+                  <div className="col s1 m1 l1">
+                    <Button className="wrfda-back-arrow" onClick={this.wrfDaShowClick}>
+                      <i className="material-icons">arrow_back</i>
+                    </Button>
+                  </div>
+                  <div className="col s10 m10 l10"></div>
+                  <div className="col s1 m1 l1">
+                    <Button id='1' onClick={this.wrfFlipClick} className='flip-btn'>
+                      <i className="material-icons">more_horiz</i>
+                    </Button>
+                  </div>
+                </Row>
+              </div>
+              <div className="side back">
+                <h4 className="wps-main-component">WRF</h4>
+                <Row>
+                  <div className="col s1 m1 l1">
+                    <Button className="wrfda-back-arrow" onClick={this.wrfDaShowClick}>
+                      <i className="material-icons">arrow_back</i>
+                    </Button>
+                  </div>
+                  <div className="col s10 m10 l10">
+                  </div>
+                  <div className="col s1 m1 l1">
+                    <Button onClick={this.wrfFlipClick} className='flip-back-btn'>
+                      <i className="material-icons">rotate_left</i>
+                    </Button>
+                  </div>
+                </Row>
+              </div>
+            </div>
+          </Card>
+
+          {/* FORWARD/BACK ARROW CONTAINER */}
         </div>
-        <div className='col s1 m1 l1 arrow-btn-container'>
-          <Button className="arrow-button-forward waves-effect"><i className="material-icons">arrow_forward</i></Button>
-        </div>
+        <div className='col s1 m1 l1 arrow-btn-container'></div>
       </div>
-
-    </div>
-    )
+    </div>)
   }
 }
 
