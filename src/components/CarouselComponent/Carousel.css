@@ -103,25 +103,20 @@ h4 {
 
 .show-hours-container {
   text-align: center;
-  margin: 30px auto;
-  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
-  height: 30px;
+  margin: 10px auto;
   width: 100px;
-  border-radius: 2px;
 }
 
 .hours-number {
   text-align: left;
   padding: 5px 0 0 5px !important;
   font-size: 16px;
-  color: white;
 }
 
 .hours-title {
   font-size: 16px;
   text-align: right;
   padding: 5px 5px 0 0 !important;
-  color: white;
 }
 
 .nwp-next-btn-container {
@@ -142,9 +137,26 @@ h4 {
   padding: 0 10px;
 }
 
+.nwp-advanced-btn-enabled {
+  float: left;
+  margin: 10px 0;
+  padding: 0 10px;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+}
+
+.nwp-advanced-btn-disabled {
+  cursor: no-drop;
+  float: left;
+  margin: 10px 0;
+  padding: 0 10px;
+}
+
 .nwp-next-btn-disabled,
 .nwp-next-btn-disabled:hover,
-.nwp-next-btn-disabled:focus {
+.nwp-next-btn-disabled:focus,
+.nwp-advanced-btn-disabled,
+.nwp-advanced-btn-disabled:hover,
+.nwp-advanced-btn-disabled:focus {
   background-color: lightgray;
 }
 
@@ -167,17 +179,26 @@ h4 {
 
 /* WPS CAROUSEL CARD */
 .domain-main-box {
-  border: 1px solid black;
   margin: 0 auto;
+  height: 200px;
+  width: 200px;
+  -webkit-box-shadow: 0px 1px 15px rgba(0,0,0,.7);
+  -moz-box-shadow: 0px 1px 15px rgba(0,0,0,.7);
+  box-shadow: 0px 1px 15px rgba(0,0,0,.7);
+}
+
+.leaflet-container {
   height: 200px;
   width: 200px;
 }
 
 .time-main-box {
-  border: 1px solid black;
   margin: 0 auto;
   height: 200px;
   width: 200px;
+  -webkit-box-shadow: 0px 1px 15px rgba(0,0,0,.7);
+  -moz-box-shadow: 0px 1px 15px rgba(0,0,0,.7);
+  box-shadow: 0px 1px 15px rgba(0,0,0,.7);
 }
 
 .wps-back-arrow {

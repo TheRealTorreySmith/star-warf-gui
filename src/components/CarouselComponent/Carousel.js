@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Button, Modal, Card, Toast, Row} from 'react-materialize'
-import Calendar from './CalendarMain/CalendarMain'
+import Calendar from '../CalendarComponent/CalendarMain'
+import Map from '../MainMapComponent/MainMap'
 import './Carousel.css'
 import './Slider.css'
 
@@ -22,6 +23,23 @@ class CarouselContainer extends Component {
 
   wpsFlipClick = () => {
     this.props.wpsFlipFunc()
+    let calendar = document.getElementsByClassName('calendar')
+    let map = document.getElementsByClassName('main-map')
+    if (!this.props.wpsFlipped) {
+      setTimeout(function() {
+        calendar[0].classList = 'calendar hide'
+      }, 500)
+      setTimeout(function() {
+        map[0].classList = 'main-map hide'
+      }, 500)
+    } else {
+      setTimeout(function() {
+        calendar[0].classList = 'calendar'
+      }, 500)
+      setTimeout(function() {
+        map[0].classList = 'main-map'
+      }, 500)
+     }
   }
 
   wrfDaFlipClick = () => {
@@ -148,7 +166,9 @@ class CarouselContainer extends Component {
                     </Row>
                   </div>
                   <div className="col s1 m1 l1">
-                    <Button id='1' className='nwp-advanced-btn flip-btn' onClick={this.nwpFlipClick}>
+                    <Button id='1' className={!this.props.threeDvar && !this.props.threeDensvar && !this.props.fourDensvar
+                        ? "nwp-advanced-btn-disabled"
+                        : "nwp-advanced-btn-enabled"} onClick={this.nwpFlipClick}>
                       <i className="material-icons">more_horiz</i>
                     </Button>
                     <Button className={!this.props.threeDvar && !this.props.threeDensvar && !this.props.fourDensvar
@@ -166,21 +186,21 @@ class CarouselContainer extends Component {
                   <div className="col s10 m10 l10">
                     <Row>
                       <div className="col s6 m6 l6">
-                        <div>Day Frequency:  {this.props.dayFrequency}</div>
+                        <div>Days Frequency:  {this.props.dayFrequency}</div>
                         <div id="nwp-day-range-slider" className="range-field">
                           <input type="range" id="day-cycling-frequency" min="0" max="356" onChange={this.dayFrequencyOnChange} onInput={this.dayFrequencyOnChange} value={this.props.dayFrequency}/>
                         </div>
-                        <div>Year Frequency:  {this.props.yearFrequency}</div>
+                        <div>Years Frequency:  {this.props.yearFrequency}</div>
                         <div id="nwp-year-range-slider" className="range-field">
                           <input type="range" id="year-cycling-frequency" min="0" max="100" onChange={this.yearFrequencyOnChange} onInput={this.yearFrequencyOnChange} value={this.props.yearFrequency}/>
                         </div>
                       </div>
                       <div className="col s6 m6 l6">
-                        <div>Minute Frequency:  {this.props.minuteFrequency}</div>
+                        <div>Minutes Frequency:  {this.props.minuteFrequency}</div>
                         <div id="nwp-minute-range-slider" className="range-field">
                           <input type="range" id="minute-cycling-frequency" min="0" max="60" onChange={this.minuteFrequencyOnChange} onInput={this.minuteFrequencyOnChange} value={this.props.minuteFrequency}/>
                         </div>
-                        <div>Second Frequency:  {this.props.secondFrequency}</div>
+                        <div>Seconds Frequency:  {this.props.secondFrequency}</div>
                         <div id="nwp-second-range-slider" className="range-field">
                           <input type="range" id="second-cycling-frequency" min="0" max="60" onChange={this.secondFrequencyOnChange} onInput={this.secondFrequencyOnChange} value={this.props.secondFrequency}/>
                         </div>
@@ -219,7 +239,7 @@ class CarouselContainer extends Component {
                   </div>
                   <div className="col s10 m10 l10 wps-main-container">
                     <div className="domain-main-box">
-                      Domain
+                      {this.props.showWps ? <Map /> : null}
                     </div>
                     <div className="calendar-main-box">
                       <Calendar />
@@ -284,7 +304,8 @@ class CarouselContainer extends Component {
                       <i className="material-icons">arrow_back</i>
                     </Button>
                   </div>
-                  <div className="col s10 m10 l10"></div>
+                  <div className="col s10 m10 l10">
+                  </div>
                   <div className="col s1 m1 l1">
                     <Button id='1' onClick={this.wrfDaFlipClick} className='flip-btn'>
                       <i className="material-icons">more_horiz</i>

@@ -32,7 +32,10 @@ class App extends Component {
       dayFrequency: 0,
       minuteFrequency: 0,
       secondFrequency: 0,
-      continueToWps: false
+      continueToWps: false,
+      // lat: 39.9635945,
+      // lng: -105.14556859999999,
+      // zoom: 10,
     }
   }
 
@@ -216,30 +219,35 @@ class App extends Component {
     })
   }
 
+  // HOUR FREQUENCY RANGE-SLIDER
   hourFrequencyOnChange = (value) => {
     this.setState({
       hourFrequency: value
     })
   }
 
+  // YEAR FREQUENCY RANGE-SLIDER
   yearFrequencyOnChange = (value) => {
     this.setState({
       yearFrequency: value
     })
   }
 
+  // DAY FREQUENCY RANGE-SLIDER
   dayFrequencyOnChange = (value) => {
     this.setState({
       dayFrequency: value
     })
   }
 
+  // MINUTE FREQUENCY RANGE-SLIDER
   minuteFrequencyOnChange = (value) => {
     this.setState({
       minuteFrequency: value
     })
   }
 
+  // SECOND FREQUENCY RANGE-SLIDER
   secondFrequencyOnChange = (value) => {
     this.setState({
       secondFrequency: value
@@ -257,7 +265,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Route exact path='/login'
+          <Route exact path='/local'
             render={()=> (
             this.state.currentUser !== undefined ?
             (<Redirect to={`/${this.state.currentUser}`} />)
@@ -329,6 +337,9 @@ class App extends Component {
                 secondFrequency={this.state.secondFrequency}
                 continueToWps={this.state.continueToWps}
                 continueToWpsOnChange={this.continueToWpsOnChange}
+                // lat={this.state.lat}
+                // lng={this.state.lng}
+                // zoom={this.state.zoom}
               />
             </div>
           )}

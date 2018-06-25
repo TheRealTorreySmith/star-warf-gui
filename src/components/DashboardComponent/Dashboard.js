@@ -47,6 +47,9 @@ class Dashboard extends Component {
           secondFrequency={this.props.secondFrequency}
           continueToWps={this.props.continueToWps}
           continueToWpsOnChange={this.props.continueToWpsOnChange}
+          // lat={this.props.lat}
+          // lng={this.props.lng}
+          // zoom={this.props.zoom}
         />
         <Summary
           nwpShowClick={this.props.nwpShowClick}

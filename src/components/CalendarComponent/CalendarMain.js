@@ -1,7 +1,7 @@
 import React from 'react'
 import Calendar from './Calendar'
 import CalendarHeader from './CalendarHeader'
-import CalendarRange from './CalendarRange'
+// import CalendarRange from './CalendarRange'
 
 /*Smart Component*/
 class MainCalendar extends React.Component {
@@ -30,12 +30,17 @@ class MainCalendar extends React.Component {
        let {date, selectionStart, selectionEnd} = this.state
        return (<div className="calendar">
            {/* <CalendarRange dateFrom={selectionStart} dateTo={selectionEnd}/> */}
-           <CalendarHeader date={date} prevMonth={this.prevMonth} nextMonth={this.nextMonth}/>
-           <Calendar date={date}
-                     indexStart = {selectionStart}
-                     indexEnd = {selectionEnd}
-                     setRange = {this.setRange}
-                     />
+           <CalendarHeader
+             date={date}
+             prevMonth={this.prevMonth}
+             nextMonth={this.nextMonth}
+           />
+           <Calendar
+             date={date}
+             indexStart = {selectionStart}
+             indexEnd = {selectionEnd}
+             setRange = {this.setRange}
+             />
        </div>)
     }
 }

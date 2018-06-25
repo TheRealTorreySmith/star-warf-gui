@@ -82,8 +82,8 @@ class Summary extends Component {
               </Row>
               <Row className="cycling-arrows-container">
                 {this.props.runMainJob ?
-                <img className="three-static-arrows" src="https://icons8.com/preloaders/preloaders/744/Three%20arrows.gif" height="30px" width="30px"/> :
-                <img className="three-spinning-arrows" src="https://icons8.com/preloaders/preloaders/744/Three%20arrows.jpg" height="30px" width="30px"/>}
+                <img className="three-static-arrows" alt="preloader arrows symbolizing a cycle" src="https://icons8.com/preloaders/preloaders/744/Three%20arrows.gif" height="30px" width="30px"/> :
+                <img className="three-spinning-arrows" alt="preloader arrows symbolizing a cycle currently running" src="https://icons8.com/preloaders/preloaders/744/Three%20arrows.jpg" height="30px" width="30px"/>}
                 <p className="cycle-count">20</p>
               </Row>
             </Card>
