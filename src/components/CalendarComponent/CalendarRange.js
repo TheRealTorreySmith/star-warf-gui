@@ -1,7 +1,6 @@
 import React from 'react'
 import './Calendar.css'
 
-
 class CalendarRange extends React.Component {
   constructor(props) {
     super(props)
@@ -30,28 +29,15 @@ class CalendarRange extends React.Component {
     ]
   }
   dateInfo(date) {
-    // let dateRow
     let rangeMonthText = ''
     if (date) {
-      // dateRow = <td rowSpan="2">
-      //   <span className="calendar__range-date">{date.getDate()}</span>
-      // </td>
       rangeMonthText = this.monthNames[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()
     }
-    // return (<tr>
-    //   {/* {dateRow} */}
-    //   <td className="td-calendar-range">
-    //     <span className="calendar__range-month">
-    //       {rangeMonthText}
-    //     </span>
-    //   </td>
-    // </tr>)
-    return (
-      <table>
-        <tbody className="calendar-summary-heading">
-          {rangeMonthText}
-        </tbody>
-      </table>
+    return (<tr className="calendar-summary-heading">
+      <td className="calendar-summary-heading">
+        <span>{rangeMonthText}</span>
+     </td>
+     </tr>
     )
   }
   dumbDate(date, title) {
@@ -72,17 +58,30 @@ class CalendarRange extends React.Component {
       ? new Date(dateFrom)
       : dateFrom
     return (<div className="calendar__range">
-      <table>
-        <tbody className="calendar-summary">
-          <div>Start:</div>
-        </tbody>
-      </table>
+      {
+        this.props.dateFrom
+        ? <table>
+            <tbody className="calendar-summary">
+              <tr>
+                <td className="calendar-summary">Start:</td>
+                </tr>
+            </tbody>
+          </table>
+          : null
+      }
+
       {this.dumbDate(dateFrom)}
-      <table>
-        <tbody className="calendar-summary">
-          <div>End:</div>
-        </tbody>
-      </table>
+      {
+        this.props.dateFrom
+          ? <table>
+              <tbody >
+                <tr>
+                  <td className="calendar-summary">End:</td>
+                </tr>
+              </tbody>
+            </table>
+          : null
+      }
       {this.dumbDate(dateTo)}
     </div>)
   }

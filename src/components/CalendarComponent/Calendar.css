@@ -29,12 +29,16 @@ td {
 }
 
 .calendar-summary {
-  font-size: 7px;
+  font-size: 7.5px;
+  padding: 0;
+  text-align: center;
 }
 
 .calendar-summary-heading {
-  font-size: 8px;
+  font-size: 8.5px;
   font-weight: bold;
+  padding: 0;
+  text-align: center;
 }
 
 .calendar .calendar__range {
