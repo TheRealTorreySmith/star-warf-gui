@@ -13,7 +13,7 @@ class Dashboard extends Component {
   nextMonth = (date) => {
       this.props.nextMonth(date)
   }
-  
+
   setRange = (selectionStart, selectionEnd) => {
       this.props.setRange(selectionStart, selectionEnd)
   }
@@ -65,6 +65,9 @@ class Dashboard extends Component {
           prevMonth={this.prevMonth}
           nextMonth={this.nextMonth}
           setRange={this.setRange}
+          lat={this.props.lat}
+          lng={this.props.lng}
+          zoom={this.props.zoom}
         />
         <Summary
           nwpShowClick={this.props.nwpShowClick}

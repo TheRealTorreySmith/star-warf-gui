@@ -1,0 +1,14 @@
+.leaflet-touch .leaflet-bar a {
+  height: 15px;
+  width: 15px;
+  line-height: 13px;
+}
+
+.leaflet-touch .leaflet-control-zoom-in,
+.leaflet-touch .leaflet-control-zoom-out {
+  font-size: 12px;
+}
+
+.leaflet-container .leaflet-control-attribution {
+  display: none;
+}

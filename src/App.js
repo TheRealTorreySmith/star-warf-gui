@@ -35,10 +35,10 @@ class App extends Component {
       continueToWps: false,
       date:Date.now(),
       selectionStart: 0,
-      selectionEnd: 0
-      // lat: 39.9635945,
-      // lng: -105.14556859999999,
-      // zoom: 10,
+      selectionEnd: 0,
+      lat: 20.9635945,
+      lng: -105.14556859999999,
+      zoom: 0
     }
   }
 
@@ -365,6 +365,9 @@ class App extends Component {
                 prevMonth={this.prevMonth}
                 nextMonth={this.nextMonth}
                 setRange={this.setRange}
+                lat={this.state.lat}
+                lng={this.state.lng}
+                zoom={this.state.zoom}
               />
             </div>
           )}

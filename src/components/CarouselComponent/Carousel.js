@@ -251,7 +251,13 @@ class CarouselContainer extends Component {
                   </div>
                   <div className="col s10 m10 l10 wps-main-container">
                     <div className="domain-main-box">
-                      {this.props.showWps ? <Map /> : null}
+                      {this.props.showWps ?
+                        <Map
+                          lat={this.props.lat}
+                          lng={this.props.lng}
+                          zoom={this.props.zoom}
+                        />
+                        : null}
                     </div>
                     <div className="calendar-main-box">
                       <Calendar
