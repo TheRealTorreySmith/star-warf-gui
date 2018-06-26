@@ -24,7 +24,6 @@ export default class MapComponent extends Component {
         // console.log([localStorage.getItem("Latitude"),localStorage.getItem("Longitude")])
       })
     } else {
-      console.log(this.state)
       // console.log([localStorage.getItem("Latitude"),localStorage.getItem("Longitude")])
     }
   }

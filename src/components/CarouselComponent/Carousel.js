@@ -105,6 +105,18 @@ class CarouselContainer extends Component {
     this.props.wrfShowClick()
   }
 
+  prevMonth = (date) => {
+      this.props.prevMonth(date)
+  }
+
+  nextMonth = (date) => {
+      this.props.nextMonth(date)
+  }
+
+  setRange = (selectionStart, selectionEnd) => {
+      this.props.setRange(selectionStart, selectionEnd)
+  }
+
   render() {
     return (<div>
       <div className="row carousel-background">
@@ -242,7 +254,14 @@ class CarouselContainer extends Component {
                       {this.props.showWps ? <Map /> : null}
                     </div>
                     <div className="calendar-main-box">
-                      <Calendar />
+                      <Calendar
+                        date={this.props.date}
+                        selectionStart = {this.props.selectionStart}
+                        selectionEnd = {this.props.selectionEnd}
+                        prevMonth={this.prevMonth}
+                        nextMonth={this.nextMonth}
+                        setRange={this.setRange}
+                      />
                     </div>
                     <div className="time-main-box">
                       Initial/Boundary Conditions

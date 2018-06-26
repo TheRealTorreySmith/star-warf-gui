@@ -33,6 +33,9 @@ class App extends Component {
       minuteFrequency: 0,
       secondFrequency: 0,
       continueToWps: false,
+      date:Date.now(),
+      selectionStart: 0,
+      selectionEnd: 0
       // lat: 39.9635945,
       // lng: -105.14556859999999,
       // zoom: 10,
@@ -261,6 +264,25 @@ class App extends Component {
     })
   }
 
+  prevMonth = (date) => {
+      this.setState({
+        date:date.getTime()
+      })
+  }
+
+  nextMonth = (date) => {
+      this.setState({
+        date:date.getTime()
+      })
+  }
+
+  setRange = (selectionStart, selectionEnd) => {
+      this.setState({
+        selectionStart,
+        selectionEnd
+      })
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -337,14 +359,16 @@ class App extends Component {
                 secondFrequency={this.state.secondFrequency}
                 continueToWps={this.state.continueToWps}
                 continueToWpsOnChange={this.continueToWpsOnChange}
-                // lat={this.state.lat}
-                // lng={this.state.lng}
-                // zoom={this.state.zoom}
+                date={this.state.date}
+                selectionStart={this.state.selectionStart}
+                selectionEnd={this.state.selectionEnd}
+                prevMonth={this.prevMonth}
+                nextMonth={this.nextMonth}
+                setRange={this.setRange}
               />
             </div>
           )}
           />
-          {/* {console.log(this.state)} */}
         </div>
       </BrowserRouter>
     )

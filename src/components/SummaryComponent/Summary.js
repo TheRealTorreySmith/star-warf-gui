@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Card, Icon, Button } from 'react-materialize'
+import CalendarRange from '../CalendarComponent/CalendarRange'
 import './Summary.css'
 
 class Summary extends Component {
@@ -101,7 +102,12 @@ class Summary extends Component {
               <Row className={`wps-text-black`}>WPS<Icon className="wps-job-icon icon-black">close</Icon></Row>
               <Row className="wps-three-boxes">
                 <div id="domain-box" className='white'></div>
-                <div id="calendar-box" className='white'></div>
+                <div id="calendar-box" className='white'>
+                   <CalendarRange
+                     dateFrom={this.props.selectionStart}
+                     dateTo={this.props.selectionEnd}
+                   />
+                </div>
                 <div id="jobType-box" className='white'></div>
               </Row>
             </Card>

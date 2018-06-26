@@ -28,11 +28,30 @@ td {
   box-shadow: 0px 1px 15px rgba(0,0,0,.7);
 }
 
+.calendar-summary {
+  font-size: 7px;
+}
+
+.calendar-summary-heading {
+  font-size: 8px;
+  font-weight: bold;
+}
+
 .calendar .calendar__range {
   color: #5d5d5d;
   margin-bottom: 10px;
   padding-left: 10px;
 }
+
+.calendar__range-month {
+  display: flex;
+  text-align: center;
+}
+
+.td-calendar-range {
+  padding: 0;
+}
+
 .calendar .calendar__range .calendar__from-date {
   vertical-align: top;
   min-height: 30px;

@@ -6,6 +6,18 @@ import './Dashboard.css'
 
 class Dashboard extends Component {
 
+  prevMonth = (date) => {
+      this.props.prevMonth(date)
+  }
+
+  nextMonth = (date) => {
+      this.props.nextMonth(date)
+  }
+  
+  setRange = (selectionStart, selectionEnd) => {
+      this.props.setRange(selectionStart, selectionEnd)
+  }
+
   render() {
     return (
       <div>
@@ -47,9 +59,12 @@ class Dashboard extends Component {
           secondFrequency={this.props.secondFrequency}
           continueToWps={this.props.continueToWps}
           continueToWpsOnChange={this.props.continueToWpsOnChange}
-          // lat={this.props.lat}
-          // lng={this.props.lng}
-          // zoom={this.props.zoom}
+          date={this.props.date}
+          selectionStart={this.props.selectionStart}
+          selectionEnd={this.props.selectionEnd}
+          prevMonth={this.prevMonth}
+          nextMonth={this.nextMonth}
+          setRange={this.setRange}
         />
         <Summary
           nwpShowClick={this.props.nwpShowClick}
@@ -62,6 +77,9 @@ class Dashboard extends Component {
           threeDensvar={this.props.threeDensvar}
           fourDensvar={this.props.fourDensvar}
           hourFrequency={this.props.hourFrequency}
+          date={this.props.date}
+          selectionStart={this.props.selectionStart}
+          selectionEnd={this.props.selectionEnd}
         />
      </div>
     )
