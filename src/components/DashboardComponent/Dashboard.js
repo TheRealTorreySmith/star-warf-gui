@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import CarouselContainer from '../CarouselComponent/Carousel.js'
 import Summary from '../SummaryComponent/Summary.js'
 import NavBar from '../NavBarComponent/NavBar'
+import MapModal from '../MapModalComponent/MapModal.js'
 import './Dashboard.css'
 
 class Dashboard extends Component {
@@ -68,6 +69,7 @@ class Dashboard extends Component {
           lat={this.props.lat}
           lng={this.props.lng}
           zoom={this.props.zoom}
+          mapModal={this.props.mapModal}
         />
         <Summary
           nwpShowClick={this.props.nwpShowClick}
@@ -84,6 +86,12 @@ class Dashboard extends Component {
           selectionStart={this.props.selectionStart}
           selectionEnd={this.props.selectionEnd}
         />
+        {this.props.showMapModal ?
+          <MapModal
+            mapModal={this.props.mapModal}
+            showMapModal={this.props.showMapModal}
+          />
+        :null}
      </div>
     )
   }

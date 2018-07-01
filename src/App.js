@@ -38,7 +38,8 @@ class App extends Component {
       selectionEnd: 0,
       lat: 20.9635945,
       lng: -105.14556859999999,
-      zoom: 0
+      zoom: 0,
+      showMapModal: false
     }
   }
 
@@ -283,6 +284,18 @@ class App extends Component {
       })
   }
 
+  mapModal = () => {
+    if(this.state.showMapModal) {
+      this.setState({
+        showMapModal: false
+      })
+    } else {
+      this.setState({
+        showMapModal: true
+      })
+    }
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -368,6 +381,8 @@ class App extends Component {
                 lat={this.state.lat}
                 lng={this.state.lng}
                 zoom={this.state.zoom}
+                mapModal={this.mapModal}
+                showMapModal={this.state.showMapModal}
               />
             </div>
           )}

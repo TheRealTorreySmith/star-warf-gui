@@ -24,20 +24,20 @@ class CarouselContainer extends Component {
   wpsFlipClick = () => {
     this.props.wpsFlipFunc()
     let calendar = document.getElementsByClassName('calendar')
-    let map = document.getElementsByClassName('main-map')
+    let map = document.getElementsByClassName('leaflet-container')
     if (!this.props.wpsFlipped) {
       setTimeout(function() {
         calendar[0].classList = 'calendar hide'
       }, 500)
       setTimeout(function() {
-        map[0].classList = 'main-map hide'
+        map[0].classList = 'domain-main-box leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom hide'
       }, 500)
     } else {
       setTimeout(function() {
         calendar[0].classList = 'calendar'
       }, 500)
       setTimeout(function() {
-        map[0].classList = 'main-map'
+        map[0].classList = 'domain-main-box leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom'
       }, 500)
      }
   }
@@ -250,15 +250,16 @@ class CarouselContainer extends Component {
                     </Button>
                   </div>
                   <div className="col s10 m10 l10 wps-main-container">
-                    <div className="domain-main-box">
-                      {this.props.showWps ?
+                    {this.props.showWps ?
+                      <div id="map" className="domain-main-box">
                         <Map
                           lat={this.props.lat}
                           lng={this.props.lng}
                           zoom={this.props.zoom}
+                          mapModal={this.props.mapModal}
                         />
-                        : null}
-                    </div>
+                      </div>
+                    : null}
                     <div className="calendar-main-box">
                       <Calendar
                         date={this.props.date}

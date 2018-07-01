@@ -1,7 +1,22 @@
+/* LEAFLET MAP SMALL TOOLBAR ICONS */
+
+.leaflet-container {
+  height: 200px;
+  width: 200px;
+}
+
+.leaflet-draw-tooltip {
+  display: none;
+}
+
 .leaflet-touch .leaflet-bar a {
   height: 15px;
   width: 15px;
   line-height: 13px;
+}
+
+.leaflet-draw-toolbar a {
+  background-size: 210px 30px;
 }
 
 .leaflet-touch .leaflet-control-zoom-in,
@@ -11,4 +26,90 @@
 
 .leaflet-container .leaflet-control-attribution {
   display: none;
+}
+
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-draw-polygon {
+    background-position: -23px -8px;
+}
+
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-draw-polyline {
+    background-position: -3px -8px;
+}
+
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-draw-rectangle {
+    background-position: -45px -8px;
+}
+
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-draw-circle {
+    background-position: -66px -8px;
+}
+
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-draw-circlemarker {
+    background-position: -86.5px -8px;
+}
+
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-edit-edit {
+    background-position: -108.5px -8px;
+}
+
+.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-edit-remove {
+    background-position: -128.5px -8px;
+}
+
+.leaflet-retina .leaflet-draw-toolbar a {
+    background-image: url(images/spritesheet-2x.png);
+    background-image: linear-gradient(transparent, transparent), url(images/spritesheet.svg);
+}
+
+.sr-only {
+    display: none;
+}
+
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+  width: 19px;
+  margin-bottom: 2px;
+}
+
+/* LEAFLET MAP SMALL DRAW CSS */
+
+.leaflet-div-icon {
+  height: 6px !important;
+  width: 6px !important;
+  margin-top: -3px !important;
+  margin-left: -3px !important;
+}
+
+.leaflet-draw-actions .leaflet-draw-actions-top {
+  display: flex !important;
+}
+
+path.leaflet-interactive {
+  stroke-width: 2 !important;
+}
+
+.leaflet-container a {
+  color: black;
+  background-color: #ffffff;
+  border-radius: 2px;
+  padding: 1px 3px;
+}
+
+.leaflet-container a:hover {
+  background-color:#f4f4f4
+}
+
+icon.leaflet-control {
+  background-color: #ffffff;
+  background-clip: padding-box;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-radius: 2px;
+}
+
+icon.leaflet-control:hover {
+  background-color: #f4f4f4;
+  cursor: pointer;
+}
+
+icon.leaflet-control:focus {
+  background-color: white !important;
 }
