@@ -14,7 +14,6 @@ export default class MapComponent extends React.Component {
   	}
 
     initMap = () => {
-
     		this.map = L.map('map').setView([30.505, -20.09], 0)
     		this.featureGroup = L.featureGroup().addTo(this.map)
     		this.drawControl = new L.Control.Draw({
@@ -49,6 +48,7 @@ export default class MapComponent extends React.Component {
         L.control.expandMap({position:'topright'}).addTo(this.map)
 
     		L.tileLayer('http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg', {
+        // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     			maxZoom: 18,
     		}).addTo(this.map)
 

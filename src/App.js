@@ -39,7 +39,9 @@ class App extends Component {
       lat: 20.9635945,
       lng: -105.14556859999999,
       zoom: 0,
-      showMapModal: false
+      showMapModal: false,
+      // syncMap: null
+      coords: []
     }
   }
 
@@ -296,6 +298,27 @@ class App extends Component {
     }
   }
 
+  // mainMap = (map) => {
+  //   this.setState({
+  //     map: map
+  //   })
+  // }
+
+  // syncMapModal = (map) => {
+  //   this.setState({
+  //     syncMapModal: map
+  //   })
+  //   console.log(map)
+  // }
+
+  drawCoords = (coords) => {
+    this.setState({
+      coords: coords
+    })
+    // console.log(coords)
+  }
+
+
   render() {
     return (
       <BrowserRouter>
@@ -383,6 +406,12 @@ class App extends Component {
                 zoom={this.state.zoom}
                 mapModal={this.mapModal}
                 showMapModal={this.state.showMapModal}
+                syncMapModal={this.syncMapModal}
+                // syncMap={this.state.syncMap}
+                // mainMap={this.mainMap}
+                // map={this.state.map}
+                drawCoords={this.drawCoords}
+                getCoords={this.state.coords}
               />
             </div>
           )}

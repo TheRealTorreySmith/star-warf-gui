@@ -169,6 +169,7 @@ p.cycle-container {
   border-radius: 2px;
   display: inline-block;
   margin: 0 10px 0 0;
+  overflow: hidden;
 }
 
 #jobType-box {

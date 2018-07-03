@@ -19,6 +19,11 @@ class Dashboard extends Component {
       this.props.setRange(selectionStart, selectionEnd)
   }
 
+  drawCoords = (coords) => {
+    this.props.drawCoords(coords)
+  }
+
+
   render() {
     return (
       <div>
@@ -70,6 +75,8 @@ class Dashboard extends Component {
           lng={this.props.lng}
           zoom={this.props.zoom}
           mapModal={this.props.mapModal}
+          // syncMap={this.props.syncMap}
+          // mainMap={this.mainMap}
         />
         <Summary
           nwpShowClick={this.props.nwpShowClick}
@@ -85,11 +92,14 @@ class Dashboard extends Component {
           date={this.props.date}
           selectionStart={this.props.selectionStart}
           selectionEnd={this.props.selectionEnd}
+
         />
         {this.props.showMapModal ?
           <MapModal
             mapModal={this.props.mapModal}
             showMapModal={this.props.showMapModal}
+            drawCoords={this.props.drawCoords}
+            getCoords={this.props.getCoords}
           />
         :null}
      </div>

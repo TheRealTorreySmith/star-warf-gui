@@ -101,7 +101,8 @@ class Summary extends Component {
             <Card id="wps-box" className='col s3 m3 l3 summary-component' onClick={this.wpsShowClick}>
               <Row className={`wps-text-black`}>WPS<Icon className="wps-job-icon icon-black">close</Icon></Row>
               <Row className="wps-three-boxes">
-                <div id="domain-box" className='white'></div>
+                <div id="domain-box" className='white'>
+                </div>
                 <div id="calendar-box" className='white'>
                    <CalendarRange
                      dateFrom={this.props.selectionStart}

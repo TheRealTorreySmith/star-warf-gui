@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Button, Modal, Card, Toast, Row} from 'react-materialize'
 import Calendar from '../CalendarComponent/CalendarMain'
 import Map from '../MainMapComponent/MainMap'
+import globeBackground from './wrf-gfs-lightblue-wordless.png'
 import './Carousel.css'
 import './Slider.css'
 
@@ -25,6 +26,7 @@ class CarouselContainer extends Component {
     this.props.wpsFlipFunc()
     let calendar = document.getElementsByClassName('calendar')
     let map = document.getElementsByClassName('leaflet-container')
+    // let gfsContainer =
     if (!this.props.wpsFlipped) {
       setTimeout(function() {
         calendar[0].classList = 'calendar hide'
@@ -116,6 +118,10 @@ class CarouselContainer extends Component {
   setRange = (selectionStart, selectionEnd) => {
       this.props.setRange(selectionStart, selectionEnd)
   }
+
+  // mainMap = (map) => {
+  //   this.props.mainMap(map)
+  // }
 
   render() {
     return (<div>
@@ -271,7 +277,23 @@ class CarouselContainer extends Component {
                       />
                     </div>
                     <div className="time-main-box">
-                      Initial/Boundary Conditions
+                      <div className="gfs-container">
+                        <img className="gfs" src={globeBackground} height="90" width="90"></img>
+                        <div className="gfs-acronym-lettering">GFS</div>
+                        <div className="gfs-lettering">Global Forecast System</div>
+                      </div>
+                      <div className="row time-box-bottom-row">
+                      <div className="hrrr-container">
+                        <img className="hrrr" src={globeBackground} height="90" width="90"></img>
+                        <div className="hrrr-acronym-lettering">HRRR</div>
+                        <div className="hrrr-lettering">High-Resolution Rapid Refresh</div>
+                      </div>
+                      <div className="nam-container">
+                        <img className="nam" src={globeBackground} height="90" width="90"></img>
+                        <div className="nam-acronym-lettering">NAM</div>
+                        <div className="nam-lettering">North American Mesoscale Model</div>
+                      </div>
+                      </div>
                     </div>
                   </div>
                   <div className="col s1 m1 l1">

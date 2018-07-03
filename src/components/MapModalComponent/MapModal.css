@@ -53,3 +53,25 @@
 .modal-circlemarker {
   background-position: -171px -3px !important;
 }
+
+.modal-edit {
+  background-position: -201px -3px !important;
+}
+
+.modal-trash {
+  background-position: -231px -3px !important;
+}
+
+.lat-lng-container {
+  width: 200px;
+  text-align: center;
+}
+
+.map-content-container {
+  display: flex;
+}
+
+.point-label {
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+}

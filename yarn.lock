@@ -1838,6 +1838,10 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
+d3-queue@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/d3-queue/-/d3-queue-2.0.3.tgz#07fbda3acae5358a9c5299aaf880adf0953ed2c2"
+
 d@1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/d/-/d-1.0.0.tgz#754bb5bfe55451da69a58b94d45f4c5b0462d58f"
@@ -4149,9 +4153,23 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
+leaflet-draw-toolbar@^0.3.0-alpha.1:
+  version "0.3.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/leaflet-draw-toolbar/-/leaflet-draw-toolbar-0.3.0-alpha.1.tgz#d1431ce00cc8cab4a1ba5f2a72f142262cfb8bac"
+
 leaflet-draw@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/leaflet-draw/-/leaflet-draw-1.0.2.tgz#212d1d958a53b849bec19a2135d39c13ed012559"
+
+leaflet-image@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/leaflet-image/-/leaflet-image-0.4.0.tgz#e84f22ff6288f09b9b0e2f51a4850a9f07968cc1"
+  dependencies:
+    d3-queue "2.0.3"
+
+leaflet-toolbar@^0.4.0-alpha.1:
+  version "0.4.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/leaflet-toolbar/-/leaflet-toolbar-0.4.0-alpha.1.tgz#276a4c914b616895047d5eb585f6ef432b17f01e"
 
 leaflet@^1.3.1:
   version "1.3.1"

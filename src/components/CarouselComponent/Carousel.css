@@ -192,15 +192,6 @@ h4 {
   width: 200px;
 }
 
-.time-main-box {
-  margin: 0 auto;
-  height: 200px;
-  width: 200px;
-  -webkit-box-shadow: 0px 1px 15px rgba(0,0,0,.7);
-  -moz-box-shadow: 0px 1px 15px rgba(0,0,0,.7);
-  box-shadow: 0px 1px 15px rgba(0,0,0,.7);
-}
-
 .wps-back-arrow {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   float: right;
@@ -331,4 +322,133 @@ button.btn.toast {
   line-height: 0;
   padding: 0 15px;
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+}
+
+/* TIME BOX */
+
+.time-main-box {
+  margin: 0 auto;
+  height: 200px;
+  width: 200px;
+  -webkit-box-shadow: 0px 1px 15px rgba(0,0,0,.7);
+  -moz-box-shadow: 0px 1px 15px rgba(0,0,0,.7);
+  box-shadow: 0px 1px 15px rgba(0,0,0,.7);
+}
+
+.time-main-container {
+  border: 1px solid black;
+  height: 80%;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.gfs-container {
+  height: 90px;
+  width: 90px;
+  margin: 5% auto 0 auto;
+  position: relative;
+  text-align: center;
+  color: white;
+
+}
+
+.gfs-acronym-lettering {
+  font-size: 24px;
+  font-weight: bold;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 2px;
+}
+
+.gfs-lettering {
+  font-size: 10px;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.gfs-acronym-lettering:hover,
+.gfs-lettering:hover, .gfs:hover {
+  cursor: pointer;
+}
+
+.hrrr-container {
+  height: 90px;
+  width: 90px;
+  margin: 0 auto;
+  float:left;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.hrrr:hover{
+  cursor: pointer;
+}
+
+.hrrr-acronym-lettering {
+  font-size: 24px;
+  font-weight: bold;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 1.5px;
+}
+
+.hrrr-lettering {
+  font-size: 9px;
+  position: absolute;
+  top: 68%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nam-container {
+  height: 90px;
+  width: 90px;
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.nam:hover{
+  cursor: pointer;
+}
+
+.nam-acronym-lettering {
+  font-size: 24px;
+  font-weight: bold;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 2px;
+}
+
+.nam-lettering {
+  font-size: 9px;
+  position: absolute;
+  top: 68%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.time-box-bottom-row {
+  display: flex;
+  flex: space-between;
+}
+
+.gfs-acronym-lettering:hover,
+.gfs-lettering:hover, .gfs:hover,
+.hrrr-acronym-lettering:hover,
+.hrrr-lettering:hover, .hrrr:hover,
+.nam-acronym-lettering:hover,
+.nam-lettering:hover, .nam:hover {
+  cursor: pointer;
 }
