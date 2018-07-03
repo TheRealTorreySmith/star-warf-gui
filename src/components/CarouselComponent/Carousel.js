@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Button, Modal, Card, Toast, Row} from 'react-materialize'
 import Calendar from '../CalendarComponent/CalendarMain'
 import Map from '../MainMapComponent/MainMap'
-import globeBackground from './wrf-gfs-lightblue-wordless.png'
+import globeBackground from './wrf-gfs-darkblue-wordless.png'
 import './Carousel.css'
 import './Slider.css'
 
