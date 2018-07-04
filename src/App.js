@@ -40,8 +40,10 @@ class App extends Component {
       lng: -105.14556859999999,
       zoom: 0,
       showMapModal: false,
-      // syncMap: null
-      coords: []
+      coords: [],
+      gfsSelect: false,
+      hrrrSelect: false,
+      namSelect: false
     }
   }
 
@@ -298,25 +300,54 @@ class App extends Component {
     }
   }
 
-  // mainMap = (map) => {
-  //   this.setState({
-  //     map: map
-  //   })
-  // }
-
-  // syncMapModal = (map) => {
-  //   this.setState({
-  //     syncMapModal: map
-  //   })
-  //   console.log(map)
-  // }
-
   drawCoords = (coords) => {
     this.setState({
       coords: coords
     })
-    // console.log(coords)
   }
+
+  gfsSelect = () => {
+    if(this.state.gfsSelect) {
+      this.setState({
+        gfsSelect: false
+      })
+    } else {
+      this.setState({
+        gfsSelect: true,
+        hrrrSelect: false,
+        namSelect: false
+      })
+    }
+  }
+
+  hrrrSelect = () => {
+    if(this.state.hrrrSelect) {
+      this.setState({
+        hrrrSelect: false
+      })
+    } else {
+      this.setState({
+        hrrrSelect: true,
+        gfsSelect: false,
+        namSelect: false
+      })
+    }
+  }
+
+  namSelect = () => {
+    if(this.state.namSelect) {
+      this.setState({
+        namSelect: false
+      })
+    } else {
+      this.setState({
+        hrrrSelect: false,
+        gfsSelect: false,
+        namSelect: true
+      })
+    }
+  }
+
 
 
   render() {
@@ -407,11 +438,14 @@ class App extends Component {
                 mapModal={this.mapModal}
                 showMapModal={this.state.showMapModal}
                 syncMapModal={this.syncMapModal}
-                // syncMap={this.state.syncMap}
-                // mainMap={this.mainMap}
-                // map={this.state.map}
                 drawCoords={this.drawCoords}
                 getCoords={this.state.coords}
+                gfsSelect={this.gfsSelect}
+                gfs={this.state.gfsSelect}
+                hrrrSelect={this.hrrrSelect}
+                hrrr={this.state.hrrrSelect}
+                namSelect={this.namSelect}
+                nam={this.state.namSelect}
               />
             </div>
           )}

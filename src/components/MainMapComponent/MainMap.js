@@ -49,7 +49,7 @@ export default class MapComponent extends React.Component {
 
     		L.tileLayer('http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg', {
         // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    			maxZoom: 18,
+    		// maxZoom: 18,
     		}).addTo(this.map)
 
         // SMALL MAP EVENT HANDLERS

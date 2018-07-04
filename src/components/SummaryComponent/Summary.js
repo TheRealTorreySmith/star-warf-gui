@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Row, Card, Icon, Button } from 'react-materialize'
 import CalendarRange from '../CalendarComponent/CalendarRange'
+import globeBackground from '../CarouselComponent/wrf-gfs-darkblue-wordless.png'
 import './Summary.css'
 
 class Summary extends Component {
@@ -36,7 +37,7 @@ class Summary extends Component {
   lineOfSmallDots = () => {
     let icons = []
     for (var i = 0; i < 15; i++) {
-      icons.push(<i className={`material-icons small-dot`}>brightness_1</i>)
+      icons.push(<i key={i} className={`material-icons small-dot`}>brightness_1</i>)
     }
     return icons
   }
@@ -44,7 +45,7 @@ class Summary extends Component {
   lineOfSmallDotsTop = () => {
     let icons = []
     for (var i = 0; i < 10; i++) {
-      icons.push(<i className={`material-icons small-dot`}>brightness_1</i>)
+      icons.push(<i key={i} className={`material-icons small-dot`}>brightness_1</i>)
     }
     return icons
   }
@@ -52,7 +53,7 @@ class Summary extends Component {
   lineOfSmallDotsMiddle = () => {
     let icons = []
     for (var i = 0; i < 13; i++) {
-      icons.push(<i className={`material-icons small-dot`}>brightness_1</i>)
+      icons.push(<i key={i} className={`material-icons small-dot`}>brightness_1</i>)
     }
     return icons
   }
@@ -64,7 +65,7 @@ class Summary extends Component {
         <Card className="main-summary-container">
         <div className="row summary-container">
           <div className='col s11 m11 l11'>
-            <Card id="nwp-box" className='col s2 m2 l2 summary-component' onClick={this.nwpShowClick}>
+            <Card id="nwp-box" className={`col s2 m2 l2 ${this.props.showNwp ? 'summary-component-highlight' : 'summary-component'}`} onClick={this.nwpShowClick}>
               <Row className={`${this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar ? 'wps-text-white' : 'wps-text-black'}`}>NWP
                 <Icon className={`wps-job-icon ${this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar ? 'icon-white' : 'icon-black'}`}>
                 {this.props.threeDvar ||
@@ -98,7 +99,7 @@ class Summary extends Component {
             :
             <div className='col s.5 m.5 l.5 top-left-arrow-div-placeholder'>
             </div>}
-            <Card id="wps-box" className='col s3 m3 l3 summary-component' onClick={this.wpsShowClick}>
+            <Card id="wps-box" className={`col s3 m3 l3 ${this.props.showWps ? 'summary-component-highlight' : 'summary-component'}`} onClick={this.wpsShowClick}>
               <Row className={`wps-text-black`}>WPS<Icon className="wps-job-icon icon-black">close</Icon></Row>
               <Row className="wps-three-boxes">
                 <div id="domain-box" className='white'>
@@ -109,7 +110,26 @@ class Summary extends Component {
                      dateTo={this.props.selectionEnd}
                    />
                 </div>
-                <div id="jobType-box" className='white'></div>
+                <div id="jobType-box">
+                  {this.props.gfs ?
+                    <div>
+                      <img className="gfs-image animated fadeIn" src={globeBackground}></img>
+                      <div className="gfs-summary-acronym-lettering animated fadeIn">GFS</div>
+                    </div>
+                    : null}
+                  {this.props.hrrr ?
+                    <div>
+                      <img className="hrrr-image animated fadeIn" src={globeBackground}></img>
+                      <div className="hrrr-summary-acronym-lettering animated fadeIn">HRRR</div>
+                    </div>
+                    : null}
+                  {this.props.nam ?
+                    <div>
+                      <img className="nam-image animated fadeIn" src={globeBackground}></img>
+                      <div className="nam-summary-acronym-lettering animated fadeIn">NAM</div>
+                    </div>
+                    : null}
+                </div>
               </Row>
             </Card>
             {this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar ?
@@ -119,8 +139,8 @@ class Summary extends Component {
             :
             <div className='col s.5 m.5 l.5 top-cycle-arrow-placeholder'>
             </div>}
-            <Card className='col s2 m2 l2 summary-component' onClick={this.wrfDaShowClick}>
-              <Row className={`wps-text-black`}>WRF-DA<Icon className="wps-job-icon icon-black">close</Icon></Row>
+            <Card className={`col s2 m2 l2 ${this.props.showWrfDa ? 'summary-component-highlight' : 'summary-component'}`} onClick={this.wrfDaShowClick}>
+              <Row className={`wps-text-black`}>DA<Icon className="wps-job-icon icon-black">close</Icon></Row>
             </Card>
             {this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar ?
             <div className='col s.5 m.5 l.5'>
@@ -129,7 +149,7 @@ class Summary extends Component {
             :
             <div className='col s.5 m.5 l.5 top-cycle-arrow-placeholder'>
             </div>}
-            <Card className='col s2 m2 l2 summary-component' onClick={this.wrfShowClick}>
+            <Card className={`col s2 m2 l2 ${this.props.showWrf ? 'summary-component-highlight' : 'summary-component'}`} onClick={this.wrfShowClick}>
               <Row className={`wps-text-black`}>WRF<Icon className="wps-job-icon icon-black">close</Icon></Row>
             </Card>
             {this.props.threeDvar ?

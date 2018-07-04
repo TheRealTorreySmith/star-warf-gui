@@ -26,7 +26,7 @@ class CarouselContainer extends Component {
     this.props.wpsFlipFunc()
     let calendar = document.getElementsByClassName('calendar')
     let map = document.getElementsByClassName('leaflet-container')
-    // let gfsContainer =
+    let globes = document.getElementsByClassName('time-main-box')
     if (!this.props.wpsFlipped) {
       setTimeout(function() {
         calendar[0].classList = 'calendar hide'
@@ -34,9 +34,15 @@ class CarouselContainer extends Component {
       setTimeout(function() {
         map[0].classList = 'domain-main-box leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom hide'
       }, 500)
+      setTimeout(function() {
+        globes[0].classList = 'time-main-box hide'
+      }, 500)
     } else {
       setTimeout(function() {
         calendar[0].classList = 'calendar'
+      }, 500)
+      setTimeout(function() {
+        globes[0].classList = 'time-main-box'
       }, 500)
       setTimeout(function() {
         map[0].classList = 'domain-main-box leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom'
@@ -119,9 +125,17 @@ class CarouselContainer extends Component {
       this.props.setRange(selectionStart, selectionEnd)
   }
 
-  // mainMap = (map) => {
-  //   this.props.mainMap(map)
-  // }
+  gfsSelect = () => {
+    this.props.gfsSelect()
+  }
+
+  hrrrSelect = () => {
+    this.props.hrrrSelect()
+  }
+
+  namSelect = () => {
+    this.props.namSelect()
+  }
 
   render() {
     return (<div>
@@ -277,22 +291,31 @@ class CarouselContainer extends Component {
                       />
                     </div>
                     <div className="time-main-box">
-                      <div className="gfs-container">
-                        <img className="gfs" src={globeBackground} height="90" width="90"></img>
-                        <div className="gfs-acronym-lettering">GFS</div>
-                        <div className="gfs-lettering">Global Forecast System</div>
+                      <div className={`gfs-row row ${this.props.gfs ? 'gfs-row-selected' : ''}`} onClick={this.gfsSelect}>
+                        <div className={`gfs-container ${this.props.gfs ? 'gfs-container-selected' : ''}`}>
+                          <img className="gfs" src={globeBackground} height="40" width="40"></img>
+                          <div className="gfs-acronym-lettering">GFS</div>
+                        </div>
+                        <div className="gfs-title-container">Global Forecast System</div>
+                        <div className="gfs-text-container">GFS details placeholder text</div>
                       </div>
-                      <div className="row time-box-bottom-row">
-                      <div className="hrrr-container">
-                        <img className="hrrr" src={globeBackground} height="90" width="90"></img>
-                        <div className="hrrr-acronym-lettering">HRRR</div>
-                        <div className="hrrr-lettering">High-Resolution Rapid Refresh</div>
+                      <div className={`hrrr-row row ${this.props.hrrr ? 'hrrr-row-selected' : ''}`} onClick={this.hrrrSelect}>
+                        <div className={`hrrr-container ${this.props.hrrr ? 'hrrr-container-selected' : ''}`}>
+                          <img className="hrrr" src={globeBackground} height="40" width="40"></img>
+                          <div className="hrrr-acronym-lettering">HRRR</div>
+                        </div>
+                        <div className="hrrr-title-container">High-Resolution Rapid Refresh</div>
+                        <div className="hrrr-text-container">HRRR details placeholder text
+                        </div>
                       </div>
-                      <div className="nam-container">
-                        <img className="nam" src={globeBackground} height="90" width="90"></img>
-                        <div className="nam-acronym-lettering">NAM</div>
-                        <div className="nam-lettering">North American Mesoscale Model</div>
-                      </div>
+                      <div className={`nam-row row ${this.props.nam ? 'nam-row-selected' : ''}`} onClick={this.namSelect}>
+                        <div className={`nam-container ${this.props.nam ? 'nam-container-selected' : ''}`}>
+                          <img className="nam" src={globeBackground} height="40" width="40"></img>
+                          <div className="nam-acronym-lettering">NAM</div>
+                        </div>
+                        <div className="nam-title-container">North American Mesoscale Model</div>
+                        <div className="nam-text-container">NAM details placeholder text
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -337,7 +360,7 @@ class CarouselContainer extends Component {
             </div>
           </Card>
 
-          {/* WRFDA CAROUSEL CARD */}
+          {/* DA CAROUSEL CARD */}
           <Card className={`main-card ${this.props.showWrfDa
               ? 'animated fadeIn'
               : 'hide'}`}>
@@ -345,7 +368,7 @@ class CarouselContainer extends Component {
                 ? 'flipper'
                 : ''}`}>
               <div className="side">
-                <h4 className="wps-main-component">WRF-DA</h4>
+                <h4 className="wps-main-component">DA</h4>
                 <Row>
                   <div className="col s1 m1 l1">
                     <Button className="wrfda-back-arrow" onClick={this.wpsShowClick}>

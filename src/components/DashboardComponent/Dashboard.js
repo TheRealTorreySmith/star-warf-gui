@@ -23,6 +23,17 @@ class Dashboard extends Component {
     this.props.drawCoords(coords)
   }
 
+  gfsSelect = () => {
+    this.props.gfsSelect()
+  }
+
+  hrrrSelect = () => {
+    this.props.hrrrSelect()
+  }
+
+  namSelect = () => {
+    this.props.namSelect()
+  }
 
   render() {
     return (
@@ -75,14 +86,22 @@ class Dashboard extends Component {
           lng={this.props.lng}
           zoom={this.props.zoom}
           mapModal={this.props.mapModal}
-          // syncMap={this.props.syncMap}
-          // mainMap={this.mainMap}
+          gfsSelect={this.props.gfsSelect}
+          gfs={this.props.gfs}
+          hrrrSelect={this.props.hrrrSelect}
+          hrrr={this.props.hrrr}
+          namSelect={this.props.namSelect}
+          nam={this.props.nam}
         />
         <Summary
           nwpShowClick={this.props.nwpShowClick}
           wpsShowClick={this.props.wpsShowClick}
           wrfShowClick={this.props.wrfShowClick}
           wrfDaShowClick={this.props.wrfDaShowClick}
+          showNwp={this.props.showNwp}
+          showWps={this.props.showWps}
+          showWrf={this.props.showWrf}
+          showWrfDa={this.props.showWrfDa}
           runMainJob={this.props.runMainJob}
           setMainJob={this.props.setMainJob}
           threeDvar={this.props.threeDvar}
@@ -92,7 +111,9 @@ class Dashboard extends Component {
           date={this.props.date}
           selectionStart={this.props.selectionStart}
           selectionEnd={this.props.selectionEnd}
-
+          gfs={this.props.gfs}
+          hrrr={this.props.hrrr}
+          nam={this.props.nam}
         />
         {this.props.showMapModal ?
           <MapModal
