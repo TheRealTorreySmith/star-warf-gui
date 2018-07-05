@@ -104,8 +104,6 @@ class Dashboard extends Component {
           nam={this.props.nam}
           mapSaved={this.props.mapSaved}
           wpsTypeSaved={this.props.wpsTypeSaved}
-          selectionStart={this.props.selectionStart}
-          selectionEnd={this.props.selectionEnd}
         />
         {this.props.showMapModal ?
           <MapModal
