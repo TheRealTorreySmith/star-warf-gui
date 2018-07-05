@@ -23,18 +23,6 @@ class Dashboard extends Component {
     this.props.drawCoords(coords)
   }
 
-  gfsSelect = () => {
-    this.props.gfsSelect()
-  }
-
-  hrrrSelect = () => {
-    this.props.hrrrSelect()
-  }
-
-  namSelect = () => {
-    this.props.namSelect()
-  }
-
   render() {
     return (
       <div>
@@ -114,6 +102,10 @@ class Dashboard extends Component {
           gfs={this.props.gfs}
           hrrr={this.props.hrrr}
           nam={this.props.nam}
+          mapSaved={this.props.mapSaved}
+          wpsTypeSaved={this.props.wpsTypeSaved}
+          selectionStart={this.props.selectionStart}
+          selectionEnd={this.props.selectionEnd}
         />
         {this.props.showMapModal ?
           <MapModal
@@ -121,6 +113,7 @@ class Dashboard extends Component {
             showMapModal={this.props.showMapModal}
             drawCoords={this.props.drawCoords}
             getCoords={this.props.getCoords}
+            saveMap={this.props.saveMap}
           />
         :null}
      </div>

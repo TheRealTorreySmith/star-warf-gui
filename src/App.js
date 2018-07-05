@@ -43,7 +43,9 @@ class App extends Component {
       coords: [],
       gfsSelect: false,
       hrrrSelect: false,
-      namSelect: false
+      namSelect: false,
+      mapSaved: false,
+      wpsTypeSaved: false
     }
   }
 
@@ -309,13 +311,15 @@ class App extends Component {
   gfsSelect = () => {
     if(this.state.gfsSelect) {
       this.setState({
-        gfsSelect: false
+        gfsSelect: false,
+        wpsTypeSaved: false
       })
     } else {
       this.setState({
         gfsSelect: true,
         hrrrSelect: false,
-        namSelect: false
+        namSelect: false,
+        wpsTypeSaved: true
       })
     }
   }
@@ -323,13 +327,15 @@ class App extends Component {
   hrrrSelect = () => {
     if(this.state.hrrrSelect) {
       this.setState({
-        hrrrSelect: false
+        hrrrSelect: false,
+        wpsTypeSaved: false
       })
     } else {
       this.setState({
         hrrrSelect: true,
         gfsSelect: false,
-        namSelect: false
+        namSelect: false,
+        wpsTypeSaved: true
       })
     }
   }
@@ -337,17 +343,24 @@ class App extends Component {
   namSelect = () => {
     if(this.state.namSelect) {
       this.setState({
-        namSelect: false
+        namSelect: false,
+        wpsTypeSaved: false
       })
     } else {
       this.setState({
         hrrrSelect: false,
         gfsSelect: false,
-        namSelect: true
+        namSelect: true,
+        wpsTypeSaved: true
       })
     }
   }
 
+  saveMap = () => {
+      this.setState({
+        mapSaved: true
+      })
+  }
 
 
   render() {
@@ -446,11 +459,16 @@ class App extends Component {
                 hrrr={this.state.hrrrSelect}
                 namSelect={this.namSelect}
                 nam={this.state.namSelect}
+                mapSaved={this.state.mapSaved}
+                saveMap={this.saveMap}
+                wpsTypeSaved={this.state.wpsTypeSaved}
               />
             </div>
           )}
           />
+          {console.log(this.state)}
         </div>
+
       </BrowserRouter>
     )
   }

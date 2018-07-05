@@ -23,6 +23,7 @@ html {
 }
 
 .summary-component-highlight {
+  cursor: default;
   height: 100px;
   margin: 15px 0 0 0;
   vertical-align: middle;
@@ -65,7 +66,7 @@ p.cycle-container {
   font-size: 13px;
   text-align: right;
   padding: 3px 0 !important;
-  color: lightgray;
+  color: white;
   text-align: center;
   margin-top: 4px;
 }
@@ -111,7 +112,7 @@ p.cycle-container {
 .nwp-three-dvar {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   border-radius: 2px;
-  color: lightgray;
+  color: white;
   font-size: 13px;
   margin: auto;
   padding: 3px;
@@ -123,7 +124,7 @@ p.cycle-container {
 .nwp-four-densvar {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   border-radius: 2px;
-  color: lightgray;
+  color: white;
   font-size: 13px;
   margin: auto;
   padding: 3px;

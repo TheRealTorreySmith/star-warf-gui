@@ -74,20 +74,22 @@ class Summary extends Component {
                   'done':'close'}
                 </Icon>
               </Row>
-              <Row className="nwp-hours-container">
-                <div className="nwp-hours-title">Hours: {this.props.hourFrequency}</div>
-              </Row>
               <Row className="nwp-summary-container-row">
                 {this.props.threeDvar ? <div className='nwp-three-dvar animated fadeIn'>3DVAR</div> : ''}
                 {this.props.threeDensvar ? <div className='nwp-three-densvar animated fadeIn'>3DENSVAR</div> : ''}
                 {this.props.fourDensvar ? <div className='nwp-four-densvar animated fadeIn'>4DENSVAR</div> : ''}
               </Row>
-              <Row className="cycling-arrows-container">
+              <Row className="nwp-hours-container">
+                {this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar ?
+                   <div className="nwp-hours-title animated fadeIn">Hours: {this.props.hourFrequency}</div>
+                   : ''}
+              </Row>
+              {/* <Row className="cycling-arrows-container">
                 {this.props.runMainJob ?
                 <img className="three-static-arrows" alt="preloader arrows symbolizing a cycle" src="https://icons8.com/preloaders/preloaders/744/Three%20arrows.gif" height="30px" width="30px"/> :
                 <img className="three-spinning-arrows" alt="preloader arrows symbolizing a cycle currently running" src="https://icons8.com/preloaders/preloaders/744/Three%20arrows.jpg" height="30px" width="30px"/>}
                 <p className="cycle-count">20</p>
-              </Row>
+              </Row> */}
             </Card>
             {this.props.threeDvar ?
             <div className='col s.5 m.5 l.5 top-left-arrow-div'>
@@ -100,7 +102,11 @@ class Summary extends Component {
             <div className='col s.5 m.5 l.5 top-left-arrow-div-placeholder'>
             </div>}
             <Card id="wps-box" className={`col s3 m3 l3 ${this.props.showWps ? 'summary-component-highlight' : 'summary-component'}`} onClick={this.wpsShowClick}>
-              <Row className={`wps-text-black`}>WPS<Icon className="wps-job-icon icon-black">close</Icon></Row>
+              <Row className={`${this.props.wpsTypeSaved && this.props.selectionStart && this.props.selectionEnd && this.props.mapSaved ? 'wps-text-white' : 'wps-text-black'}`}>WPS
+                <Icon className={`wps-job-icon ${this.props.wpsTypeSaved && this.props.selectionStart && this.props.selectionEnd && this.props.mapSaved ? 'icon-white' : 'icon-black'}`}>
+                  {this.props.wpsTypeSaved && this.props.selectionStart && this.props.selectionEnd && this.props.mapSaved ? 'done':'close'}
+                </Icon>
+              </Row>
               <Row className="wps-three-boxes">
                 <div id="domain-box" className='white'>
                 </div>

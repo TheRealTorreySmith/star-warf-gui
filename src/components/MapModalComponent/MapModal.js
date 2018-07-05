@@ -42,7 +42,7 @@ class MapModal extends Component {
         trashBtn[1].className = 'leaflet-draw-edit-remove leaflet-disabled map-modal-buttons modal-trash'
         L.tileLayer('http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg', {
         // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 18,
+          // maxZoom: 18,
           tileSize: 400
         }).addTo(this.modalMap)
 
@@ -78,6 +78,7 @@ class MapModal extends Component {
       document.getElementById('domain-box').innerHTML = ''
       document.getElementById('domain-box').appendChild(img)
     })
+    this.props.saveMap()
   }
 
 
