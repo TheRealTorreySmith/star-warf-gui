@@ -18,6 +18,7 @@ class CalendarRange extends React.Component {
       "November",
       "December"
     ]
+    this.shortMonthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec']
     this.daysNames = [
       'Sunday',
       'Monday',
@@ -31,7 +32,7 @@ class CalendarRange extends React.Component {
   dateInfo(date) {
     let rangeMonthText = ''
     if (date) {
-      rangeMonthText = this.monthNames[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()
+      rangeMonthText = this.shortMonthNames[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()
     }
     return (<tr className="calendar-summary-heading">
       <td className="calendar-summary-heading">

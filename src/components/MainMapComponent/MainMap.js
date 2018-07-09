@@ -5,6 +5,7 @@ import React from 'react'
 // import simplify from './simplify'
 import L from 'leaflet'
 import 'leaflet-draw'
+import leafletImage from 'leaflet-image'
 import './Map.css'
 
 export default class MapComponent extends React.Component {
@@ -29,8 +30,7 @@ export default class MapComponent extends React.Component {
     			}
     		}).addTo(this.map)
 
-
-
+        // EXPAND MAP BUTTON
         L.Control.Expand = L.Control.extend({
             onAdd: function(map) {
                 var icon = L.DomUtil.create('icon')
@@ -47,15 +47,45 @@ export default class MapComponent extends React.Component {
 
         L.control.expandMap({position:'topright'}).addTo(this.map)
 
-    		L.tileLayer('http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg', {
-        // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    		// maxZoom: 18,
-    		}).addTo(this.map)
+        // SAVE MAP BUTTON
+        L.Control.Save = L.Control.extend({
+            onAdd: function(map) {
+                var icon = L.DomUtil.create('icon')
+                icon.className = 'material-icons save-icon'
+                icon.innerHTML = 'save'
+                return icon
+            },
+            onRemove: function(map) {}
+        })
+
+        L.control.saveMap = function(opts) {
+            return new L.Control.Save(opts)
+        }
+
+        L.control.saveMap({position:'bottomright'}).addTo(this.map)
+
+    		L.tileLayer('http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg')
+          .addTo(this.map)
 
         // SMALL MAP EVENT HANDLERS
         this.map.on('click', (e) => {
           if(e.originalEvent.path[0].classList.contains('expand-icon')) {
             this.props.mapModal()
+          }
+    		})
+
+        this.map.on('click', (e) => {
+          if(e.originalEvent.path[0].classList.contains('save-icon')) {
+            leafletImage(this.map, function(err, canvas) {
+              let img = document.createElement('img')
+              img.className = "animated fadeIn"
+              img.width = 55
+              img.height = 55
+              img.src = canvas.toDataURL()
+              document.getElementById('domain-box').innerHTML = ''
+              document.getElementById('domain-box').appendChild(img)
+            })
+            this.props.saveMap()
           }
     		})
 

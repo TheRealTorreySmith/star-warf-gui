@@ -35,7 +35,7 @@ td {
 }
 
 .calendar-summary-heading {
-  font-size: 8.5px;
+  font-size: 9px;
   font-weight: bold;
   padding: 0;
   text-align: center;
@@ -45,6 +45,10 @@ td {
   color: #5d5d5d;
   margin-bottom: 10px;
   padding-left: 10px;
+}
+
+.calendar__range {
+ padding: 0 10px;
 }
 
 .calendar__range-month {

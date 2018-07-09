@@ -3,6 +3,8 @@ import {Button, Modal, Card, Toast, Row} from 'react-materialize'
 import Calendar from '../CalendarComponent/CalendarMain'
 import Map from '../MainMapComponent/MainMap'
 import globeBackground from './wrf-gfs-darkblue-wordless.png'
+import ncepImage from './ncep.jpeg'
+import wrfdaImage from './wrfda.png'
 import './Carousel.css'
 import './Slider.css'
 
@@ -30,28 +32,67 @@ class CarouselContainer extends Component {
     if (!this.props.wpsFlipped) {
       setTimeout(function() {
         calendar[0].classList = 'calendar hide'
-      }, 500)
-      setTimeout(function() {
-        map[0].classList = 'domain-main-box leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom hide'
-      }, 500)
-      setTimeout(function() {
         globes[0].classList = 'time-main-box hide'
+        map[0].classList = 'domain-main-box leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom hide'
       }, 500)
     } else {
       setTimeout(function() {
         calendar[0].classList = 'calendar'
-      }, 500)
-      setTimeout(function() {
         globes[0].classList = 'time-main-box'
-      }, 500)
-      setTimeout(function() {
         map[0].classList = 'domain-main-box leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom'
       }, 500)
      }
   }
 
-  wrfDaFlipClick = () => {
-    this.props.wrfDaFlipFunc()
+  daFlipClick = () => {
+    this.props.daFlipFunc()
+    let gsiImage = document.getElementsByClassName('gsi-container')
+    let wrfdaImage = document.getElementsByClassName('wrfda-container')
+    if (!this.props.daFlipped) {
+      setTimeout(function() {
+        gsiImage[0].classList = 'gsi-container hide'
+        wrfdaImage[0].classList = 'wrfda-container hide'
+      }, 500)
+    } else {
+      if(this.props.gsi) {
+        setTimeout(function() {
+          gsiImage[0].classList = 'gsi-container wrfda-gsi-container-selected'
+        }, 500)
+      } else {
+        setTimeout(function() {
+          gsiImage[0].classList = 'gsi-container'
+        }, 500)
+      }
+      if (this.props.wrfda) {
+        setTimeout(function() {
+          wrfdaImage[0].classList = 'wrfda-container wrfda-gsi-container-selected'
+        }, 500)
+      } else {
+        setTimeout(function() {
+          wrfdaImage[0].classList = 'wrfda-container'
+        }, 500)
+      }
+    }
+  }
+
+  boundaryConditionsFlipClick = () => {
+    this.props.boundaryConditionsFlipFunc()
+    let gfsGlobe = document.getElementsByClassName('gfs-container')
+    let hrrrGlobe = document.getElementsByClassName('hrrr-container')
+    let namGlobe = document.getElementsByClassName('nam-container')
+    if (!this.props.boundaryConditionsFlipped) {
+      setTimeout(function() {
+        gfsGlobe[0].classList = 'gfs-container hide'
+        hrrrGlobe[0].classList = 'hrrr-container hide'
+        namGlobe[0].classList = 'nam-container hide'
+      }, 500)
+    } else {
+      setTimeout(function() {
+        gfsGlobe[0].classList = 'gfs-container'
+        hrrrGlobe[0].classList = 'hrrr-container'
+        namGlobe[0].classList = 'nam-container'
+      }, 500)
+     }
   }
 
   wrfFlipClick = () => {
@@ -105,8 +146,8 @@ class CarouselContainer extends Component {
     this.props.nwpShowClick()
   }
 
-  wrfDaShowClick = () => {
-    this.props.wrfDaShowClick()
+  daShowClick = () => {
+    this.props.daShowClick()
   }
 
   wrfShowClick = () => {
@@ -137,6 +178,14 @@ class CarouselContainer extends Component {
     this.props.namSelect()
   }
 
+  gsiSelect = () => {
+    this.props.gsiSelect()
+  }
+
+  wrfdaSelect = () => {
+    this.props.wrfdaSelect()
+  }
+
   render() {
     return (<div>
       <div className="row carousel-background">
@@ -153,7 +202,7 @@ class CarouselContainer extends Component {
                 ? 'flipper'
                 : ''}`}>
               <div className="side nwp-front">
-                <h4 className="nwp-main-component">NWP</h4>
+                <h4 className={`${this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar ? 'nwp-main-component-white' : 'nwp-main-component'}`}>NWP</h4>
                 <Row>
                   <div className="col s11 m11 l11">
                     <Row>
@@ -212,7 +261,7 @@ class CarouselContainer extends Component {
                 </Row>
               </div>
               <div className="side back">
-                <h4 className="nwp-main-component">NWP</h4>
+                <h4 className={`${this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar ? 'nwp-main-component-white' : 'nwp-main-component'}`}>NWP</h4>
                 <Row>
                   <div className="col s1 m1 l1"></div>
                   <div className="col s10 m10 l10">
@@ -262,7 +311,7 @@ class CarouselContainer extends Component {
                 ? 'flipper'
                 : ''}`}>
               <div className="side">
-                <h4 className="wps-main-component">WPS</h4>
+                <h4 className={`${this.props.wpsTypeSaved && this.props.selectionStart && this.props.selectionEnd && this.props.mapSaved ? 'wps-main-component-white' : 'wps-main-component'}`}>WPS</h4>
                 <Row>
                   <div className="col s1 m1 l1">
                     <Button className="wps-back-arrow" onClick={this.nwpShowClick}>
@@ -277,6 +326,7 @@ class CarouselContainer extends Component {
                           lng={this.props.lng}
                           zoom={this.props.zoom}
                           mapModal={this.props.mapModal}
+                          saveMap={this.props.saveMap}
                         />
                       </div>
                     : null}
@@ -291,30 +341,54 @@ class CarouselContainer extends Component {
                       />
                     </div>
                     <div className="time-main-box">
-                      <div className={`gfs-row row ${this.props.gfs ? 'gfs-row-selected' : ''}`} onClick={this.gfsSelect}>
-                        <div className={`gfs-container ${this.props.gfs ? 'gfs-container-selected' : ''}`}>
-                          <img className="gfs" src={globeBackground} height="40" width="40"></img>
-                          <div className="gfs-acronym-lettering">GFS</div>
+                      <div className={`time time-main-box ${this.props.boundaryConditionsFlipped
+                          ? 'flipper'
+                          : ''}`}>
+                        <div className="side">
+                          <div className="time-main-box-flip-row">
+                            <Button className="time-main-box-flip-btn" onClick={this.boundaryConditionsFlipClick}>
+                              <i className="material-icons boundary-conditions-flip">rotate_left</i>
+                            </Button>
+                          </div>
+                          <div className="time-main-box-title-row">
+                            Initial Boundary Conditions
+                          </div>
+                          <div className={`gfs-row row ${this.props.gfs ? 'gfs-row-selected' : ''}`} onClick={this.gfsSelect}>
+                            <div className={`gfs-container ${this.props.gfs ? 'gfs-container-selected' : ''}`}>
+                              <img className="gfs" src={globeBackground} height="40" width="40" alt="blue globe background logo"></img>
+                              <div className="gfs-acronym-lettering">GFS</div>
+                            </div>
+                            <div className="gfs-title-container">Global Forecast System</div>
+                            <div className="gfs-text-container">GFS details placeholder text</div>
+                          </div>
+                          <div className={`hrrr-row row ${this.props.hrrr ? 'hrrr-row-selected' : ''}`} onClick={this.hrrrSelect}>
+                            <div className={`hrrr-container ${this.props.hrrr ? 'hrrr-container-selected' : ''}`}>
+                              <img className="hrrr" src={globeBackground} height="40" width="40" alt="blue globe background logo"></img>
+                              <div className="hrrr-acronym-lettering">HRRR</div>
+                            </div>
+                            <div className="hrrr-title-container">High-Resolution Rapid Refresh</div>
+                            <div className="hrrr-text-container">HRRR details placeholder text
+                            </div>
+                          </div>
+                          <div className={`nam-row row ${this.props.nam ? 'nam-row-selected' : ''}`} onClick={this.namSelect}>
+                            <div className={`nam-container ${this.props.nam ? 'nam-container-selected' : ''}`}>
+                              <img className="nam" src={globeBackground} height="40" width="40" alt="blue globe background logo"></img>
+                              <div className="nam-acronym-lettering">NAM</div>
+                            </div>
+                            <div className="nam-title-container">North American Mesoscale Model</div>
+                            <div className="nam-text-container">NAM details placeholder text
+                            </div>
+                          </div>
                         </div>
-                        <div className="gfs-title-container">Global Forecast System</div>
-                        <div className="gfs-text-container">GFS details placeholder text</div>
-                      </div>
-                      <div className={`hrrr-row row ${this.props.hrrr ? 'hrrr-row-selected' : ''}`} onClick={this.hrrrSelect}>
-                        <div className={`hrrr-container ${this.props.hrrr ? 'hrrr-container-selected' : ''}`}>
-                          <img className="hrrr" src={globeBackground} height="40" width="40"></img>
-                          <div className="hrrr-acronym-lettering">HRRR</div>
-                        </div>
-                        <div className="hrrr-title-container">High-Resolution Rapid Refresh</div>
-                        <div className="hrrr-text-container">HRRR details placeholder text
-                        </div>
-                      </div>
-                      <div className={`nam-row row ${this.props.nam ? 'nam-row-selected' : ''}`} onClick={this.namSelect}>
-                        <div className={`nam-container ${this.props.nam ? 'nam-container-selected' : ''}`}>
-                          <img className="nam" src={globeBackground} height="40" width="40"></img>
-                          <div className="nam-acronym-lettering">NAM</div>
-                        </div>
-                        <div className="nam-title-container">North American Mesoscale Model</div>
-                        <div className="nam-text-container">NAM details placeholder text
+                        <div className="side back">
+                          <div className="time-main-box-flip-row">
+                            <Button className="time-main-box-flip-btn" onClick={this.boundaryConditionsFlipClick}>
+                              <i className="material-icons boundary-conditions-flip">rotate_left</i>
+                            </Button>
+                          </div>
+                          <div className="auxiliary-boundary-conditions-title-row">
+                            Auxiliary Boundary Conditions
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -323,14 +397,14 @@ class CarouselContainer extends Component {
                     <Button id='1' onClick={this.wpsFlipClick} className='wps-advanced-btn flip-btn'>
                       <i className="material-icons">more_horiz</i>
                     </Button>
-                    <Button className={"wps-forward-arrow"} onClick={this.wrfDaShowClick}>
+                    <Button className={"wps-forward-arrow"} onClick={this.daShowClick}>
                       <i className="material-icons">arrow_forward</i>
                     </Button>
                   </div>
                 </Row>
               </div>
               <div className="side back">
-                <h4 className="wps-main-component">WPS</h4>
+                <h4 className={`${this.props.wpsTypeSaved && this.props.selectionStart && this.props.selectionEnd && this.props.mapSaved ? 'wps-main-component-white' : 'wps-main-component'}`}>WPS</h4>
                 <Row>
                   <div className="col s1 m1 l1">
                     <Button className="wps-back-arrow" onClick={this.nwpShowClick}>
@@ -351,7 +425,7 @@ class CarouselContainer extends Component {
                     <Button onClick={this.wpsFlipClick} className='flip-back-btn'>
                       <i className="material-icons">rotate_left</i>
                     </Button>
-                    <Button className={"wps-forward-arrow"} onClick={this.wrfDaShowClick}>
+                    <Button className={"wps-forward-arrow"} onClick={this.daShowClick}>
                       <i className="material-icons">arrow_forward</i>
                     </Button>
                   </div>
@@ -361,42 +435,68 @@ class CarouselContainer extends Component {
           </Card>
 
           {/* DA CAROUSEL CARD */}
-          <Card className={`main-card ${this.props.showWrfDa
+          <Card className={`main-card ${this.props.showDa
               ? 'animated fadeIn'
               : 'hide'}`}>
-            <div className={`time ${this.props.wrfDaFlipped
+            <div className={`time ${this.props.daFlipped
                 ? 'flipper'
                 : ''}`}>
               <div className="side">
-                <h4 className="wps-main-component">DA</h4>
+                <h4 className={this.props.gsi || this.props.wrfda ? 'da-main-component-white' : 'da-main-component'}>
+                  {this.props.gsi ? 'GSI': null}
+                  {this.props.wrfda ? 'WRFDA': null}
+                  {!this.props.wrfda && !this.props.gsi ? 'DA': null}</h4>
                 <Row>
                   <div className="col s1 m1 l1">
-                    <Button className="wrfda-back-arrow" onClick={this.wpsShowClick}>
+                    <Button className="da-back-arrow" onClick={this.wpsShowClick}>
                       <i className="material-icons">arrow_back</i>
                     </Button>
                   </div>
-                  <div className="col s10 m10 l10">
+                  <div className="col s10 m10 l10 da-container-front">
+                    <div className={`wrfda-container ${this.props.wrfda ? 'wrfda-gsi-container-selected': ''}`} onClick={this.wrfdaSelect}>
+                      <div className="row">
+                        <img className="wrfda-image" src={wrfdaImage} alt="WRF logo"></img>
+                      </div>
+                    </div>
+                    <div className={`gsi-container ${this.props.gsi ? 'wrfda-gsi-container-selected': ''}`} onClick={this.gsiSelect}>
+                      <div className="row">
+                        <img className="ncep-image" src={ncepImage} alt="National Centers for Environmental Prediction logo"></img>
+                      </div>
+                    </div>
                   </div>
                   <div className="col s1 m1 l1">
-                    <Button id='1' onClick={this.wrfDaFlipClick} className='flip-btn'>
+                    <Button id='1' onClick={this.daFlipClick} className='flip-btn'>
                       <i className="material-icons">more_horiz</i>
                     </Button>
-                    <Button className={"wrfda-forward-arrow"} onClick={this.wrfShowClick}>
+                    <Button className={"da-forward-arrow"} onClick={this.wrfShowClick}>
                       <i className="material-icons">arrow_forward</i>
                     </Button>
                   </div>
                 </Row>
               </div>
               <div className="side back">
-                <Button onClick={this.wrfDaFlipClick} className='flip-back-btn'>
-                  <i className="material-icons">rotate_left</i>
-                </Button>
-                <Button className="waves-effect btn play-component-btn align-right">
-                  <i className="material-icons">play_arrow</i>
-                </Button>
-                <Modal header='Slidebar Header' actions={<div > <Toast className="modal-save-btn" toast="Saved successfully!">Save</Toast>
-                  <Button modal="close" className="modal-save-btn red darken-2">Close</Button>
-                </div>} trigger={<Button className = "edit-btn" > Edit</Button>}></Modal>
+                <h4 className={this.props.gsi || this.props.wrfda ? 'da-main-component-white' : 'da-main-component'}>DA</h4>
+                <Row>
+                  <div className="col s1 m1 l1">
+                    <Button className="da-back-arrow" onClick={this.wpsShowClick}>
+                      <i className="material-icons">arrow_back</i>
+                    </Button>
+                  </div>
+                  <div className="col s5 m5 l5">
+                    
+                  </div>
+                  <div className="col s5 m5 l5">
+
+                  </div>
+                  <div className="col s1 m1 l1">
+                    <Button onClick={this.daFlipClick} className='flip-back-btn'>
+                      <i className="material-icons">rotate_left</i>
+                    </Button>
+                    <Button className={"da-forward-arrow"} onClick={this.wrfShowClick}>
+                      <i className="material-icons">arrow_forward</i>
+                    </Button>
+                  </div>
+                </Row>
               </div>
             </div>
           </Card>
@@ -412,7 +512,7 @@ class CarouselContainer extends Component {
                 <h4 className="wps-main-component">WRF</h4>
                 <Row>
                   <div className="col s1 m1 l1">
-                    <Button className="wrfda-back-arrow" onClick={this.wrfDaShowClick}>
+                    <Button className="da-back-arrow" onClick={this.daShowClick}>
                       <i className="material-icons">arrow_back</i>
                     </Button>
                   </div>
@@ -428,7 +528,7 @@ class CarouselContainer extends Component {
                 <h4 className="wps-main-component">WRF</h4>
                 <Row>
                   <div className="col s1 m1 l1">
-                    <Button className="wrfda-back-arrow" onClick={this.wrfDaShowClick}>
+                    <Button className="da-back-arrow" onClick={this.daShowClick}>
                       <i className="material-icons">arrow_back</i>
                     </Button>
                   </div>

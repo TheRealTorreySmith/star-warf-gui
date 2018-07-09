@@ -33,19 +33,21 @@ class Dashboard extends Component {
           nwpFlipped={this.props.nwpFlipped}
           wpsFlipped={this.props.wpsFlipped}
           wrfFlipped={this.props.wrfFlipped}
-          wrfDaFlipped={this.props.wrfDaFlipped}
+          daFlipped={this.props.daFlipped}
           nwpFlipFunc={this.props.nwpFlipFunc}
           wpsFlipFunc={this.props.wpsFlipFunc}
+          boundaryConditionsFlipFunc={this.props.boundaryConditionsFlipFunc}
+          boundaryConditionsFlipped={this.props.boundaryConditionsFlipped}
           wrfFlipFunc={this.props.wrfFlipFunc}
-          wrfDaFlipFunc={this.props.wrfDaFlipFunc}
+          daFlipFunc={this.props.daFlipFunc}
           showNwp={this.props.showNwp}
           showWps={this.props.showWps}
           showWrf={this.props.showWrf}
-          showWrfDa={this.props.showWrfDa}
+          showDa={this.props.showDa}
           nwpShowClick={this.props.nwpShowClick}
           wpsShowClick={this.props.wpsShowClick}
           wrfShowClick={this.props.wrfShowClick}
-          wrfDaShowClick={this.props.wrfDaShowClick}
+          daShowClick={this.props.daShowClick}
           threeDvar={this.props.threeDvar}
           threeDensvar={this.props.threeDensvar}
           fourDensvar={this.props.fourDensvar}
@@ -80,16 +82,23 @@ class Dashboard extends Component {
           hrrr={this.props.hrrr}
           namSelect={this.props.namSelect}
           nam={this.props.nam}
+          wrfdaSelect={this.props.wrfdaSelect}
+          gsiSelect={this.props.gsiSelect}
+          wrfda={this.props.wrfda}
+          gsi={this.props.gsi}
+          saveMap={this.props.saveMap}
+          wpsTypeSaved={this.props.wpsTypeSaved}
+          mapSaved={this.props.mapSaved}
         />
         <Summary
           nwpShowClick={this.props.nwpShowClick}
           wpsShowClick={this.props.wpsShowClick}
           wrfShowClick={this.props.wrfShowClick}
-          wrfDaShowClick={this.props.wrfDaShowClick}
+          daShowClick={this.props.daShowClick}
           showNwp={this.props.showNwp}
           showWps={this.props.showWps}
           showWrf={this.props.showWrf}
-          showWrfDa={this.props.showWrfDa}
+          showDa={this.props.showDa}
           runMainJob={this.props.runMainJob}
           setMainJob={this.props.setMainJob}
           threeDvar={this.props.threeDvar}
@@ -104,6 +113,8 @@ class Dashboard extends Component {
           nam={this.props.nam}
           mapSaved={this.props.mapSaved}
           wpsTypeSaved={this.props.wpsTypeSaved}
+          wrfda={this.props.wrfda}
+          gsi={this.props.gsi}
         />
         {this.props.showMapModal ?
           <MapModal

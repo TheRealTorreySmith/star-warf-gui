@@ -242,6 +242,31 @@ p.cycle-container {
   float: right !important;
 }
 
+/* DA CONTAINER */
+
+.image-summary-container {
+  display: flex;
+}
+
+.wrfda-summary-image {
+  border-radius: 2px;
+  box-shadow: 0px 1px 8px rgba(0,0,0,.7);
+  height: 55px;
+  width: 55px;
+  margin: 0 auto;
+}
+
+.gsi-summary-image {
+  border-radius: 2px;
+  box-shadow: 0px 1px 8px rgba(0,0,0,.7);
+  height: 55px;
+  width: 55px;
+  /* width: 91px; */
+  margin: 0 auto;
+}
+
+/* ARROWS */
+
 .top-left-corner-cycle-arrow {
   transform: rotate(180deg);
   color: lightgray;

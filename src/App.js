@@ -17,12 +17,13 @@ class App extends Component {
       jobs: [],
       nwpFlipped: false,
       wpsFlipped: false,
+      boundaryConditionsFlipped: false,
       wrfFlipped: false,
-      wrfDaFlipped: false,
+      daFlipped: false,
       showNwp: true,
       showWps: false,
       showWrf: false,
-      showWrfDa: false,
+      showDa: false,
       threeDvar: false,
       threeDensvar: false,
       fourDensvar: false,
@@ -45,7 +46,9 @@ class App extends Component {
       hrrrSelect: false,
       namSelect: false,
       mapSaved: false,
-      wpsTypeSaved: false
+      wpsTypeSaved: false,
+      gsi: false,
+      wrfda: false
     }
   }
 
@@ -107,6 +110,13 @@ class App extends Component {
     })
   }
 
+  boundaryConditionsFlipFunc = () => {
+    let flipStatus = this.state.boundaryConditionsFlipped ? false : true
+    this.setState({
+      boundaryConditionsFlipped: flipStatus
+    })
+  }
+
   // FLIPS WRF CAROUSEL CARD
   wrfFlipFunc = () => {
     let flipStatus = this.state.wrfFlipped ? false : true
@@ -115,11 +125,11 @@ class App extends Component {
     })
   }
 
-  // FLIPS WRFDA CAROUSEL CARD
-  wrfDaFlipFunc = () => {
-    let flipStatus = this.state.wrfDaFlipped ? false : true
+  // FLIPS DA CAROUSEL CARD
+  daFlipFunc = () => {
+    let flipStatus = this.state.daFlipped ? false : true
     this.setState({
-      wrfDaFlipped: flipStatus
+      daFlipped: flipStatus
     })
   }
 
@@ -129,11 +139,11 @@ class App extends Component {
       showNwp: true,
       showWps: false,
       showWrf: false,
-      showWrfDa: false,
+      showDa: false,
       nwpFlipped: false,
       wpsFlipped: false,
       wrfFlipped: false,
-      wrfDaFlipped: false
+      daFlipped: false
     })
   }
 
@@ -143,11 +153,11 @@ class App extends Component {
       showNwp: false,
       showWps: true,
       showWrf: false,
-      showWrfDa: false,
+      showDa: false,
       nwpFlipped: false,
       wpsFlipped: false,
       wrfFlipped: false,
-      wrfDaFlipped: false
+      daFlipped: false
     })
   }
 
@@ -157,25 +167,25 @@ class App extends Component {
       showNwp: false,
       showWps: false,
       showWrf: true,
-      showWrfDa: false,
+      showDa: false,
       nwpFlipped: false,
       wpsFlipped: false,
       wrfFlipped: false,
-      wrfDaFlipped: false
+      daFlipped: false
     })
   }
 
-  // SWITCHES TO WRFDA CAROUSEL CARD
-  wrfDaShowClick = () => {
+  // SWITCHES TO DA CAROUSEL CARD
+  daShowClick = () => {
     this.setState({
       showNwp: false,
       showWps: false,
       showWrf: false,
-      showWrfDa: true,
+      showDa: true,
       nwpFlipped: false,
       wpsFlipped: false,
       wrfFlipped: false,
-      wrfDaFlipped: false
+      daFlipped: false
     })
   }
 
@@ -264,6 +274,7 @@ class App extends Component {
     })
   }
 
+  // BUTTONS ARE ENABLED TO CONTINUE TO THE WPS CAROUSEL CARD
   continueToWpsOnChange = () => {
     let value = this.state.continueToWps ? false : true
     this.setState({
@@ -271,18 +282,21 @@ class App extends Component {
     })
   }
 
+  // CHANGES CALENDAR MONTH BACK
   prevMonth = (date) => {
       this.setState({
         date:date.getTime()
       })
   }
 
+  // CHANGES CALENDAR MONTH FORWARD
   nextMonth = (date) => {
       this.setState({
         date:date.getTime()
       })
   }
 
+ // SET CALENDAR DATE RANGE
   setRange = (selectionStart, selectionEnd) => {
       this.setState({
         selectionStart,
@@ -290,6 +304,7 @@ class App extends Component {
       })
   }
 
+  // OPEN AND CLOSE THE MAP MODAL
   mapModal = () => {
     if(this.state.showMapModal) {
       this.setState({
@@ -302,12 +317,14 @@ class App extends Component {
     }
   }
 
+  // SET DRAWN COORDINATES ON MAP
   drawCoords = (coords) => {
     this.setState({
       coords: coords
     })
   }
 
+  // SELECTS GFS TYPE
   gfsSelect = () => {
     if(this.state.gfsSelect) {
       this.setState({
@@ -324,6 +341,7 @@ class App extends Component {
     }
   }
 
+  // SELECTS HRRR TYPE
   hrrrSelect = () => {
     if(this.state.hrrrSelect) {
       this.setState({
@@ -340,6 +358,7 @@ class App extends Component {
     }
   }
 
+  // SELECTS NAM TYPE
   namSelect = () => {
     if(this.state.namSelect) {
       this.setState({
@@ -356,12 +375,40 @@ class App extends Component {
     }
   }
 
+  // SAVES THE MAP TO THE SUMMARY
   saveMap = () => {
       this.setState({
         mapSaved: true
       })
   }
 
+  // SELECTS WRFDA TYPE
+  wrfdaSelect = () => {
+    if(this.state.wrfda) {
+      this.setState({
+        wrfda: false
+      })
+    } else {
+      this.setState({
+        wrfda: true,
+        gsi: false
+      })
+    }
+  }
+
+  // SELECTS GSI TYPE
+  gsiSelect = () => {
+    if(this.state.gsi) {
+      this.setState({
+        gsi: false
+      })
+    } else {
+      this.setState({
+        gsi: true,
+        wrfda: false
+      })
+    }
+  }
 
   render() {
     return (
@@ -405,16 +452,18 @@ class App extends Component {
                 nwpFlipped={this.state.nwpFlipped}
                 wpsFlipped={this.state.wpsFlipped}
                 wrfFlipped={this.state.wrfFlipped}
-                wrfDaFlipped={this.state.wrfDaFlipped}
+                daFlipped={this.state.daFlipped}
                 nwpFlipFunc={this.nwpFlipFunc}
                 wpsFlipFunc={this.wpsFlipFunc}
+                boundaryConditionsFlipFunc={this.boundaryConditionsFlipFunc}
+                boundaryConditionsFlipped={this.state.boundaryConditionsFlipped}
                 wrfFlipFunc={this.wrfFlipFunc}
-                wrfDaFlipFunc={this.wrfDaFlipFunc}
+                daFlipFunc={this.daFlipFunc}
                 currentJobName={this.state.currentJobName}
                 showNwp={this.state.showNwp}
                 showWps={this.state.showWps}
                 showWrf={this.state.showWrf}
-                showWrfDa={this.state.showWrfDa}
+                showDa={this.state.showDa}
                 threeDvar={this.state.threeDvar}
                 threeDensvar={this.state.threeDensvar}
                 fourDensvar={this.state.fourDensvar}
@@ -424,7 +473,7 @@ class App extends Component {
                 nwpShowClick={this.nwpShowClick}
                 wpsShowClick={this.wpsShowClick}
                 wrfShowClick={this.wrfShowClick}
-                wrfDaShowClick={this.wrfDaShowClick}
+                daShowClick={this.daShowClick}
                 runMainJob={this.state.runMainJob}
                 setMainJob={this.setMainJob}
                 hourFrequencyOnChange={this.hourFrequencyOnChange}
@@ -462,11 +511,15 @@ class App extends Component {
                 mapSaved={this.state.mapSaved}
                 saveMap={this.saveMap}
                 wpsTypeSaved={this.state.wpsTypeSaved}
+                wrfdaSelect={this.wrfdaSelect}
+                gsiSelect={this.gsiSelect}
+                wrfda={this.state.wrfda}
+                gsi={this.state.gsi}
               />
             </div>
           )}
           />
-          {console.log(this.state)}
+          {/* {console.log(this.state)} */}
         </div>
 
       </BrowserRouter>
@@ -474,4 +527,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

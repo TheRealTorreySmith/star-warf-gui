@@ -25,11 +25,22 @@ h4 {
 }
 
 .wps-main-component,
-.nwp-main-component {
+.nwp-main-component,
+.da-main-component {
   text-align: center;
   padding: 10px 0;
   background: -webkit-linear-gradient(top, rgba(23,95,144, 0.7) 0%,rgba(17,55,92, 0.2) 100%) !important;
   margin: 0 0 10px 0;
+}
+
+.wps-main-component-white,
+.nwp-main-component-white,
+.da-main-component-white {
+  text-align: center;
+  padding: 10px 0;
+  background: -webkit-linear-gradient(top, rgba(23,95,144, 0.7) 0%,rgba(17,55,92, 0.2) 100%) !important;
+  margin: 0 0 10px 0;
+  color: white;
 }
 
 .wps-main-container,
@@ -216,15 +227,15 @@ h4 {
   width: 240px;
 }
 
-/* WRFDA CAROUSEL CARD */
-.wrfda-back-arrow {
+/* DA CAROUSEL CARD */
+.da-back-arrow {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   float: right;
   margin: 157px 0 0 0;
   padding: 0 10px;
 }
 
-.wrfda-forward-arrow {
+.da-forward-arrow {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   float: left;
   margin: 102px 0 10px 0;
@@ -328,28 +339,61 @@ button.btn.toast {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
 }
 
-/* TIME BOX */
+/* BOUNDARY CONDITIONS BOX */
+
+.time-main-box-title-row {
+  margin: 5px 0 0 38px;
+}
+
+.time-main-box-flip-btn {
+  float: right;
+  margin: 8px 5px 0 0;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
+              0 1px 5px 0 rgba(0,0,0,0.12),
+              0 3px 1px -2px rgba(0,0,0,0.2);
+  font-size: 5px;
+  height: 22px;
+  padding: 0;
+  line-height: 0 !important;
+}
+
+.boundary-conditions-flip {
+  line-height: 1.1 !important;
+  padding: 2px !important;
+}
+
+.auxiliary-boundary-conditions-title-row {
+  margin: 5px 0 0 28px;
+}
 
 .time-main-box {
   margin: 0 auto;
   height: 200px;
   width: 200px;
+}
+
+.time .side {
+  backface-visibility: hidden;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
   -webkit-box-shadow: 0px 1px 15px rgba(0,0,0,.7);
   -moz-box-shadow: 0px 1px 15px rgba(0,0,0,.7);
   box-shadow: 0px 1px 15px rgba(0,0,0,.7);
 }
 
-.time-main-container {
-  border: 1px solid black;
-  height: 80%;
-  width: 80%;
-  margin: 0 auto;
+.time .back {
+  transform: rotateY(180deg);
 }
 
 .gfs-row, .hrrr-row,
 .nam-row {
   border-radius: 2px;
-  margin: 11px 5px;
+  margin: 2px 5px;
   padding: 5px;
 }
 
@@ -392,7 +436,7 @@ button.btn.toast {
 }
 
 .gfs-title-container {
-  margin: 2% 0 0 0;
+  padding-top: 4px;
   font-size: 12px;
 }
 
@@ -470,4 +514,49 @@ button.btn.toast {
   left: 50%;
   transform: translate(-50%, -50%);
   letter-spacing: 1.5px;
+}
+
+/* DA CAROUSEL CARD */
+
+.da-container-front {
+  display: flex;
+  float: left;
+}
+
+.wrfda-container,
+ .gsi-container {
+  box-shadow: 0px 1px 5px rgba(0,0,0,.7);
+  border-radius: 3px;
+  height: 185px;
+  width: 285px;
+  margin: 10px auto;
+  vertical-align: middle;
+  opacity: 0.6;
+}
+
+.wrfda-gsi-container-selected {
+  box-shadow: 0px 1px 15px rgba(0,0,0,.7);
+  opacity: 1.0;
+}
+
+.wrfda-container:hover,
+ .gsi-container:hover {
+  cursor: pointer;
+  box-shadow: 0px 1px 15px rgba(0,0,0,.7);
+  opacity: 1.0;
+}
+
+.ncep-image {
+  border-radius: 2px;
+  height: 140px;
+  width: 140px;
+  /* width: 255px; */
+  margin: 20px auto;
+}
+
+.wrfda-image {
+  border-radius: 2px;
+  height: 140px;
+  width: 140px;
+  margin: 20px auto;
 }
