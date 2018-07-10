@@ -326,7 +326,6 @@ class App extends Component {
 
   // SET DRAWN COORDINATES ON MAP
   drawCoords = (northWest, northEast, southEast, southWest) => {
-    console.log(northWest, northEast, southEast, southWest)
     this.setState({
       northWest,
       northEast,

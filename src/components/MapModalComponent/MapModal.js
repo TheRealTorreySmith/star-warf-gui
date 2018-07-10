@@ -91,8 +91,10 @@ class MapModal extends Component {
   updateMap = () => {
     this.featureGroup.clearLayers()
     let bounds = [
-      [this.refs.northEastLat.value, this.refs.northEastLng.value],
-      [this.refs.southWestLat.value, this.refs.southWestLng.value]
+      [+this.refs.northEastLat.value === +this.props.northEast.lat ? +this.refs.northWestLat.value : +this.refs.northEastLat.value,
+        +this.refs.northEastLng.value === +this.props.northEast.lng ? +this.refs.southEastLng.value : +this.refs.northEastLng.value],
+      [+this.refs.southWestLat.value === +this.props.southWest.lat ? +this.refs.southEastLat.value : +this.refs.southWestLat.value,
+        +this.refs.southWestLng.value === +this.props.southWest.lng ? +this.refs.northWestLng.value : +this.refs.southWestLng.value]
     ]
     // Need to put domains in state
     L.rectangle(bounds, {color: this.props.mapColors[0], weight: 1}).addTo(this.featureGroup)
@@ -337,11 +339,11 @@ class MapModal extends Component {
                     <div className="vertice-label">NorthWest Vertice:</div>
                     <div className="lat-container">
                       <div className="lat-long-text">Lat:</div>
-                      <input onChange={(event) => this.updateMap(event)} ref='northWestLat' className="lat-value" value={this.props.northWest.lat}>{console.log(this.props.northWest.lat)}</input>
+                      <input onChange={this.updateMap} ref='northWestLat' className="lat-value" value={this.props.northWest.lat}></input>
                     </div>
                     <div className="lng-container">
                       <div className="lat-long-text">Lng:</div>
-                      <input onChange={(event) => this.updateMap(event)} ref='northWestLng' className="lng-value" value={this.props.northWest.lng}></input>
+                      <input onChange={this.updateMap} ref='northWestLng' className="lng-value" value={this.props.northWest.lng}></input>
                     </div>
                   </div>
 
@@ -350,7 +352,7 @@ class MapModal extends Component {
                     <div className="vertice-label">NorthEast Vertice:</div>
                     <div className="lat-container">
                       <div className="lat-long-text">Lat:</div>
-                      <input onChange={this.updateMap} ref='northEastLat' className="lat-value" value={this.props.northEast.lat}>{console.log(this.props.northEast.lat)}</input>
+                      <input onChange={this.updateMap} ref='northEastLat' className="lat-value" value={this.props.northEast.lat}></input>
                     </div>
                     <div className="lng-container">
                       <div className="lat-long-text">Lng:</div>
