@@ -42,13 +42,20 @@ class App extends Component {
       zoom: 0,
       showMapModal: false,
       coords: [],
+      latCoords: [],
+      lngCoords: [],
       gfsSelect: false,
       hrrrSelect: false,
       namSelect: false,
       mapSaved: false,
       wpsTypeSaved: false,
       gsi: false,
-      wrfda: false
+      wrfda: false,
+      mapColors: ['black','red', 'green', 'purple', 'orange', 'blue', 'cyanne', 'turqoise', 'grey', 'pink', 'yellow'],
+      northWest: {},
+      northEast: {},
+      southEast: {},
+      southWest: {}
     }
   }
 
@@ -318,9 +325,13 @@ class App extends Component {
   }
 
   // SET DRAWN COORDINATES ON MAP
-  drawCoords = (coords) => {
+  drawCoords = (northWest, northEast, southEast, southWest) => {
+    console.log(northWest, northEast, southEast, southWest)
     this.setState({
-      coords: coords
+      northWest,
+      northEast,
+      southEast,
+      southWest
     })
   }
 
@@ -501,7 +512,10 @@ class App extends Component {
                 showMapModal={this.state.showMapModal}
                 syncMapModal={this.syncMapModal}
                 drawCoords={this.drawCoords}
-                getCoords={this.state.coords}
+                northWest={this.state.northWest}
+                northEast={this.state.northEast}
+                southEast={this.state.southEast}
+                southWest={this.state.southWest}
                 gfsSelect={this.gfsSelect}
                 gfs={this.state.gfsSelect}
                 hrrrSelect={this.hrrrSelect}
@@ -515,6 +529,7 @@ class App extends Component {
                 gsiSelect={this.gsiSelect}
                 wrfda={this.state.wrfda}
                 gsi={this.state.gsi}
+                mapColors={this.state.mapColors}
               />
             </div>
           )}

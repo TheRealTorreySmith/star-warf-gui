@@ -7,6 +7,7 @@ import L from 'leaflet'
 import 'leaflet-draw'
 import leafletImage from 'leaflet-image'
 import './Map.css'
+// import MBTOKEN from './.env'
 
 export default class MapComponent extends React.Component {
 
@@ -20,15 +21,23 @@ export default class MapComponent extends React.Component {
     		this.drawControl = new L.Control.Draw({
     			draw: {
     				polygon: true,
-    				polyline: true,
+    				polyline: false,
     				rectangle: true,
     				circle: true,
-    				marker: false
+    				circlemarker: false,
+            marker: false,
     			},
     			edit: {
     				featureGroup: this.featureGroup,
     			}
     		}).addTo(this.map)
+
+        let polar = document.getElementsByClassName('leaflet-draw-draw-circle')
+        let lambert = document.getElementsByClassName('leaflet-draw-draw-polygon')
+        let mercator = document.getElementsByClassName('leaflet-draw-draw-rectangle')
+        polar[0].title = "Polar Stereographic"
+        lambert[0].title = "Lambert Conformal"
+        mercator[0].title = "Mercator"
 
         // EXPAND MAP BUTTON
         L.Control.Expand = L.Control.extend({
@@ -64,7 +73,8 @@ export default class MapComponent extends React.Component {
 
         L.control.saveMap({position:'bottomright'}).addTo(this.map)
 
-    		L.tileLayer('http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg')
+        // MAPBOX TOKEN FOR MAP ACCESS
+      	L.tileLayer(`https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=${process.env.REACT_APP_MB_TOKEN}`)
           .addTo(this.map)
 
         // SMALL MAP EVENT HANDLERS

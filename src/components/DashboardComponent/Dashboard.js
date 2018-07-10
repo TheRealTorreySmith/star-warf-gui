@@ -19,8 +19,8 @@ class Dashboard extends Component {
       this.props.setRange(selectionStart, selectionEnd)
   }
 
-  drawCoords = (coords) => {
-    this.props.drawCoords(coords)
+  drawCoords = (northWest, northEast, southEast, southWest) => {
+    this.props.drawCoords(northWest, northEast, southEast, southWest)
   }
 
   render() {
@@ -121,8 +121,12 @@ class Dashboard extends Component {
             mapModal={this.props.mapModal}
             showMapModal={this.props.showMapModal}
             drawCoords={this.props.drawCoords}
-            getCoords={this.props.getCoords}
+            northWest={this.props.northWest}
+            northEast={this.props.northEast}
+            southEast={this.props.southEast}
+            southWest={this.props.southWest}
             saveMap={this.props.saveMap}
+            mapColors={this.props.mapColors}
           />
         :null}
      </div>

@@ -1,4 +1,4 @@
-(function () { 'use strict';
+(function () {
 
 	// to suit your point format, run search/replace for '[0]' and '[1]';
 	// for 3D version, see 3d branch (configurability would draw significant performance overhead)
@@ -39,9 +39,8 @@
 
 	    return dx * dx + dy * dy;
 	}
-	// rest of the code doesn't care about point format
 
-	// basic distance-based simplification
+
 	function simplifyRadialDist(points, sqTolerance) {
 
 	    var prevPoint = points[0],
@@ -82,7 +81,6 @@
 	    }
 	}
 
-	// simplification using Ramer-Douglas-Peucker algorithm
 	function simplifyDouglasPeucker(points, sqTolerance) {
 	    var last = points.length - 1;
 
@@ -95,18 +93,18 @@
 
 	// both algorithms combined for awesome performance
 	// function simplify(points, tolerance, highestQuality) {
-  //
+	//
 	//     if (points.length <= 2) return points;
-  //
+	//
 	//     var sqTolerance = tolerance !== undefined ? tolerance * tolerance : 1;
-  //
+	//
 	//     points = highestQuality ? points : simplifyRadialDist(points, sqTolerance);
 	//     points = simplifyDouglasPeucker(points, sqTolerance);
-  //
+	//
 	//     return points;
 	// }
-  //
-	// // export as AMD module / Node module / browser or worker variable
+
+	// export as AMD module / Node module / browser or worker variable
 	// if (typeof define === 'function' && define.amd) define(function() { return simplify; });
 	// else if (typeof module !== 'undefined') module.exports = simplify;
 	// else if (typeof self !== 'undefined') self.simplify = simplify;

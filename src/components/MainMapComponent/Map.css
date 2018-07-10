@@ -32,20 +32,12 @@
     background-position: -23px -8px;
 }
 
-.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-draw-polyline {
-    background-position: -3px -8px;
-}
-
 .leaflet-touch .leaflet-draw-toolbar .leaflet-draw-draw-rectangle {
     background-position: -45px -8px;
 }
 
 .leaflet-touch .leaflet-draw-toolbar .leaflet-draw-draw-circle {
     background-position: -66px -8px;
-}
-
-.leaflet-touch .leaflet-draw-toolbar .leaflet-draw-draw-circlemarker {
-    background-position: -86.5px -8px;
 }
 
 .leaflet-touch .leaflet-draw-toolbar .leaflet-draw-edit-edit {

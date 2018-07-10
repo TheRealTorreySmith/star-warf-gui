@@ -172,7 +172,7 @@ h4 {
 .nwp-advanced-btn-disabled,
 .nwp-advanced-btn-disabled:hover,
 .nwp-advanced-btn-disabled:focus {
-  background-color: lightgray;
+  background-color: lightgray !important;
 }
 
 /* NWP CAROUSEL CARD BACKSIDE */
@@ -240,6 +240,30 @@ h4 {
   float: left;
   margin: 102px 0 10px 0;
   padding: 0 10px;
+}
+
+/* DA CAROUSEL CARD BACK */
+
+.da-back-container {
+  display: flex;
+}
+
+.da-observations-container,
+.da-background-error-covariance-container {
+  margin: 0 auto;
+  float: left;
+  height: 200px;
+  width: 300px;
+}
+
+.observations-title,
+.background-error-covariance-title {
+  padding: 10px 0 0 0;
+  font-size: 16px;
+}
+
+.da-background-error-covariance-container {
+  margin-left: 0 !important;
 }
 
 /* CAROUSEL CONTAINER */
@@ -374,20 +398,10 @@ button.btn.toast {
   width: 200px;
 }
 
-.time .side {
-  backface-visibility: hidden;
-  height: 100%;
-  position: absolute;
-  overflow: hidden;
-  width: 100%;
-  text-align: center;
+.box {
   -webkit-box-shadow: 0px 1px 15px rgba(0,0,0,.7);
   -moz-box-shadow: 0px 1px 15px rgba(0,0,0,.7);
   box-shadow: 0px 1px 15px rgba(0,0,0,.7);
-}
-
-.time .back {
-  transform: rotateY(180deg);
 }
 
 .gfs-row, .hrrr-row,

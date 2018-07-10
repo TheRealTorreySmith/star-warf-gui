@@ -11,16 +11,18 @@ import './Slider.css'
 class CarouselContainer extends Component {
 
   nwpFlipClick = () => {
-    this.props.nwpFlipFunc()
-    let slider = document.getElementById('nwp-hour-range-slider')
-    if (!this.props.nwpFlipped) {
-      setTimeout(function() {
-        slider.classList = 'hide'
-      }, 500)
-    } else {
-      setTimeout(function() {
-        slider.classList = 'range-field'
-      }, 500)
+    if (this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar) {
+      this.props.nwpFlipFunc()
+      let slider = document.getElementById('nwp-hour-range-slider')
+      if (!this.props.nwpFlipped) {
+        setTimeout(function() {
+          slider.classList = 'hide'
+        }, 500)
+      } else {
+        setTimeout(function() {
+          slider.classList = 'range-field'
+        }, 500)
+      }
     }
   }
 
@@ -344,7 +346,7 @@ class CarouselContainer extends Component {
                       <div className={`time time-main-box ${this.props.boundaryConditionsFlipped
                           ? 'flipper'
                           : ''}`}>
-                        <div className="side">
+                        <div className="side box">
                           <div className="time-main-box-flip-row">
                             <Button className="time-main-box-flip-btn" onClick={this.boundaryConditionsFlipClick}>
                               <i className="material-icons boundary-conditions-flip">rotate_left</i>
@@ -380,7 +382,7 @@ class CarouselContainer extends Component {
                             </div>
                           </div>
                         </div>
-                        <div className="side back">
+                        <div className="side back box">
                           <div className="time-main-box-flip-row">
                             <Button className="time-main-box-flip-btn" onClick={this.boundaryConditionsFlipClick}>
                               <i className="material-icons boundary-conditions-flip">rotate_left</i>
@@ -475,18 +477,23 @@ class CarouselContainer extends Component {
                 </Row>
               </div>
               <div className="side back">
-                <h4 className={this.props.gsi || this.props.wrfda ? 'da-main-component-white' : 'da-main-component'}>DA</h4>
+                <h4 className={this.props.gsi || this.props.wrfda ? 'da-main-component-white' : 'da-main-component'}>
+                {this.props.gsi ? 'GSI': null}
+                {this.props.wrfda ? 'WRFDA': null}
+                {!this.props.wrfda && !this.props.gsi ? 'DA': null}</h4>
                 <Row>
                   <div className="col s1 m1 l1">
                     <Button className="da-back-arrow" onClick={this.wpsShowClick}>
                       <i className="material-icons">arrow_back</i>
                     </Button>
                   </div>
-                  <div className="col s5 m5 l5">
-                    
-                  </div>
-                  <div className="col s5 m5 l5">
-
+                  <div className="col s10 m10 l10 da-back-container">
+                    <Card className="da-observations-container">
+                      <p className="observations-title">Observations:</p>
+                    </Card>
+                    <Card className="da-background-error-covariance-container">
+                      <p className="background-error-covariance-title">Background Error Covariance:</p>
+                    </Card>
                   </div>
                   <div className="col s1 m1 l1">
                     <Button onClick={this.daFlipClick} className='flip-back-btn'>
