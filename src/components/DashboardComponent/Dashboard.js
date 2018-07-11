@@ -3,6 +3,7 @@ import CarouselContainer from '../CarouselComponent/Carousel.js'
 import Summary from '../SummaryComponent/Summary.js'
 import NavBar from '../NavBarComponent/NavBar'
 import MapModal from '../MapModalComponent/MapModal.js'
+import Physics from '../PhysicsComponent/Physics.js'
 import './Dashboard.css'
 
 class Dashboard extends Component {
@@ -89,6 +90,7 @@ class Dashboard extends Component {
           saveMap={this.props.saveMap}
           wpsTypeSaved={this.props.wpsTypeSaved}
           mapSaved={this.props.mapSaved}
+          physicsModal={this.props.physicsModal}
         />
         <Summary
           nwpShowClick={this.props.nwpShowClick}
@@ -127,6 +129,30 @@ class Dashboard extends Component {
             southWest={this.props.southWest}
             saveMap={this.props.saveMap}
             mapColors={this.props.mapColors}
+          />
+        :null}
+        {this.props.showPhysicsModal ?
+          <Physics
+            physicsModal={this.props.physicsModal}
+            showPhysicsModal={this.props.showPhysicsModal}
+            physicsGeneral={this.props.physicsGeneral}
+            physicsGeneralSelect={this.props.physicsGeneralSelect}
+            physicsMicrophysics={this.props.physicsMicrophysics}
+            physicsMicrophysicsSelect={this.props.physicsMicrophysicsSelect}
+            physicsRadiation={this.props.physicsRadiation}
+            physicsRadiationSelect={this.props.physicsRadiationSelect}
+            physicsLandOcean={this.props.physicsLandOcean}
+            physicsLandOceanSelect={this.props.physicsLandOceanSelect}
+            physicsBoundaryLayer={this.props.physicsBoundaryLayer}
+            physicsBoundaryLayerSelect={this.props.physicsBoundaryLayerSelect}
+            physicsCumulus={this.props.physicsCumulus}
+            physicsCumulusSelect={this.props.physicsCumulusSelect}
+            physicsLightning={this.props.physicsLightning}
+            physicsLightningSelect={this.props.physicsLightningSelect}
+            ralwPhysics={this.props.ralwPhysics}
+            ralwPhysicsSelect={this.props.ralwPhysicsSelect}
+            raswPhysics={this.props.raswPhysics}
+            raswPhysicsSelect={this.props.raswPhysicsSelect}
           />
         :null}
      </div>

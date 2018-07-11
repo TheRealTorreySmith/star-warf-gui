@@ -43,7 +43,6 @@ class MapModal extends Component {
         }
       }).addTo(this.modalMap)
 
-
       // LAYERS OPTIONS
       const baseLayers = {
     		"Grayscale": grayscale,
@@ -68,7 +67,7 @@ class MapModal extends Component {
       editBtn[1].className = 'leaflet-draw-edit-edit leaflet-disabled map-modal-buttons modal-edit'
       trashBtn[1].className = 'leaflet-draw-edit-remove leaflet-disabled map-modal-buttons modal-trash'
 
-      // DOMAIN OBJECTS AND COLORS
+      // DOMAIN OBJECTS
       let domains = []
 
       // MAP EVENT HANDLERS
@@ -86,9 +85,11 @@ class MapModal extends Component {
       let southEast = {lat:(Math.round(this.featureGroup.getBounds()._southWest.lat*10000)/10000), lng: (Math.round(this.featureGroup.getBounds()._northEast.lng*10000)/10000)}
       let southWest = {lat:(Math.round(this.featureGroup.getBounds()._southWest.lat*10000)/10000), lng: (Math.round(this.featureGroup.getBounds()._southWest.lng*10000)/10000)}
       this.props.drawCoords(northWest, northEast, southEast, southWest)
+      console.log(this.featureGroup)
     }
 
   updateMap = () => {
+
     this.featureGroup.clearLayers()
     let bounds = [
       [+this.refs.northEastLat.value === +this.props.northEast.lat ? +this.refs.northWestLat.value : +this.refs.northEastLat.value,

@@ -55,7 +55,18 @@ class App extends Component {
       northWest: {},
       northEast: {},
       southEast: {},
-      southWest: {}
+      southWest: {},
+      // PHYSICS STATE
+      showPhysicsModal: false,
+      physicsGeneral: false,
+      physicsMicrophysics: false,
+      physicsRadiation: false,
+      physicsLandOcean: false,
+      physicsBoundaryLayer: false,
+      physicsCumulus: false,
+      physicsLightning: false,
+      ralwPhysics: undefined,
+      raswPhysics: undefined,
     }
   }
 
@@ -420,6 +431,165 @@ class App extends Component {
     }
   }
 
+  // OPEN AND CLOSE THE PHYSICS MODAL
+  physicsModal = () => {
+    if(this.state.showPhysicsModal) {
+      this.setState({
+        showPhysicsModal: false
+      })
+    } else {
+      this.setState({
+        showPhysicsModal: true
+      })
+    }
+  }
+
+  // OPEN THE PHYSICS GENERAL OPTIONS
+  general = () => {
+    if(this.state.physicsGeneral) {
+      this.setState({
+        physicsGeneral: false
+      })
+    } else {
+      this.setState({
+        physicsGeneral: true,
+        physicsMicrophysics: false,
+        physicsRadiation: false,
+        physicsLandOcean: false,
+        physicsBoundaryLayer: false,
+        physicsCumulus: false,
+        physicsLightning: false
+      })
+    }
+  }
+
+  // OPEN THE PHYSICS MICROPHYSICS OPTIONS
+  physicsMicrophysics = () => {
+    if(this.state.physicsMicrophysics) {
+      this.setState({
+        physicsMicrophysics: false
+      })
+    } else {
+      this.setState({
+        physicsMicrophysics: true,
+        physicsGeneral: false,
+        physicsRadiation: false,
+        physicsLandOcean: false,
+        physicsBoundaryLayer: false,
+        physicsCumulus: false,
+        physicsLightning: false
+      })
+    }
+  }
+
+  // OPEN THE PHYSICS RADIATION OPTIONS
+  physicsRadiation = () => {
+    if(this.state.physicsRadiation) {
+      this.setState({
+        physicsRadiation: false
+      })
+    } else {
+      this.setState({
+        physicsRadiation: true,
+        physicsGeneral: false,
+        physicsMicrophysics: false,
+        physicsLandOcean: false,
+        physicsBoundaryLayer: false,
+        physicsCumulus: false,
+        physicsLightning: false
+      })
+    }
+  }
+
+  // OPEN THE PHYSICS LAND/OCEAN OPTIONS
+  physicsLandOcean = () => {
+    if(this.state.physicsLandOcean) {
+      this.setState({
+        physicsLandOcean: false
+      })
+    } else {
+      this.setState({
+        physicsLandOcean: true,
+        physicsGeneral: false,
+        physicsMicrophysics: false,
+        physicsRadiation: false,
+        physicsBoundaryLayer: false,
+        physicsCumulus: false,
+        physicsLightning: false
+      })
+    }
+  }
+
+  // OPEN THE PHYSICS BOUNDARY LAYER OPTIONS
+  physicsBoundaryLayer = () => {
+    if(this.state.physicsBoundaryLayer) {
+      this.setState({
+        physicsBoundaryLayer: false
+      })
+    } else {
+      this.setState({
+        physicsBoundaryLayer: true,
+        physicsLandOcean: false,
+        physicsGeneral: false,
+        physicsMicrophysics: false,
+        physicsRadiation: false,
+        physicsCumulus: false,
+        physicsLightning: false
+      })
+    }
+  }
+
+  // OPEN THE PHYSICS CUMULUS OPTIONS
+  physicsCumulus = () => {
+    if(this.state.physicsCumulus) {
+      this.setState({
+        physicsCumulus: false
+      })
+    } else {
+      this.setState({
+        physicsCumulus: true,
+        physicsBoundaryLayer: false,
+        physicsLandOcean: false,
+        physicsGeneral: false,
+        physicsMicrophysics: false,
+        physicsRadiation: false,
+        physicsLightning: false
+      })
+    }
+  }
+
+  // OPEN THE PHYSICS LIGHTNING OPTIONS
+  physicsLightning = () => {
+    if(this.state.physicsLightning) {
+      this.setState({
+        physicsLightning: false
+      })
+    } else {
+      this.setState({
+        physicsLightning: true,
+        physicsCumulus: false,
+        physicsBoundaryLayer: false,
+        physicsLandOcean: false,
+        physicsGeneral: false,
+        physicsMicrophysics: false,
+        physicsRadiation: false,
+      })
+    }
+  }
+
+  ralwPhysics = (value) => {
+    this.setState({
+      ralwPhysics: value
+    })
+  }
+
+  raswPhysics = (value) => {
+    this.setState({
+      raswPhysics: value
+    })
+  }
+
+
   render() {
     return (
       <BrowserRouter>
@@ -529,6 +699,26 @@ class App extends Component {
                 wrfda={this.state.wrfda}
                 gsi={this.state.gsi}
                 mapColors={this.state.mapColors}
+                physicsModal={this.physicsModal}
+                showPhysicsModal={this.state.showPhysicsModal}
+                physicsGeneral={this.general}
+                physicsGeneralSelect={this.state.physicsGeneral}
+                physicsMicrophysics={this.physicsMicrophysics}
+                physicsMicrophysicsSelect={this.state.physicsMicrophysics}
+                physicsRadiation={this.physicsRadiation}
+                physicsRadiationSelect={this.state.physicsRadiation}
+                physicsLandOcean={this.physicsLandOcean}
+                physicsLandOceanSelect={this.state.physicsLandOcean}
+                physicsBoundaryLayer={this.physicsBoundaryLayer}
+                physicsBoundaryLayerSelect={this.state.physicsBoundaryLayer}
+                physicsCumulus={this.physicsCumulus}
+                physicsCumulusSelect={this.state.physicsCumulus}
+                physicsLightning={this.physicsLightning}
+                physicsLightningSelect={this.state.physicsLightning}
+                ralwPhysics={this.ralwPhysics}
+                ralwPhysicsSelect={this.state.ralwPhysics}
+                raswPhysics={this.raswPhysics}
+                raswPhysicsSelect={this.state.raswPhysics}
               />
             </div>
           )}

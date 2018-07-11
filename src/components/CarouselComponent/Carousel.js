@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Button, Modal, Card, Toast, Row} from 'react-materialize'
+import {Button, Card, Row} from 'react-materialize'
 import Calendar from '../CalendarComponent/CalendarMain'
 import Map from '../MainMapComponent/MainMap'
 import globeBackground from './wrf-gfs-darkblue-wordless.png'
@@ -186,6 +186,10 @@ class CarouselContainer extends Component {
 
   wrfdaSelect = () => {
     this.props.wrfdaSelect()
+  }
+
+  physicsModal = () => {
+    this.props.physicsModal()
   }
 
   render() {
@@ -414,13 +418,7 @@ class CarouselContainer extends Component {
                     </Button>
                   </div>
                   <div className="col s5 m5 l5">
-                    <Modal header='Physics:' actions={<div > <Toast className="modal-save-btn" toast="Saved successfully!">Save</Toast>
-                      <Button modal="close" className="modal-save-btn red darken-2">Close</Button>
-                    </div>} trigger={<Button className = "physics-btn" > Physics</Button>}>
-                      <div>
-                        Subheaders
-                      </div>
-                    </Modal>
+                    <Button className="physics-btn" onClick={this.physicsModal}>Physics</Button>
                   </div>
                   <div className="col s5 m5 l5"></div>
                   <div className="col s1 m1 l1">
