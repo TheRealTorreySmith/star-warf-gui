@@ -3,8 +3,7 @@ import {Button, Card, Row} from 'react-materialize'
 import Calendar from '../CalendarComponent/CalendarMain'
 import Map from '../MainMapComponent/MainMap'
 import globeBackground from './wrf-gfs-darkblue-wordless.png'
-import ncepImage from './ncep.jpeg'
-import wrfdaImage from './wrfda.png'
+import globeImage from './globe.png'
 import './Carousel.css'
 import './Slider.css'
 
@@ -97,10 +96,6 @@ class CarouselContainer extends Component {
      }
   }
 
-  wrfFlipClick = () => {
-    this.props.wrfFlipFunc()
-  }
-
   threeDvarSelect = () => {
     this.props.threeDvarSelect()
   }
@@ -152,10 +147,6 @@ class CarouselContainer extends Component {
     this.props.daShowClick()
   }
 
-  wrfShowClick = () => {
-    this.props.wrfShowClick()
-  }
-
   prevMonth = (date) => {
       this.props.prevMonth(date)
   }
@@ -188,8 +179,8 @@ class CarouselContainer extends Component {
     this.props.wrfdaSelect()
   }
 
-  physicsModal = () => {
-    this.props.physicsModal()
+  wrfShowClick = () => {
+    this.props.wrfShowClick()
   }
 
   render() {
@@ -418,7 +409,6 @@ class CarouselContainer extends Component {
                     </Button>
                   </div>
                   <div className="col s5 m5 l5">
-                    <Button className="physics-btn" onClick={this.physicsModal}>Physics</Button>
                   </div>
                   <div className="col s5 m5 l5"></div>
                   <div className="col s1 m1 l1">
@@ -445,7 +435,7 @@ class CarouselContainer extends Component {
                 <h4 className={this.props.gsi || this.props.wrfda ? 'da-main-component-white' : 'da-main-component'}>
                   {this.props.gsi ? 'GSI': null}
                   {this.props.wrfda ? 'WRFDA': null}
-                  {!this.props.wrfda && !this.props.gsi ? 'DA': null}</h4>
+                  {!this.props.wrfda && !this.props.gsi ? 'Data Assimilation': null}</h4>
                 <Row>
                   <div className="col s1 m1 l1">
                     <Button className="da-back-arrow" onClick={this.wpsShowClick}>
@@ -454,13 +444,15 @@ class CarouselContainer extends Component {
                   </div>
                   <div className="col s10 m10 l10 da-container-front">
                     <div className={`wrfda-container ${this.props.wrfda ? 'wrfda-gsi-container-selected': ''}`} onClick={this.wrfdaSelect}>
-                      <div className="row">
-                        <img className="wrfda-image" src={wrfdaImage} alt="WRF logo"></img>
-                      </div>
+                      <img className="wrfda-image" src={globeImage} alt="WRF logo"></img>
+                      <div className="wrfda-text">WRFDA</div>
+                      <div className="NCAR-title">National Centers for Atmospheric Research</div>
                     </div>
                     <div className={`gsi-container ${this.props.gsi ? 'wrfda-gsi-container-selected': ''}`} onClick={this.gsiSelect}>
                       <div className="row">
-                        <img className="ncep-image" src={ncepImage} alt="National Centers for Environmental Prediction logo"></img>
+                        <img className="ncep-image" src={globeImage} alt="National Centers for Environmental Prediction logo"></img>
+                        <div className="ncep-text">NCEP</div>
+                        <div className="NCEP-title">National Centers for Environmental Prediction</div>
                       </div>
                     </div>
                   </div>
@@ -499,49 +491,6 @@ class CarouselContainer extends Component {
                     </Button>
                     <Button className={"da-forward-arrow"} onClick={this.wrfShowClick}>
                       <i className="material-icons">arrow_forward</i>
-                    </Button>
-                  </div>
-                </Row>
-              </div>
-            </div>
-          </Card>
-
-          {/* WRF CAROUSEL CARD */}
-          <Card className={`main-card ${this.props.showWrf
-              ? 'animated fadeIn'
-              : 'hide'}`}>
-            <div className={`time ${this.props.wrfFlipped
-                ? 'flipper'
-                : ''}`}>
-              <div className="side">
-                <h4 className="wps-main-component">WRF</h4>
-                <Row>
-                  <div className="col s1 m1 l1">
-                    <Button className="da-back-arrow" onClick={this.daShowClick}>
-                      <i className="material-icons">arrow_back</i>
-                    </Button>
-                  </div>
-                  <div className="col s10 m10 l10"></div>
-                  <div className="col s1 m1 l1">
-                    <Button id='1' onClick={this.wrfFlipClick} className='flip-btn'>
-                      <i className="material-icons">more_horiz</i>
-                    </Button>
-                  </div>
-                </Row>
-              </div>
-              <div className="side back">
-                <h4 className="wps-main-component">WRF</h4>
-                <Row>
-                  <div className="col s1 m1 l1">
-                    <Button className="da-back-arrow" onClick={this.daShowClick}>
-                      <i className="material-icons">arrow_back</i>
-                    </Button>
-                  </div>
-                  <div className="col s10 m10 l10">
-                  </div>
-                  <div className="col s1 m1 l1">
-                    <Button onClick={this.wrfFlipClick} className='flip-back-btn'>
-                      <i className="material-icons">rotate_left</i>
                     </Button>
                   </div>
                 </Row>

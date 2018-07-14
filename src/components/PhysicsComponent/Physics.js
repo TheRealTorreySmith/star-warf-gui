@@ -50,7 +50,7 @@ class Physics extends Component {
     return (
       <div>
         <div>
-          <div className="physics-modal modal open animated zoomIn">
+          <div className="physics-modal modal open animated fadeIn">
             <div className="modal-header row">
               <div className="col s4 m4 l4"></div>
               <div className="col s4 m4 l4">

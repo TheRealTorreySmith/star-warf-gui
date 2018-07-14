@@ -3,7 +3,8 @@ import CarouselContainer from '../CarouselComponent/Carousel.js'
 import Summary from '../SummaryComponent/Summary.js'
 import NavBar from '../NavBarComponent/NavBar'
 import MapModal from '../MapModalComponent/MapModal.js'
-import Physics from '../PhysicsComponent/Physics.js'
+// import Physics from '../PhysicsComponent/Physics.js'
+import WrfModal from '../WrfModalComponent/WrfModal.js'
 import './Dashboard.css'
 
 class Dashboard extends Component {
@@ -31,6 +32,7 @@ class Dashboard extends Component {
           currentJobName={this.props.currentJobName}
         />
         <CarouselContainer
+          getData={this.props.getData}
           nwpFlipped={this.props.nwpFlipped}
           wpsFlipped={this.props.wpsFlipped}
           wrfFlipped={this.props.wrfFlipped}
@@ -131,29 +133,50 @@ class Dashboard extends Component {
             mapColors={this.props.mapColors}
           />
         :null}
-        {this.props.showPhysicsModal ?
-          <Physics
-            physicsModal={this.props.physicsModal}
-            showPhysicsModal={this.props.showPhysicsModal}
-            physicsGeneral={this.props.physicsGeneral}
-            physicsGeneralSelect={this.props.physicsGeneralSelect}
-            physicsMicrophysics={this.props.physicsMicrophysics}
-            physicsMicrophysicsSelect={this.props.physicsMicrophysicsSelect}
-            physicsRadiation={this.props.physicsRadiation}
-            physicsRadiationSelect={this.props.physicsRadiationSelect}
-            physicsLandOcean={this.props.physicsLandOcean}
-            physicsLandOceanSelect={this.props.physicsLandOceanSelect}
-            physicsBoundaryLayer={this.props.physicsBoundaryLayer}
-            physicsBoundaryLayerSelect={this.props.physicsBoundaryLayerSelect}
-            physicsCumulus={this.props.physicsCumulus}
-            physicsCumulusSelect={this.props.physicsCumulusSelect}
-            physicsLightning={this.props.physicsLightning}
-            physicsLightningSelect={this.props.physicsLightningSelect}
-            ralwPhysics={this.props.ralwPhysics}
-            ralwPhysicsSelect={this.props.ralwPhysicsSelect}
-            raswPhysics={this.props.raswPhysics}
-            raswPhysicsSelect={this.props.raswPhysicsSelect}
+        {this.props.showWrf ?
+          <WrfModal
+            inputFields={this.props.inputFields}
+            defaultValues={this.props.defaultValues}
+            timeControl={this.props.timeControl}
+            timeControlSelect={this.props.timeControlSelect}
+            timeControlGeneral={this.props.timeControlGeneral}
+            timeControlGeneralSelect={this.props.timeControlGeneralSelect}
+            timeControlHistoryFiles={this.props.timeControlHistoryFiles}
+            timeControlHistoryFilesSelect={this.props.timeControlHistoryFilesSelect}
+            timeControlHistoryIntervals={this.props.timeControlHistoryIntervals}
+            timeControlHistoryIntervalsSelect={this.props.timeControlHistoryIntervalsSelect}
+            timeControlHistoryTime={this.props.timeControlHistoryTime}
+            timeControlHistoryTimeSelect={this.props.timeControlHistoryTimeSelect}
+            domains={this.props.domains}
+            domainsGeneral={this.props.domainsGeneral}
+            domainsGeneralSelect={this.props.domainsGeneralSelect}
+            domainsSelect={this.props.domainsSelect}
+            physics={this.props.physics}
+            physicsSelect={this.props.physicsSelect}
+            wrfModal={this.props.wrfModal}
           />
+          // <Physics
+          //   physicsModal={this.props.physicsModal}
+          //   showPhysicsModal={this.props.showPhysicsModal}
+          //   physicsGeneral={this.props.physicsGeneral}
+          //   physicsGeneralSelect={this.props.physicsGeneralSelect}
+          //   physicsMicrophysics={this.props.physicsMicrophysics}
+          //   physicsMicrophysicsSelect={this.props.physicsMicrophysicsSelect}
+          //   physicsRadiation={this.props.physicsRadiation}
+          //   physicsRadiationSelect={this.props.physicsRadiationSelect}
+          //   physicsLandOcean={this.props.physicsLandOcean}
+          //   physicsLandOceanSelect={this.props.physicsLandOceanSelect}
+          //   physicsBoundaryLayer={this.props.physicsBoundaryLayer}
+          //   physicsBoundaryLayerSelect={this.props.physicsBoundaryLayerSelect}
+          //   physicsCumulus={this.props.physicsCumulus}
+          //   physicsCumulusSelect={this.props.physicsCumulusSelect}
+          //   physicsLightning={this.props.physicsLightning}
+          //   physicsLightningSelect={this.props.physicsLightningSelect}
+          //   ralwPhysics={this.props.ralwPhysics}
+          //   ralwPhysicsSelect={this.props.ralwPhysicsSelect}
+          //   raswPhysics={this.props.raswPhysics}
+          //   raswPhysicsSelect={this.props.raswPhysicsSelect}
+          // />
         :null}
      </div>
     )

@@ -18,6 +18,7 @@ html {
 .summary-component {
   height: 100px;
   margin: 15px 0 0 0;
+  padding-right: 6px !important;
   vertical-align: middle;
   background: -webkit-linear-gradient(top, rgba(23,95,144, 0.7) 0%,rgba(17,55,92, 0.2) 100%) !important;
 }
@@ -26,6 +27,7 @@ html {
   cursor: default;
   height: 100px;
   margin: 15px 0 0 0;
+  padding-right: 6px !important;
   vertical-align: middle;
   box-shadow: 0px 0px 12px 5px #11375c;
   background: -webkit-linear-gradient(top, rgba(23,95,144, 0.7) 0%,rgba(17,55,92, 0.2) 100%) !important;
@@ -80,16 +82,15 @@ p.cycle-container {
 
 .icon-white {
   color: white;
+  border: 1px solid white !important;
+  font-size: 18px;
 }
 
-.icon-black {
-  color: black;
-}
 
 .wps-text-white {
   text-align: center;
   margin: 6px 0 1px 0;
-  padding-left: 25px;
+  padding-left: 20px;
   line-height: 1.5;
   color: white;
 }
@@ -97,7 +98,7 @@ p.cycle-container {
 .wps-text-black {
   text-align: center;
   margin: 6px 0 1px 0;
-  padding-left: 25px;
+  padding-left: 20px;
   line-height: 1.5;
 }
 
@@ -107,6 +108,7 @@ p.cycle-container {
 #nwp-box {
   margin-right: 20px;
   height: 130px;
+  padding-right: 6px;
 }
 
 .nwp-three-dvar {
@@ -232,6 +234,7 @@ p.cycle-container {
 
 #wps-box {
   float: left;
+  padding-right: 6px;
 }
 
 .wps-three-boxes {
@@ -240,6 +243,9 @@ p.cycle-container {
 
 .wps-job-icon {
   float: right !important;
+  border: 1px solid black;
+  height: 20px;
+  width: 20px;
 }
 
 /* DA CONTAINER */
@@ -248,21 +254,32 @@ p.cycle-container {
   display: flex;
 }
 
+.gsi-summary-image-container,
+.wrfda-summary-image-container {
+  margin: 2px auto 0 auto;
+}
+
+.gsi-summary-image,
 .wrfda-summary-image {
-  border-radius: 2px;
+  border-radius: 100px;
   box-shadow: 0px 1px 8px rgba(0,0,0,.7);
-  height: 55px;
-  width: 55px;
+  height: 58px;
+  width: 58px;
   margin: 0 auto;
 }
 
-.gsi-summary-image {
-  border-radius: 2px;
-  box-shadow: 0px 1px 8px rgba(0,0,0,.7);
-  height: 55px;
-  width: 55px;
-  /* width: 91px; */
-  margin: 0 auto;
+.ncep-summary-text {
+  margin-top: -42px;
+  margin-left: 6px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.wrfda-summary-text {
+  margin-top: -42px;
+  margin-left: 2px;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 /* ARROWS */

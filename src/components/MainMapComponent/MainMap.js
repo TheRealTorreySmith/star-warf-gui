@@ -7,7 +7,7 @@ import L from 'leaflet'
 import 'leaflet-draw'
 import leafletImage from 'leaflet-image'
 import './Map.css'
-// import MBTOKEN from './.env'
+// import MB_TOKEN from './.env'
 
 export default class MapComponent extends React.Component {
 
@@ -74,7 +74,7 @@ export default class MapComponent extends React.Component {
         L.control.saveMap({position:'bottomright'}).addTo(this.map)
 
         // MAPBOX TOKEN FOR MAP ACCESS
-      	L.tileLayer(`https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=${process.env.REACT_APP_MB_TOKEN}`)
+      	L.tileLayer(`https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=${process.env.MB_TOKEN}`)
           .addTo(this.map)
 
         // SMALL MAP EVENT HANDLERS

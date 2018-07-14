@@ -1,0 +1,155 @@
+.modal-content {
+  padding: 0 !important;
+  height: 360px;
+}
+
+.modal-overlay {
+  z-index: 1002;
+  display: block;
+  opacity: 0.5;
+}
+
+.wrf-modal {
+  z-index: 1003;
+  display: block;
+  opacity: 1;
+  transform: scaleX(1);
+  top: 5%;
+  background-color: white;
+}
+
+.modal {
+  max-height: 100%;
+  width: 720px;
+}
+
+.wrf-title {
+  margin: 25px 0 20px 0 !important;
+  font-weight: 400;
+}
+
+.wrf-subheaders-container {
+  text-align: center;
+  height: 350px;
+  overflow-y: auto;
+
+}
+
+.wrf-search-form {
+  display: flex;
+  width: 230px !important;
+  margin: 15px 0 0 0;
+  padding-right: 20px !important;
+}
+
+.time-control-btn,
+.time-control-general-btn,
+.time-control-history-files-btn,
+.time-control-history-files-intervals-btn,
+.time-control-history-files-time-btn,
+.domains-btn,
+.domains-general-btn,
+.physics-btn,
+.stoch-btn,
+.noah-mp-btn,
+.fdda-btn,
+.dynamics-btn,
+.bdy-control-btn,
+.namelist-quilt-btn,
+.dfi-control-btn {
+  background: -webkit-linear-gradient(rgb(72,72,72) 0%, rgb(0,0,0) 100%);
+  border-radius: 1px;
+  font-size: 11px;
+  padding: 0;
+  margin: 1px 0;
+  height: 25px;
+  line-height: 0;
+  width: 130px;
+  -webkit-transition: none;
+}
+
+.time-control-btn:hover,
+.time-control-general-btn:hover,
+.time-control-history-files-btn:hover,
+.time-control-history-files-intervals-btn:hover,
+.time-control-history-files-time-btn:hover,
+.domains-btn:hover,
+.domains-general-btn:hover,
+.physics-btn:hover,
+.stoch-btn:hover,
+.noah-mp-btn:hover,
+.fdda-btn:hover,
+.dynamics-btn:hover,
+.bdy-control-btn:hover,
+.namelist-quilt-btn:hover,
+.dfi-control-btn:hover {
+  background: -webkit-linear-gradient(rgb(102,102,102), rgb(30,30,30) 100%);
+  border-radius: 1px;
+  padding: 0;
+  width: 140px;
+}
+
+.time-control-selected,
+.time-control-general-selected,
+.time-control-history-files-selected,
+.time-control-history-intervals-selected,
+.time-control-history-time-selected,
+.domains-selected,
+.domains-general-selected,
+.physics-selected,
+.stoch-selected,
+.noah-mp-selected,
+.fdda-selected,
+.dynamics-selected,
+.bdy-control-selected,
+.namelist-quilt-selected,
+.dfi-control-selected {
+  background: -webkit-linear-gradient(rgb(23,95,144) 0%, rgb(17,55,92) 80%);
+}
+
+.time-control-selected:hover,
+.time-control-general-selected:hover,
+.time-control-history-files-selected:hover,
+.time-control-history-intervals-selected:hover,
+.time-control-history-time-selected:hover,
+.domains-selected:hover,
+.domains-general-selected:hover,
+.physics-selected:hover,
+.stoch-selected:hover,
+.noah-mp-selected:hover,
+.fdda-selected:hover,
+.dynamics-selected:hover,
+.bdy-control-selected:hover,
+.namelist-quilt-selected:hover,
+.dfi-control-selected:hover {
+  background: -webkit-linear-gradient(rgb(43,115,164) 0%, rgb(37,75,112) 80%);
+}
+
+.time-control-btn:focus,
+.time-control-general-btn:focus,
+.time-control-history-files-btn:focus,
+.time-control-history-files-intervals-btn:focus,
+.time-control-history-files-time-btn:focus,
+.domains-btn:focus,
+.domains-general-btn:focus,
+.physics-btn:focus,
+.stoch-btn:focus,
+.noah-mp-btn:focus,
+.fdda-btn:focus,
+.dynamics-btn:focus,
+.bdy-control-btn:focus,
+.namelist-quilt-btn:focus,
+.dfi-control-btn:focus {
+  background-color: rgba(0,0,0,.7);
+}
+
+.time-control-general-btn,
+.time-control-history-files-btn,
+.domains-general-btn {
+  margin: 1px 0 1px 24px;
+}
+
+.time-control-history-files-intervals-btn,
+.time-control-history-files-time-btn {
+  margin: 1px 0 1px 40px;
+}

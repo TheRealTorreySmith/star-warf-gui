@@ -6,6 +6,8 @@ class JobTypeNewExisting extends Component {
   jobTypeNewExistingClick = () => {
    let newJobName = this.refs.jobName.state.value
     this.props.newJobName(newJobName)
+    this.props.getInputFields()
+    this.props.getDefaultValues()
     // this.props.existingJob(jobName)
 
   }

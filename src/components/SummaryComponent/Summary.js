@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { Row, Card, Icon, Button } from 'react-materialize'
 import CalendarRange from '../CalendarComponent/CalendarRange'
 import globeBackground from '../CarouselComponent/wrf-gfs-darkblue-wordless.png'
-import ncepImage from '../CarouselComponent/ncep.jpeg'
-import wrfdaImage from '../CarouselComponent/wrfda.png'
+import globeImage from '../CarouselComponent/globe.png'
 import './Summary.css'
 
 class Summary extends Component {
@@ -70,11 +69,11 @@ class Summary extends Component {
             {/* NWP CARD */}
             <Card id="nwp-box" className={`col s2 m2 l2 ${this.props.showNwp ? 'summary-component-highlight' : 'summary-component'}`} onClick={this.nwpShowClick}>
               <Row className={`${this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar ? 'wps-text-white' : 'wps-text-black'}`}>NWP
-                <Icon className={`wps-job-icon ${this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar ? 'icon-white' : 'icon-black'}`}>
+                <Icon className={`wps-job-icon ${this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar ? 'icon-white' : ''}`}>
                 {this.props.threeDvar ||
                   this.props.threeDensvar ||
                   this.props.fourDensvar ?
-                  'done':'close'}
+                  'done': ''}
                 </Icon>
               </Row>
               <Row className="nwp-summary-container-row">
@@ -107,8 +106,8 @@ class Summary extends Component {
             {/* WPS CARD */}
             <Card id="wps-box" className={`col s3 m3 l3 ${this.props.showWps ? 'summary-component-highlight' : 'summary-component'}`} onClick={this.wpsShowClick}>
               <Row className={`${this.props.wpsTypeSaved && this.props.selectionStart && this.props.selectionEnd && this.props.mapSaved ? 'wps-text-white' : 'wps-text-black'}`}>WPS
-                <Icon className={`wps-job-icon ${this.props.wpsTypeSaved && this.props.selectionStart && this.props.selectionEnd && this.props.mapSaved ? 'icon-white' : 'icon-black'}`}>
-                  {this.props.wpsTypeSaved && this.props.selectionStart && this.props.selectionEnd && this.props.mapSaved ? 'done':'close'}
+                <Icon className={`wps-job-icon ${this.props.wpsTypeSaved && this.props.selectionStart && this.props.selectionEnd && this.props.mapSaved ? 'icon-white' : ''}`}>
+                  {this.props.wpsTypeSaved && this.props.selectionStart && this.props.selectionEnd && this.props.mapSaved ? 'done':''}
                 </Icon>
               </Row>
               <Row className="wps-three-boxes">
@@ -154,12 +153,22 @@ class Summary extends Component {
                 {this.props.gsi ? 'GSI': null}
                 {this.props.wrfda ? 'WRFDA': null}
                 {!this.props.wrfda && !this.props.gsi ? 'DA': null}
-                <Icon className={`wps-job-icon ${this.props.gsi || this.props.wrfda ? 'icon-white' : 'icon-black'}`}>
-                  {this.props.gsi || this.props.wrfda ? 'done' : 'close'}</Icon>
+                <Icon className={`wps-job-icon ${this.props.gsi || this.props.wrfda ? 'icon-white' : ''}`}>
+                  {this.props.gsi || this.props.wrfda ? 'done' : ''}</Icon>
               </Row>
               <Row className="image-summary-container">
-                {this.props.gsi ? <img src={ncepImage} className="gsi-summary-image" alt="National Centers for Environmental Prediction logo"></img>: null}
-                {this.props.wrfda ? <img src={wrfdaImage} className="wrfda-summary-image" alt="WRF logo"></img>: null}
+                {this.props.gsi ?
+                  <div className="gsi-summary-image-container animated fadeIn">
+                    <img src={globeImage} className="gsi-summary-image" alt="National Centers for Environmental Prediction logo"></img>
+                    <div className="ncep-summary-text">NCEP</div>
+                  </div>
+                  : null}
+                {this.props.wrfda ?
+                  <div className="wrfda-summary-image-container animated fadeIn">
+                    <img src={globeImage} className="wrfda-summary-image" alt="WRF logo"></img>
+                    <div className="wrfda-summary-text">WRFDA</div>
+                  </div>
+                  : null}
               </Row>
             </Card>
             {this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar ?
@@ -170,7 +179,10 @@ class Summary extends Component {
             <div className='col s.5 m.5 l.5 top-cycle-arrow-placeholder'>
             </div>}
             <Card className={`col s2 m2 l2 ${this.props.showWrf ? 'summary-component-highlight' : 'summary-component'}`} onClick={this.wrfShowClick}>
-              <Row className={`wps-text-black`}>WRF<Icon className="wps-job-icon icon-black">close</Icon></Row>
+              <Row className={`wps-text-black`}>WRF
+                <Icon className={`wps-job-icon ${this.props.gsi || this.props.wrfda ? 'icon-white' : ''}`}>
+                {this.props.gsi || this.props.wrfda ? 'done' : ''}</Icon>
+              </Row>
             </Card>
             {this.props.threeDvar ?
             <div className='col s.5 m.5 l.5'>
