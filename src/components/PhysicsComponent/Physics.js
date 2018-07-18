@@ -4,38 +4,6 @@ import './Physics.css'
 
 class Physics extends Component {
 
-  physicsModal = () => {
-    this.props.physicsModal()
-  }
-
-  general = () => {
-    this.props.physicsGeneral()
-  }
-
-  microphysics = () => {
-    this.props.physicsMicrophysics()
-  }
-
-  radiation = () => {
-    this.props.physicsRadiation()
-  }
-
-  landOcean = () => {
-    this.props.physicsLandOcean()
-  }
-
-  boundaryLayer = () => {
-    this.props.physicsBoundaryLayer()
-  }
-
-  cumulus = () => {
-    this.props.physicsCumulus()
-  }
-
-  lightning = () => {
-    this.props.physicsLightning()
-  }
-
   ralwPhysics = (e) => {
     let value = e.target.value
     this.props.ralwPhysics(value)
@@ -79,16 +47,7 @@ class Physics extends Component {
             </div>
             <div className="modal-content">
               <div className="row">
-                <div className="col s3 m3 l3 physics-subheaders-container">
-                  <Button className={`physics-general-btn ${this.props.physicsGeneralSelect ? 'physics-general-selected': ''}`} onClick={this.general}>General</Button>
-                  <Button className={`physics-microphysics-btn ${this.props.physicsMicrophysicsSelect ? 'physics-microphysics-selected': ''}`} onClick={this.microphysics}>Microphysics</Button>
-                  <Button className={`physics-radiation-btn ${this.props.physicsRadiationSelect ? 'physics-radiation-selected': ''}`} onClick={this.radiation}>Radiation</Button>
-                  <Button className={`physics-land-ocean-btn ${this.props.physicsLandOceanSelect ? 'physics-land-ocean-selected': ''}`} onClick={this.landOcean}>Land/Ocean</Button>
-                  <Button className={`physics-boundary-layer-btn ${this.props.physicsBoundaryLayerSelect ? 'physics-boundary-layer-selected': ''}`} onClick={this.boundaryLayer}>Boundary Layer</Button>
-                  <Button className={`physics-cumulus-btn ${this.props.physicsCumulusSelect ? 'physics-cumulus-selected': ''}`} onClick={this.cumulus}>Cumulus</Button>
-                  <Button className={`physics-lightning-btn ${this.props.physicsLightningSelect ? 'physics-lightning-selected': ''}`} onClick={this.lightning}>Lightning</Button>
-                </div>
-                <div className="col s9 m9 l9">
+                <div className="col s12 m12 l12">
                   {this.props.physicsGeneralSelect ?
                     <div>
                       <h5 className="physics-suite-title">Physics Suite</h5>

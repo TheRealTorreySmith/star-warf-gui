@@ -38,6 +38,10 @@
   font-size: 14px;
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   color: white;
+  height: 34px;
+  vertical-align: middle;
+  padding: 6px 5px;
+
 }
 
 .dropdown-content li>a:hover {
@@ -46,9 +50,11 @@
 
 .dropdown-content li {
   min-height: 0;
+  text-align: center;
 }
 
 #dropdown_0 {
   float: right !important;
-
+  height: 136px;
+  margin: 56px 0 0 0 !important;
 }

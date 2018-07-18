@@ -121,19 +121,19 @@ class Summary extends Component {
                 </div>
                 <div id="jobType-box">
                   {this.props.gfs ?
-                    <div>
+                    <div className="initial-boundary-container">
                       <img className="gfs-image animated fadeIn" src={globeBackground} alt="blue globe background logo"></img>
                       <div className="gfs-summary-acronym-lettering animated fadeIn">GFS</div>
                     </div>
                     : null}
                   {this.props.hrrr ?
-                    <div>
+                    <div className="initial-boundary-container">
                       <img className="hrrr-image animated fadeIn" src={globeBackground} alt="blue globe background logo"></img>
                       <div className="hrrr-summary-acronym-lettering animated fadeIn">HRRR</div>
                     </div>
                     : null}
                   {this.props.nam ?
-                    <div>
+                    <div className="initial-boundary-container">
                       <img className="nam-image animated fadeIn" src={globeBackground} alt="blue globe background logo"></img>
                       <div className="nam-summary-acronym-lettering animated fadeIn">NAM</div>
                     </div>

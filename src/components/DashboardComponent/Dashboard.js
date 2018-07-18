@@ -9,6 +9,11 @@ import './Dashboard.css'
 
 class Dashboard extends Component {
 
+  componentWillMount = () => {
+    this.props.getInputFields()
+    this.props.getDefaultValues()
+  }
+
   prevMonth = (date) => {
       this.props.prevMonth(date)
   }
@@ -29,10 +34,9 @@ class Dashboard extends Component {
     return (
       <div>
         <NavBar
-          currentJobName={this.props.currentJobName}
+          currentJob={this.props.currentJob}
         />
         <CarouselContainer
-          getData={this.props.getData}
           nwpFlipped={this.props.nwpFlipped}
           wpsFlipped={this.props.wpsFlipped}
           wrfFlipped={this.props.wrfFlipped}
@@ -92,7 +96,6 @@ class Dashboard extends Component {
           saveMap={this.props.saveMap}
           wpsTypeSaved={this.props.wpsTypeSaved}
           mapSaved={this.props.mapSaved}
-          physicsModal={this.props.physicsModal}
         />
         <Summary
           nwpShowClick={this.props.nwpShowClick}
@@ -135,48 +138,64 @@ class Dashboard extends Component {
         :null}
         {this.props.showWrf ?
           <WrfModal
+            wrfModal={this.props.wrfModal}
             inputFields={this.props.inputFields}
             defaultValues={this.props.defaultValues}
-            timeControl={this.props.timeControl}
-            timeControlSelect={this.props.timeControlSelect}
-            timeControlGeneral={this.props.timeControlGeneral}
-            timeControlGeneralSelect={this.props.timeControlGeneralSelect}
-            timeControlHistoryFiles={this.props.timeControlHistoryFiles}
-            timeControlHistoryFilesSelect={this.props.timeControlHistoryFilesSelect}
-            timeControlHistoryIntervals={this.props.timeControlHistoryIntervals}
-            timeControlHistoryIntervalsSelect={this.props.timeControlHistoryIntervalsSelect}
-            timeControlHistoryTime={this.props.timeControlHistoryTime}
-            timeControlHistoryTimeSelect={this.props.timeControlHistoryTimeSelect}
-            domains={this.props.domains}
-            domainsGeneral={this.props.domainsGeneral}
-            domainsGeneralSelect={this.props.domainsGeneralSelect}
-            domainsSelect={this.props.domainsSelect}
-            physics={this.props.physics}
-            physicsSelect={this.props.physicsSelect}
-            wrfModal={this.props.wrfModal}
+            // timeControl={this.props.timeControl}
+            // timeControlSelect={this.props.timeControlSelect}
+            // timeControlGeneral={this.props.timeControlGeneral}
+            // timeControlGeneralSelect={this.props.timeControlGeneralSelect}
+            // timeControlHistoryFiles={this.props.timeControlHistoryFiles}
+            // timeControlHistoryFilesSelect={this.props.timeControlHistoryFilesSelect}
+            // timeControlHistoryIntervals={this.props.timeControlHistoryIntervals}
+            // timeControlHistoryIntervalsSelect={this.props.timeControlHistoryIntervalsSelect}
+            // timeControlHistoryTime={this.props.timeControlHistoryTime}
+            // timeControlHistoryTimeSelect={this.props.timeControlHistoryTimeSelect}
+            // domains={this.props.domains}
+            // domainsSelect={this.props.domainsSelect}
+            // domainsGeneral={this.props.domainsGeneral}
+            // domainsGeneralSelect={this.props.domainsGeneralSelect}
+            // domainsBasicTimeStep={this.props.domainsBasicTimeStep}
+            // domainsBasicTimeStepSelect={this.props.domainsBasicTimeStepSelect}
+            // domainsAdaptiveTimeStep={this.props.domainsAdaptiveTimeStep}
+            // domainsAdaptiveTimeStepSelect={this.props.domainsAdaptiveTimeStepSelect}
+            // domainsHorVertInterpolation={this.props.domainsHorVertInterpolation}
+            // domainsHorVertInterpolationSelect={this.props.domainsHorVertInterpolationSelect}
+            // domainsThreeDOcean={this.props.domainsThreeDOcean}
+            // domainsThreeDOceanSelect={this.props.domainsThreeDOceanSelect}
+            // physics={this.props.physics}
+            // physicsSelect={this.props.physicsSelect}
+            // physicsGeneral={this.props.physicsGeneral}
+            // physicsGeneralSelect={this.props.physicsGeneralSelect}
+            // physicsMicrophysics={this.props.physicsMicrophysics}
+            // physicsMicrophysicsSelect={this.props.physicsMicrophysicsSelect}
+            // physicsRadiation={this.props.physicsRadiation}
+            // physicsRadiationSelect={this.props.physicsRadiationSelect}
+            // physicsLandOcean={this.props.physicsLandOcean}
+            // physicsLandOceanSelect={this.props.physicsLandOceanSelect}
+            // physicsBoundaryLayer={this.props.physicsBoundaryLayer}
+            // physicsBoundaryLayerSelect={this.props.physicsBoundaryLayerSelect}
+            // physicsCumulus={this.props.physicsCumulus}
+            // physicsCumulusSelect={this.props.physicsCumulusSelect}
+            // physicsLightning={this.props.physicsLightning}
+            // physicsLightningSelect={this.props.physicsLightningSelect}
+            // ralwPhysics={this.props.ralwPhysics}
+            // ralwPhysicsSelect={this.props.ralwPhysicsSelect}
+            // raswPhysics={this.props.raswPhysics}
+            // raswPhysicsSelect={this.props.raswPhysicsSelect}
+            // stoch={this.props.stoch}
+            // stochSelect={this.props.stochSelect}
+            // stochGeneral={this.props.stochGeneral}
+            // stochGeneralSelect={this.props.stochGeneralSelect}
+            // stochSppt={this.props.stochSppt}
+            // stochSpptSelect={this.props.stochSpptSelect}
+            // stochSkebs={this.props.stochSkebs}
+            // stochSkebsSelect={this.props.stochSkebsSelect}
+            // stochSpp={this.props.stochSpp}
+            // stochSppSelect={this.props.stochSppSelect}
+            // noahMp={this.props.noahMp}
+            // noahMpSelect={this.props.noahMpSelect}
           />
-          // <Physics
-          //   physicsModal={this.props.physicsModal}
-          //   showPhysicsModal={this.props.showPhysicsModal}
-          //   physicsGeneral={this.props.physicsGeneral}
-          //   physicsGeneralSelect={this.props.physicsGeneralSelect}
-          //   physicsMicrophysics={this.props.physicsMicrophysics}
-          //   physicsMicrophysicsSelect={this.props.physicsMicrophysicsSelect}
-          //   physicsRadiation={this.props.physicsRadiation}
-          //   physicsRadiationSelect={this.props.physicsRadiationSelect}
-          //   physicsLandOcean={this.props.physicsLandOcean}
-          //   physicsLandOceanSelect={this.props.physicsLandOceanSelect}
-          //   physicsBoundaryLayer={this.props.physicsBoundaryLayer}
-          //   physicsBoundaryLayerSelect={this.props.physicsBoundaryLayerSelect}
-          //   physicsCumulus={this.props.physicsCumulus}
-          //   physicsCumulusSelect={this.props.physicsCumulusSelect}
-          //   physicsLightning={this.props.physicsLightning}
-          //   physicsLightningSelect={this.props.physicsLightningSelect}
-          //   ralwPhysics={this.props.ralwPhysics}
-          //   ralwPhysicsSelect={this.props.ralwPhysicsSelect}
-          //   raswPhysics={this.props.raswPhysics}
-          //   raswPhysicsSelect={this.props.raswPhysicsSelect}
-          // />
         :null}
      </div>
     )

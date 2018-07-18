@@ -555,6 +555,10 @@ button.btn.toast {
   opacity: 1.0;
 }
 
+.da-image-container {
+  position: relative;
+}
+
 .NCAR-title {
   font-size: 16px;
 }
@@ -587,23 +591,11 @@ button.btn.toast {
   color: white;
   font-size: 28px;
   font-weight:500;
-  padding: 0 7px;
-  position: fixed;
-  overflow: hidden;
-}
-
-.wrfda-text {
-  padding-top: 40px;
-  margin: -127px 0px 0px 83px !important;
+  padding: 45px 0;
+  position: absolute;
+  top: 51%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 119px;
   width: 118px;
-  vertical-align: middle;
-}
-
-.ncep-text {
-  padding-top: 40px;
-  margin: -127px 0px 0px 84px !important;
-  height: 119px;
-  width: 118px;
-  vertical-align: middle;
 }

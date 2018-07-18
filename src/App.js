@@ -10,35 +10,56 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      // LOGIN STATE
       jobType: '',
-      currentJobName: undefined,
       currentUser: undefined,
+      jobs: [
+        {id: 1, name: 'Jan17,2018'},
+        {id: 2, name: 'Feb3,2018'},
+        {id: 3, name: 'Mar7,2018'},
+        {id: 4, name: 'AFTAC test job'},
+        {id: 5, name: 'Apr12,2018'},
+        {id: 6, name: 'Jun21,2018'},
+        {id: 7, name: 'Galvanize Presentation'}
+        ],
+      currentJob: undefined,
+      // headings: null,
+      // subHeadings: null,
+      // tertiaryHeadings: null,
       inputFields: null,
       defaultValues: null,
       isLoggedIn: true,
-      jobs: [],
+      // DASHBOARD STATE
+      // NWP STATE
+      showNwp: true,
       nwpFlipped: false,
+      // WPS STATE
+      showWps: false,
       wpsFlipped: false,
       boundaryConditionsFlipped: false,
-      wrfFlipped: false,
-      daFlipped: false,
-      showNwp: true,
-      showWps: false,
-      showWrf: false,
-      showDa: false,
       threeDvar: false,
       threeDensvar: false,
       fourDensvar: false,
-      runMainJob: false,
       hourFrequency: 3,
       yearFrequency: 0,
       dayFrequency: 0,
       minuteFrequency: 0,
       secondFrequency: 0,
       continueToWps: false,
+      // SUMMARY STATE
+      mapSaved: false,
+      wpsTypeSaved: false,
+      gsi: false,
+      wrfda: false,
+      gfsSelect: false,
+      hrrrSelect: false,
+      namSelect: false,
+      runMainJob: false,
+      // CALENDAR STATE
       date:Date.now(),
       selectionStart: 0,
       selectionEnd: 0,
+      // MAP STATE
       lat: 20.9635945,
       lng: -105.14556859999999,
       zoom: 0,
@@ -46,41 +67,79 @@ class App extends Component {
       coords: [],
       latCoords: [],
       lngCoords: [],
-      gfsSelect: false,
-      hrrrSelect: false,
-      namSelect: false,
-      mapSaved: false,
-      wpsTypeSaved: false,
-      gsi: false,
-      wrfda: false,
       mapColors: ['black','red', 'green', 'purple', 'orange', 'blue', 'cyanne', 'turqoise', 'grey', 'pink', 'yellow'],
       northWest: {},
       northEast: {},
       southEast: {},
       southWest: {},
-      // PHYSICS STATE
-      // physicsGeneral: false,
-      // physicsMicrophysics: false,
-      // physicsRadiation: false,
-      // physicsLandOcean: false,
-      // physicsBoundaryLayer: false,
-      // physicsCumulus: false,
-      // physicsLightning: false,
-      // ralwPhysics: undefined,
-      // raswPhysics: undefined,
       // WRF STATE
+      showWrf: false,
+      wrfFlipped: false,
+      // DA STATE
+      showDa: false,
+      daFlipped: false,
+      // TIME_CONTROL STATE
       timeControl: false,
       timeControlGeneral: false,
       timeControlHistoryFiles: false,
       timeControlHistoryIntervals: false,
       timeControlHistoryTime: false,
+      // DOMAINS STATE
       domains: false,
       domainsGeneral: false,
+      domainsBasicTimeStep: false,
+      domainsAdaptiveTimeStep: false,
+      domainsHorVertInterpolation: false,
+      domainsThreeDOcean: false,
+      // PHYSICS STATE
       physics: false,
+      physicsGeneral: false,
+      physicsMicrophysics: false,
+      physicsRadiation: false,
+      physicsLandOcean: false,
+      physicsBoundaryLayer: false,
+      physicsCumulus: false,
+      physicsLightning: false,
+      // STOCH STATE
+      stoch: false,
+      stochGeneral: false,
+      stochSppt: false,
+      stochSkebs: false,
+      stochSpp: false,
+      // NOAH_MP STATE
+      noahMp: false
     }
   }
 
+  // HOLDS THE SESSION IN STORAGE
+  componentWillMount = () => {
+    let id = this.state.jobs.length + 1
+    if(sessionStorage.getItem('username') && sessionStorage.getItem('currentJob')) {
+      let username = sessionStorage.getItem('username')
+      let currentJob = sessionStorage.getItem('currentJob')
+      this.setState({
+        ...this.state,
+        currentUser: username,
+        jobs: [
+        {
+          id: id,
+          name: currentJob
+        },
+        ...this.state.jobs],
+        currentJob: {id: id, name: currentJob}
+      })
+      document.title = currentJob
+    } else if (sessionStorage.getItem('username')){
+      let username = sessionStorage.getItem('username')
+      this.setState({
+        currentUser: username
+      })
+    }
+  }
+
+  // USERNAME STATE HANDLER
   setCurrentUser = (username, password) => {
+    sessionStorage.setItem('username', username)
     this.setState({
       currentUser: username
     })
@@ -109,16 +168,27 @@ class App extends Component {
   // NEW JOB NAME STATE HANDLER
   newJobName = (newJobName) => {
     document.title = newJobName
+    sessionStorage.setItem('currentJob', newJobName)
+    let id = this.state.jobs.length + 1
     this.setState({
       ...this.state,
       jobs: [
-      ...this.state.jobs,
       {
-        key: this.state.jobs.length,
-        name: newJobName,
-        jobType: this.state.jobType
-      }],
-      currentJobName: newJobName
+        id: id,
+        name: newJobName
+      },
+      ...this.state.jobs],
+      currentJob: {id: id, name: newJobName}
+    })
+  }
+
+  // EXISTING JOB STATE HANDLER
+  existingJobName = (existingJobName) => {
+    document.title = existingJobName
+    sessionStorage.setItem('currentJob', existingJobName)
+    let job = this.state.jobs.filter(x => x.name === existingJobName)
+    this.setState({
+      currentJob: job[0]
     })
   }
 
@@ -127,7 +197,16 @@ class App extends Component {
     try {
       const res = await fetch('http://localhost:8080/inputFields')
         const inputFields = await res.json()
+        // const headings = []
+        // const subHeadings = []
+        // const tertiaryHeadings = []
+        // inputFields.map(x => headings.includes(x.heading) ? x : headings.push(x.heading))
+        // inputFields.map(x => subHeadings.includes(x.subheading) ? x : subHeadings.push(x.subheading))
+        // inputFields.map(x => tertiaryHeadings.includes(x.tertiary_heading) ? x : tertiaryHeadings.push(x.tertiary_heading))
         this.setState({
+          // headings: headings,
+          // subHeadings: subHeadings,
+          // tertiaryHeadings: tertiaryHeadings,
           inputFields: inputFields
         })
       }
@@ -167,6 +246,7 @@ class App extends Component {
     })
   }
 
+  // FLIPS THE BOUNDARY CONDITIONS CARD ON THE WPS CARD
   boundaryConditionsFlipFunc = () => {
     let flipStatus = this.state.boundaryConditionsFlipped ? false : true
     this.setState({
@@ -252,6 +332,7 @@ class App extends Component {
     })
   }
 
+  // RUNS THE MAIN JOB
   setMainJob = () => {
     this.state.runMainJob ?
     this.setState({
@@ -487,11 +568,23 @@ class App extends Component {
         timeControl: true,
         physics: false,
         domains: false,
+        domainsGeneral: false,
+        domainsBasicTimeStep: false,
+        domainsHorVertInterpolation: false,
+        domainsThreeDOcean: false,
         timeControlGeneral: false,
         timeControlHistoryFiles: false,
         timeControlHistoryIntervals: false,
         timeControlHistoryTime: false,
-        domainsGeneral: false
+        physicsLightning: false,
+        physicsCumulus: false,
+        physicsBoundaryLayer: false,
+        physicsLandOcean: false,
+        physicsGeneral: false,
+        physicsMicrophysics: false,
+        physicsRadiation: false,
+        stoch: false,
+        noahMp: false
       })
     }
   }
@@ -560,13 +653,26 @@ class App extends Component {
   domains = () => {
     if(this.state.domains) {
       this.setState({
-        domains: false
+        domains: false,
+        domainsGeneral: false,
+        domainsBasicTimeStep: false,
+        domainsHorVertInterpolation: false,
+        domainsThreeDOcean: false
       })
     } else {
       this.setState({
         physics: false,
         domains: true,
-        timeControl: false
+        timeControl: false,
+        physicsLightning: false,
+        physicsCumulus: false,
+        physicsBoundaryLayer: false,
+        physicsLandOcean: false,
+        physicsGeneral: false,
+        physicsMicrophysics: false,
+        physicsRadiation: false,
+        stoch: false,
+        noahMp: false
       })
     }
   }
@@ -580,186 +686,335 @@ class App extends Component {
     } else {
       this.setState({
         domainsGeneral: true,
+        domainsBasicTimeStep: false,
+        domainsAdaptiveTimeStep: false,
+        domainsHorVertInterpolation: false,
+        domainsThreeDOcean: false
       })
     }
   }
 
+  // WRF DOMAINS BASIC TIME STEP SELECTED
+  domainsBasicTimeStep = () => {
+    if(this.state.domainsBasicTimeStep) {
+      this.setState({
+        domainsBasicTimeStep: false
+      })
+    } else {
+      this.setState({
+        domainsBasicTimeStep: true,
+        domainsGeneral: false,
+        domainsAdaptiveTimeStep: false,
+        domainsHorVertInterpolation: false,
+        domainsThreeDOcean: false
+      })
+    }
+  }
+
+  // WRF DOMAINS ADAPTIVE TIME STEP SELECTED
+  domainsAdaptiveTimeStep = () => {
+    if(this.state.domainsAdaptiveTimeStep) {
+      this.setState({
+        domainsAdaptiveTimeStep: false
+      })
+    } else {
+      this.setState({
+        domainsAdaptiveTimeStep: true,
+        domainsGeneral: false,
+        domainsBasicTimeStep: false,
+        domainsHorVertInterpolation: false,
+        domainsThreeDOcean: false
+      })
+    }
+  }
+
+  // WRF DOMAINS HORIZONTAL AND VERTICAL INTERPOLATION SELECTED
+  domainsHorVertInterpolation = () => {
+    if(this.state.domainsHorVertInterpolation) {
+      this.setState({
+        domainsHorVertInterpolation: false
+      })
+    } else {
+      this.setState({
+        domainsHorVertInterpolation: true,
+        domainsAdaptiveTimeStep: false,
+        domainsGeneral: false,
+        domainsBasicTimeStep: false,
+        domainsThreeDOcean: false
+      })
+    }
+  }
+
+  // WRF DOMAINS 3D OCEAN MODEL SELECTED
+  domainsThreeDOcean = () => {
+    if(this.state.domainsThreeDOcean) {
+      this.setState({
+        domainsThreeDOcean: false
+      })
+    } else {
+      this.setState({
+        domainsThreeDOcean: true,
+        domainsHorVertInterpolation: false,
+        domainsAdaptiveTimeStep: false,
+        domainsGeneral: false,
+        domainsBasicTimeStep: false
+      })
+    }
+  }
 
   // WRF PHYSICS SELECTED
   physics = () => {
     if(this.state.physics) {
       this.setState({
-        physics: false
+        physics: false,
+        physicsGeneral: false,
+        physicsMicrophysics: false,
+        physicsRadiation: false,
+        physicsLandOcean: false,
+        physicsBoundaryLayer: false,
+        physicsCumulus: false,
+        physicsLightning: false
       })
     } else {
       this.setState({
         physics: true,
         domains: false,
         timeControl: false,
-        domainsGeneral: false
+        domainsGeneral: false,
+        domainsBasicTimeStep: false,
+        domainsHorVertInterpolation: false,
+        domainsThreeDOcean: false,
+        stoch: false,
+        noahMp: false
       })
     }
   }
 
+  // WRF PHYSICS GENERAL SELECTED
+  general = () => {
+    if(this.state.physicsGeneral) {
+      this.setState({
+        physicsGeneral: false
+      })
+    } else {
+      this.setState({
+        physicsGeneral: true,
+        physicsMicrophysics: false,
+        physicsRadiation: false,
+        physicsLandOcean: false,
+        physicsBoundaryLayer: false,
+        physicsCumulus: false,
+        physicsLightning: false
+      })
+    }
+  }
 
-  // OPEN AND CLOSE THE PHYSICS MODAL
-  // physicsModal = () => {
-  //   if(this.state.showPhysicsModal) {
-  //     this.setState({
-  //       showPhysicsModal: false
-  //     })
-  //   } else {
-  //     this.setState({
-  //       showPhysicsModal: true
-  //     })
-  //   }
-  // }
+  // WRF PHYSICS MICROPHYSICS SELECTED
+  physicsMicrophysics = () => {
+    if(this.state.physicsMicrophysics) {
+      this.setState({
+        physicsMicrophysics: false
+      })
+    } else {
+      this.setState({
+        physicsMicrophysics: true,
+        physicsGeneral: false,
+        physicsRadiation: false,
+        physicsLandOcean: false,
+        physicsBoundaryLayer: false,
+        physicsCumulus: false,
+        physicsLightning: false
+      })
+    }
+  }
 
-  // OPEN THE PHYSICS GENERAL OPTIONS
-  // general = () => {
-  //   if(this.state.physicsGeneral) {
-  //     this.setState({
-  //       physicsGeneral: false
-  //     })
-  //   } else {
-  //     this.setState({
-  //       physicsGeneral: true,
-  //       physicsMicrophysics: false,
-  //       physicsRadiation: false,
-  //       physicsLandOcean: false,
-  //       physicsBoundaryLayer: false,
-  //       physicsCumulus: false,
-  //       physicsLightning: false
-  //     })
-  //   }
-  // }
+  // WRF PHYSICS RADIATION SELECTED
+  physicsRadiation = () => {
+    if(this.state.physicsRadiation) {
+      this.setState({
+        physicsRadiation: false
+      })
+    } else {
+      this.setState({
+        physicsRadiation: true,
+        physicsGeneral: false,
+        physicsMicrophysics: false,
+        physicsLandOcean: false,
+        physicsBoundaryLayer: false,
+        physicsCumulus: false,
+        physicsLightning: false
+      })
+    }
+  }
 
-  // OPEN THE PHYSICS MICROPHYSICS OPTIONS
-  // physicsMicrophysics = () => {
-  //   if(this.state.physicsMicrophysics) {
-  //     this.setState({
-  //       physicsMicrophysics: false
-  //     })
-  //   } else {
-  //     this.setState({
-  //       physicsMicrophysics: true,
-  //       physicsGeneral: false,
-  //       physicsRadiation: false,
-  //       physicsLandOcean: false,
-  //       physicsBoundaryLayer: false,
-  //       physicsCumulus: false,
-  //       physicsLightning: false
-  //     })
-  //   }
-  // }
+  // WRF PHYSICS LAND/OCEAN SELECTED
+  physicsLandOcean = () => {
+    if(this.state.physicsLandOcean) {
+      this.setState({
+        physicsLandOcean: false
+      })
+    } else {
+      this.setState({
+        physicsLandOcean: true,
+        physicsGeneral: false,
+        physicsMicrophysics: false,
+        physicsRadiation: false,
+        physicsBoundaryLayer: false,
+        physicsCumulus: false,
+        physicsLightning: false
+      })
+    }
+  }
 
-  // OPEN THE PHYSICS RADIATION OPTIONS
-  // physicsRadiation = () => {
-  //   if(this.state.physicsRadiation) {
-  //     this.setState({
-  //       physicsRadiation: false
-  //     })
-  //   } else {
-  //     this.setState({
-  //       physicsRadiation: true,
-  //       physicsGeneral: false,
-  //       physicsMicrophysics: false,
-  //       physicsLandOcean: false,
-  //       physicsBoundaryLayer: false,
-  //       physicsCumulus: false,
-  //       physicsLightning: false
-  //     })
-  //   }
-  // }
+  // WRF PHYSICS BOUNDARY LAYER SELECTED
+  physicsBoundaryLayer = () => {
+    if(this.state.physicsBoundaryLayer) {
+      this.setState({
+        physicsBoundaryLayer: false
+      })
+    } else {
+      this.setState({
+        physicsBoundaryLayer: true,
+        physicsLandOcean: false,
+        physicsGeneral: false,
+        physicsMicrophysics: false,
+        physicsRadiation: false,
+        physicsCumulus: false,
+        physicsLightning: false
+      })
+    }
+  }
 
-  // OPEN THE PHYSICS LAND/OCEAN OPTIONS
-  // physicsLandOcean = () => {
-  //   if(this.state.physicsLandOcean) {
-  //     this.setState({
-  //       physicsLandOcean: false
-  //     })
-  //   } else {
-  //     this.setState({
-  //       physicsLandOcean: true,
-  //       physicsGeneral: false,
-  //       physicsMicrophysics: false,
-  //       physicsRadiation: false,
-  //       physicsBoundaryLayer: false,
-  //       physicsCumulus: false,
-  //       physicsLightning: false
-  //     })
-  //   }
-  // }
+  // WRF PHYSICS CUMULUS SELECTED
+  physicsCumulus = () => {
+    if(this.state.physicsCumulus) {
+      this.setState({
+        physicsCumulus: false
+      })
+    } else {
+      this.setState({
+        physicsCumulus: true,
+        physicsBoundaryLayer: false,
+        physicsLandOcean: false,
+        physicsGeneral: false,
+        physicsMicrophysics: false,
+        physicsRadiation: false,
+        physicsLightning: false
+      })
+    }
+  }
 
-  // OPEN THE PHYSICS BOUNDARY LAYER OPTIONS
-  // physicsBoundaryLayer = () => {
-  //   if(this.state.physicsBoundaryLayer) {
-  //     this.setState({
-  //       physicsBoundaryLayer: false
-  //     })
-  //   } else {
-  //     this.setState({
-  //       physicsBoundaryLayer: true,
-  //       physicsLandOcean: false,
-  //       physicsGeneral: false,
-  //       physicsMicrophysics: false,
-  //       physicsRadiation: false,
-  //       physicsCumulus: false,
-  //       physicsLightning: false
-  //     })
-  //   }
-  // }
+  // WRF PHYSICS LIGHTNING SELECTED
+  physicsLightning = () => {
+    if(this.state.physicsLightning) {
+      this.setState({
+        physicsLightning: false
+      })
+    } else {
+      this.setState({
+        physicsLightning: true,
+        physicsCumulus: false,
+        physicsBoundaryLayer: false,
+        physicsLandOcean: false,
+        physicsGeneral: false,
+        physicsMicrophysics: false,
+        physicsRadiation: false,
+      })
+    }
+  }
 
-  // OPEN THE PHYSICS CUMULUS OPTIONS
-  // physicsCumulus = () => {
-  //   if(this.state.physicsCumulus) {
-  //     this.setState({
-  //       physicsCumulus: false
-  //     })
-  //   } else {
-  //     this.setState({
-  //       physicsCumulus: true,
-  //       physicsBoundaryLayer: false,
-  //       physicsLandOcean: false,
-  //       physicsGeneral: false,
-  //       physicsMicrophysics: false,
-  //       physicsRadiation: false,
-  //       physicsLightning: false
-  //     })
-  //   }
-  // }
+  // WRF STOCH SELECT
+  stoch = () => {
+    if(this.state.stoch) {
+      this.setState({
+        stoch: false
+      })
+    } else {
+      this.setState({
+        stoch: true,
+        timeControl: false,
+        domains: false,
+        physics: false,
+        noahMp: false
+      })
+    }
+  }
 
-  // OPEN THE PHYSICS LIGHTNING OPTIONS
-  // physicsLightning = () => {
-  //   if(this.state.physicsLightning) {
-  //     this.setState({
-  //       physicsLightning: false
-  //     })
-  //   } else {
-  //     this.setState({
-  //       physicsLightning: true,
-  //       physicsCumulus: false,
-  //       physicsBoundaryLayer: false,
-  //       physicsLandOcean: false,
-  //       physicsGeneral: false,
-  //       physicsMicrophysics: false,
-  //       physicsRadiation: false,
-  //     })
-  //   }
-  // }
+  // WRF STOCH GENERAL SELECT
+  stochGeneral = () => {
+    if(this.state.stochGeneral) {
+      this.setState({
+        stochGeneral: false
+      })
+    } else {
+      this.setState({
+        stochGeneral: true,
+        stochSppt: false
+      })
+    }
+  }
 
-  // ralwPhysics = (value) => {
-  //   this.setState({
-  //     ralwPhysics: value
-  //   })
-  // }
+  // WRF STOCH SPPT SELECT
+  stochSppt = () => {
+    if(this.state.stochSppt) {
+      this.setState({
+        stochSppt: false
+      })
+    } else {
+      this.setState({
+        stochSppt: true,
+        stochGeneral: false
+      })
+    }
+  }
 
-  // raswPhysics = (value) => {
-  //   this.setState({
-  //     raswPhysics: value
-  //   })
-  // }
+  // WRF STOCH SKEBS SELECT
+  stochSkebs = () => {
+    if(this.state.stochSkebs) {
+      this.setState({
+        stochSkebs: false
+      })
+    } else {
+      this.setState({
+        stochSkebs: true,
+        stochSppt: false,
+        stochGeneral: false
+      })
+    }
+  }
 
+  // WRF STOCH SPP SELECT
+  stochSpp = () => {
+    if(this.state.stochSpp) {
+      this.setState({
+        stochSpp: false
+      })
+    } else {
+      this.setState({
+        stochSpp: true,
+        stochGeneral: false,
+        stochSppt: false,
+        stochSkebs: false
+      })
+    }
+  }
+
+  // WRF NOAH_MP SELECT
+  noahMp = () => {
+    if(this.state.noahMp) {
+      this.setState({
+        noahMp: false
+      })
+    } else {
+      this.setState({
+        noahMp: true,
+        stoch: false,
+        timeControl: false,
+        domains: false,
+        physics: false,
+      })
+    }
+  }
 
   render() {
     return (
@@ -775,11 +1030,11 @@ class App extends Component {
               setCurrentUser={this.setCurrentUser}/>
             </div>)}
           />
-          <Route exact path={`/${this.state.currentUser}`}
+          {/* DEV SETUP */}
+          {/* <Route exact path='/'
             render={()=> (
-            this.state.currentJobName &&
-            this.state.currentUser ? (
-              <Redirect to={`/${this.state.currentUser}/${this.state.currentJobName}`}/>
+            this.state.currentJob ? (
+              <Redirect to={`/${this.state.currentJob.name}`}/>
             ) : (
             <div>
               <Header />
@@ -789,19 +1044,45 @@ class App extends Component {
                 jobs={this.state.jobs}
                 jobType={this.state.jobType}
                 newJobName={this.newJobName}
+                existingJobName={this.existingJobName}
                 jobTypeNewExisting={this.newExisting}
                 backButton={this.backButton}
                 getInputFields={this.getInputFields}
                 getDefaultValues={this.getDefaultValues}
               />
             </div>))}
+            /> */}
+          <Route exact path={`/${this.state.currentUser}`}
+            render={()=> (
+            this.state.currentJob &&
+            this.state.currentUser ? (
+              <Redirect to={`/${this.state.currentUser}/${this.state.currentJob.name}`}/>
+            ) : (
+            <div>
+              <Header />
+              <JobType jobType={this.state.jobType}
+                jobTypeSelect={this.jobTypeSelect}/>
+              <JobTypeNewExisting
+                jobs={this.state.jobs}
+                jobType={this.state.jobType}
+                newJobName={this.newJobName}
+                existingJobName={this.newJobName}
+                jobTypeNewExisting={this.existingJobName}
+                backButton={this.backButton}
+                getInputFields={this.getInputFields}
+                getDefaultValues={this.getDefaultValues}
+              />
+            </div>))}
             />
+            {/* DEV SETUP */}
           <Route
-            // path='/'
-            path={`/${this.state.currentUser}/${this.state.currentJobName}`}
+            // exact path={`/${this.state.currentJob ? this.state.currentJob.name : null}`}
+            path={`/${this.state.currentJob ? this.state.currentUser+'/'+this.state.currentJob.name : null}`}
             render={()=> (
             <div>
               <Dashboard
+                getInputFields={this.getInputFields}
+                getDefaultValues={this.getDefaultValues}
                 inputFields={this.state.inputFields}
                 defaultValues={this.state.defaultValues}
                 nwpFlipped={this.state.nwpFlipped}
@@ -814,7 +1095,7 @@ class App extends Component {
                 boundaryConditionsFlipped={this.state.boundaryConditionsFlipped}
                 wrfFlipFunc={this.wrfFlipFunc}
                 daFlipFunc={this.daFlipFunc}
-                currentJobName={this.state.currentJobName}
+                currentJob={this.state.currentJob}
                 showNwp={this.state.showNwp}
                 showWps={this.state.showWps}
                 showWrf={this.state.showWrf}
@@ -874,26 +1155,6 @@ class App extends Component {
                 wrfda={this.state.wrfda}
                 gsi={this.state.gsi}
                 mapColors={this.state.mapColors}
-                // physicsModal={this.physicsModal}
-                // showPhysicsModal={this.state.showPhysicsModal}
-                // physicsGeneral={this.general}
-                // physicsGeneralSelect={this.state.physicsGeneral}
-                // physicsMicrophysics={this.physicsMicrophysics}
-                // physicsMicrophysicsSelect={this.state.physicsMicrophysics}
-                // physicsRadiation={this.physicsRadiation}
-                // physicsRadiationSelect={this.state.physicsRadiation}
-                // physicsLandOcean={this.physicsLandOcean}
-                // physicsLandOceanSelect={this.state.physicsLandOcean}
-                // physicsBoundaryLayer={this.physicsBoundaryLayer}
-                // physicsBoundaryLayerSelect={this.state.physicsBoundaryLayer}
-                // physicsCumulus={this.physicsCumulus}
-                // physicsCumulusSelect={this.state.physicsCumulus}
-                // physicsLightning={this.physicsLightning}
-                // physicsLightningSelect={this.state.physicsLightning}
-                // ralwPhysics={this.ralwPhysics}
-                // ralwPhysicsSelect={this.state.ralwPhysics}
-                // raswPhysics={this.raswPhysics}
-                // raswPhysicsSelect={this.state.raswPhysics}
                 wrfModal={this.wrfShowClick}
                 timeControl={this.timeControl}
                 timeControlSelect={this.state.timeControl}
@@ -909,16 +1170,51 @@ class App extends Component {
                 domainsSelect={this.state.domains}
                 domainsGeneral={this.domainsGeneral}
                 domainsGeneralSelect={this.state.domainsGeneral}
+                domainsBasicTimeStep={this.domainsBasicTimeStep}
+                domainsBasicTimeStepSelect={this.state.domainsBasicTimeStep}
+                domainsAdaptiveTimeStep={this.domainsAdaptiveTimeStep}
+                domainsAdaptiveTimeStepSelect={this.state.domainsAdaptiveTimeStep}
+                domainsHorVertInterpolation={this.domainsHorVertInterpolation}
+                domainsHorVertInterpolationSelect={this.state.domainsHorVertInterpolation}
+                domainsThreeDOcean={this.domainsThreeDOcean}
+                domainsThreeDOceanSelect={this.state.domainsThreeDOcean}
                 physics={this.physics}
                 physicsSelect={this.state.physics}
+                physicsGeneral={this.general}
+                physicsGeneralSelect={this.state.physicsGeneral}
+                physicsMicrophysics={this.physicsMicrophysics}
+                physicsMicrophysicsSelect={this.state.physicsMicrophysics}
+                physicsRadiation={this.physicsRadiation}
+                physicsRadiationSelect={this.state.physicsRadiation}
+                physicsLandOcean={this.physicsLandOcean}
+                physicsLandOceanSelect={this.state.physicsLandOcean}
+                physicsBoundaryLayer={this.physicsBoundaryLayer}
+                physicsBoundaryLayerSelect={this.state.physicsBoundaryLayer}
+                physicsCumulus={this.physicsCumulus}
+                physicsCumulusSelect={this.state.physicsCumulus}
+                physicsLightning={this.physicsLightning}
+                physicsLightningSelect={this.state.physicsLightning}
+                // ralwPhysics={this.ralwPhysics}
+                // ralwPhysicsSelect={this.state.ralwPhysics}
+                // raswPhysics={this.raswPhysics}
+                // raswPhysicsSelect={this.state.raswPhysics}
+                stoch={this.stoch}
+                stochSelect={this.state.stoch}
+                stochGeneral={this.stochGeneral}
+                stochGeneralSelect={this.state.stochGeneral}
+                stochSppt={this.stochSppt}
+                stochSpptSelect={this.state.stochSppt}
+                stochSkebs={this.stochSkebs}
+                stochSkebsSelect={this.state.stochSkebs}
+                stochSpp={this.stochSpp}
+                stochSppSelect={this.state.stochSpp}
+                noahMp={this.noahMp}
+                noahMpSelect={this.state.noahMp}
               />
             </div>
           )}
           />
-
-          {this.state.inputFields ? console.log(this.state.inputFields[45].heading): null}
         </div>
-
       </BrowserRouter>
     )
   }

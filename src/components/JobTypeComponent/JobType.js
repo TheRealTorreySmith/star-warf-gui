@@ -14,7 +14,7 @@ class JobType extends Component {
           <div className="col s2 m2 l2">
           </div>
           <div className="col s8 m8 l8 card job-type-container center-align">
-            <h5 className="jobtype-title">JOB TYPE:</h5>
+            <h5 className="jobtype-title">Job Type:</h5>
             <div className="cyclingnwp-btn">
               <Button onClick={this.jobTypeClick} name='cycling-nwp' className='cycling-nwp-button' waves='light'>Cycling NWP</Button>
             </div>

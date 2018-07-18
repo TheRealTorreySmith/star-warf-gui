@@ -444,14 +444,18 @@ class CarouselContainer extends Component {
                   </div>
                   <div className="col s10 m10 l10 da-container-front">
                     <div className={`wrfda-container ${this.props.wrfda ? 'wrfda-gsi-container-selected': ''}`} onClick={this.wrfdaSelect}>
-                      <img className="wrfda-image" src={globeImage} alt="WRF logo"></img>
-                      <div className="wrfda-text">WRFDA</div>
+                      <div className="da-image-container">
+                        <img className="wrfda-image" src={globeImage} alt="WRF logo"></img>
+                        <div className="wrfda-text">WRFDA</div>
+                      </div>
                       <div className="NCAR-title">National Centers for Atmospheric Research</div>
                     </div>
                     <div className={`gsi-container ${this.props.gsi ? 'wrfda-gsi-container-selected': ''}`} onClick={this.gsiSelect}>
                       <div className="row">
-                        <img className="ncep-image" src={globeImage} alt="National Centers for Environmental Prediction logo"></img>
-                        <div className="ncep-text">NCEP</div>
+                        <div className="da-image-container">
+                          <img className="ncep-image" src={globeImage} alt="National Centers for Environmental Prediction logo"></img>
+                          <div className="ncep-text">NCEP</div>
+                        </div>
                         <div className="NCEP-title">National Centers for Environmental Prediction</div>
                       </div>
                     </div>
