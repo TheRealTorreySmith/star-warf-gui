@@ -64,7 +64,7 @@
 .wrf-btn:hover,
 .wrf-sub-btn:hover,
 .wrf-tert-btn:hover {
-  background: rgb(30,30,30,0.1) !important;
+  background: rgb(30,30,30,0.1);
 }
 
 .wrf-btn-selected {

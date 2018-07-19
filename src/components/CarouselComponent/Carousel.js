@@ -108,6 +108,10 @@ class CarouselContainer extends Component {
     this.props.fourDvarSelect()
   }
 
+  coldStartWrfSelect = () => {
+    this.props.coldStartWrfSelect()
+  }
+
   hourFrequencyOnChange = (e) => {
     let value = e.currentTarget.value
     this.props.hourFrequencyOnChange(value)
@@ -219,10 +223,15 @@ class CarouselContainer extends Component {
                               ? 'three-densvar-btn-selected'
                               : 'three-densvar-btn'}`} onClick={this.threeDensvarSelect}>3DEnsVar</Button>
                         </Row>
-                        <Row>
+                        <Row  className="row four-densvar-btn-container">
                           <Button className={`${this.props.fourDensvar
                               ? 'four-densvar-btn-selected'
                               : 'four-densvar-btn'}`} onClick={this.props.fourDensvarSelect}>4DEnsVar</Button>
+                        </Row>
+                        <Row>
+                          <Button className={`${this.props.coldStartWrf
+                              ? 'cold-start-wrf-btn-selected'
+                              : 'cold-start-wrf-btn'}`} onClick={this.props.coldStartWrfSelect}>Cold-Start Wrf</Button>
                         </Row>
                       </div>
                       <div className="col s6 m6 l6">

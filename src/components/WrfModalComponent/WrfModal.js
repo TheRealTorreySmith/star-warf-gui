@@ -135,36 +135,36 @@ class Wrf extends Component {
   makeHeadings = () => {
 
     // MAIN HEADING
-    const filteredHeads = this.props.inputFields.map(x =>
+    const filteredHeads = this.props.allHeadings.map(x =>
       !x.tertiary_heading || x.tertiary_heading ? {heading: x.heading} : x
     ).filter(x =>
       x.heading
     )
     const head = [...new Set(filteredHeads.map(x => JSON.stringify(x)))].map(y => JSON.parse(y))
     let noSubHeadNoDupsArray = []
-    const noSubHead = this.props.inputFields.filter(x => x.heading && x.subheading === '')
+    const noSubHead = this.props.allHeadings.filter(x => x.heading && x.subheading === '')
     const noSubHeadNoDups = [...new Set(noSubHead.map(x => JSON.stringify(x)))].map(y => JSON.parse(y))
     noSubHeadNoDups.map(z => noSubHeadNoDupsArray.push(z.heading))
 
     // SECONDARY
-    const filteredInputs = this.props.inputFields.map(x =>
+    const filteredInputs = this.props.allHeadings.map(x =>
       !x.tertiary_heading || x.tertiary_heading ? {heading: x.heading, subheading: x.subheading} : x
     ).map(x =>
       !x.subheading ? {heading: x.heading} : x
     ).filter(x =>
       x.heading
     )
-    const haveTert = this.props.inputFields.filter(x => x.heading && x.subheading && x.tertiary_heading)
+    const haveTert = this.props.allHeadings.filter(x => x.heading && x.subheading && x.tertiary_heading)
     let haveTertArray = []
     haveTert.map(x => !haveTertArray.includes(x.subheading) ? haveTertArray.push(x.subheading) : null )
     const headSubHead = [...new Set(filteredInputs.map(x => JSON.stringify(x)))].map(y => JSON.parse(y))
     let noTertHeadNoDupsArray = []
-    const noTertHead = this.props.inputFields.filter(x => x.heading && x.subheading && x.tertiary_heading === '')
+    const noTertHead = this.props.allHeadings.filter(x => x.heading && x.subheading && x.tertiary_heading === '')
     const noTertHeadNoDups = [...new Set(noTertHead.map(x => JSON.stringify(x)))].map(y => JSON.parse(y))
     noTertHeadNoDups.map(z => noTertHeadNoDupsArray.push(z.subheading))
 
     // TERTIARY
-    const filteredTertiary = this.props.inputFields.map(x =>
+    const filteredTertiary = this.props.allHeadings.map(x =>
       !x.tertiary_heading ? {heading: x.heading, subheading: x.subheading} : x
     ).map(x =>
       !x.subheading ? {heading: x.heading} : x
@@ -176,11 +176,11 @@ class Wrf extends Component {
 
        return head.map(x =>
         <div key={head.indexOf(x)}>
-          <div key={head.indexOf(x)} id={head.indexOf(x)} className={`wrf-btn ${this.props.wrfBtnSelect ? 'wrf-btn-selected': ''}`} onClick={this.wrfBtnClick}>
-            {this.props.wrfBtnSelect && !noSubHeadNoDupsArray.includes(x.heading) ?
+          <div key={head.indexOf(x)} id={head.indexOf(x)} className={`wrf-btn ${this.props.headers[head.indexOf(x)][x.heading] && !noSubHeadNoDupsArray.includes(x.heading) ? 'wrf-btn-selected': ''}`} onClick={this.wrfBtnClick}>
+            {this.props.headers[head.indexOf(x)][x.heading] && !noSubHeadNoDupsArray.includes(x.heading) ?
               <i className="material-icons file-arrow">keyboard_arrow_down</i>
               : null}
-              {!this.props.wrfBtnSelect && !noSubHeadNoDupsArray.includes(x.heading) ?
+              {!this.props.headers[head.indexOf(x)][x.heading] && !noSubHeadNoDupsArray.includes(x.heading) ?
                 <i className="material-icons file-arrow">keyboard_arrow_right</i>
                 : null}
               {x.heading}
@@ -189,15 +189,19 @@ class Wrf extends Component {
             {headSubHead.map((y) => y.heading === x.heading &&
               headSubHead[headSubHead.indexOf(y)].subheading !== undefined  ?
               <div key={headSubHead.indexOf(y)}>
-                <div key={headSubHead.indexOf(y)} id={headSubHead.indexOf(y)} className={`wrf-sub-btn ${this.props.wrfBtnSelect ? 'wrf-btn-selected': ''}`} onClick={this.wrfSubBtnClick}>
-                  {!this.props.wrfBtnSelect && haveTertArray.includes(y.subheading) ?
+                <div key={headSubHead.indexOf(y)} id={headSubHead.indexOf(y)} className={`wrf-sub-btn ${this.props.subHeaders[headSubHead.filter(x => x.subheading).indexOf(y)][y.subheading] ? 'wrf-btn-selected': ''} ${this.props.headers[head.indexOf(x)][y.heading] ? '': 'hide'}`} onClick={this.wrfSubBtnClick}>
+                  {this.props.subHeaders[headSubHead.filter(x => x.subheading).indexOf(y)][y.subheading] === true && haveTertArray.includes(y.subheading) ?
+                    <i className="material-icons file-arrow">keyboard_arrow_down</i>
+                    : null}
+                  {!this.props.subHeaders[headSubHead.filter(x => x.subheading).indexOf(y)][y.subheading] && haveTertArray.includes(y.subheading) ?
                     <i className="material-icons file-arrow">keyboard_arrow_right</i>
                     : null}
                   {y.subheading}
                 </div>
                 <div>
                   {hasTert.map((z) => z.subheading === y.subheading ?
-                    <div key={hasTert.indexOf(z)} id={hasTert.indexOf(z)} className={`wrf-tert-btn ${this.props.wrfBtnSelect ? 'wrf-btn-selected': ''}`} onClick={this.wrfTertBtnClick}>
+                    <div key={hasTert.indexOf(z)} id={hasTert.indexOf(z)} className={`wrf-tert-btn ${this.props.subHeaders[headSubHead.indexOf(y)][z.subheading] === true ? '': 'hide'}`} onClick={this.wrfTertBtnClick}>
+                      {console.log(hasTert)}
                       {z.tertiary_heading}
                     </div>
                     : null
@@ -210,6 +214,18 @@ class Wrf extends Component {
         </div>
       )
   }
+
+  // headerInputFields = () => {
+  //   // console.log(this.props.inputFields)
+  //   return this.props.inputFields.map(x =>
+  //     // this.props.subHeaders[x.subheading] ?
+  //       <div>
+  //         {/* {console.log(x)} */}
+  //         {x.name}
+  //       </div>
+  //     // : null)
+  //   )
+  // }
 
 
 
@@ -389,6 +405,7 @@ class Wrf extends Component {
 
                 </div>
                 <div className="col s8 m8 l8">
+                  {/* {this.headerInputFields()} */}
                 </div>
               </div>
             </div>

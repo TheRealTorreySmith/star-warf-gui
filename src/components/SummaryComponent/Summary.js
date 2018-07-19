@@ -61,18 +61,19 @@ class Summary extends Component {
 
   render() {
     return (
-      <div>
+      <div className="summary-div">
         {/* SUMMARY CONTAINER */}
         <Card className="main-summary-container">
         <div className="row summary-container">
-          <div className='col s11 m11 l11'>
+          <div className='col s11 m11 l11 summary-inner-container'>
             {/* NWP CARD */}
             <Card id="nwp-box" className={`col s2 m2 l2 ${this.props.showNwp ? 'summary-component-highlight' : 'summary-component'}`} onClick={this.nwpShowClick}>
-              <Row className={`${this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar ? 'wps-text-white' : 'wps-text-black'}`}>NWP
-                <Icon className={`wps-job-icon ${this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar ? 'icon-white' : ''}`}>
+              <Row className={`${this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar || this.props.coldStartWrf ? 'wps-text-white' : 'wps-text-black'}`}>NWP
+                <Icon className={`wps-job-icon ${this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar || this.props.coldStartWrf ? 'icon-white' : ''}`}>
                 {this.props.threeDvar ||
                   this.props.threeDensvar ||
-                  this.props.fourDensvar ?
+                  this.props.fourDensvar ||
+                  this.props.coldStartWrf ?
                   'done': ''}
                 </Icon>
               </Row>
@@ -180,8 +181,8 @@ class Summary extends Component {
             </div>}
             <Card className={`col s2 m2 l2 ${this.props.showWrf ? 'summary-component-highlight' : 'summary-component'}`} onClick={this.wrfShowClick}>
               <Row className={`wps-text-black`}>WRF
-                <Icon className={`wps-job-icon ${this.props.gsi || this.props.wrfda ? 'icon-white' : ''}`}>
-                {this.props.gsi || this.props.wrfda ? 'done' : ''}</Icon>
+                <Icon className={`wps-job-icon ${this.props.wrfSaved ? 'icon-white' : ''}`}>
+                {this.props.wrfSaved ? 'done' : ''}</Icon>
               </Row>
             </Card>
             {this.props.threeDvar ?

@@ -3,13 +3,13 @@ import CarouselContainer from '../CarouselComponent/Carousel.js'
 import Summary from '../SummaryComponent/Summary.js'
 import NavBar from '../NavBarComponent/NavBar'
 import MapModal from '../MapModalComponent/MapModal.js'
-// import Physics from '../PhysicsComponent/Physics.js'
 import WrfModal from '../WrfModalComponent/WrfModal.js'
 import './Dashboard.css'
 
 class Dashboard extends Component {
 
   componentWillMount = () => {
+    this.props.getAllHeadings()
     this.props.getInputFields()
     this.props.getDefaultValues()
   }
@@ -58,9 +58,11 @@ class Dashboard extends Component {
           threeDvar={this.props.threeDvar}
           threeDensvar={this.props.threeDensvar}
           fourDensvar={this.props.fourDensvar}
+          coldStartWrf={this.props.coldStartWrf}
           threeDvarSelect={this.props.threeDvarSelect}
           threeDensvarSelect={this.props.threeDensvarSelect}
           fourDensvarSelect={this.props.fourDensvarSelect}
+          coldStartWrfSelect={this.props.coldStartWrfSelect}
           hourFrequencyOnChange={this.props.hourFrequencyOnChange}
           hourFrequency={this.props.hourFrequency}
           yearFrequencyOnChange={this.props.yearFrequencyOnChange}
@@ -111,6 +113,7 @@ class Dashboard extends Component {
           threeDvar={this.props.threeDvar}
           threeDensvar={this.props.threeDensvar}
           fourDensvar={this.props.fourDensvar}
+          coldStartWrf={this.props.coldStartWrf}
           hourFrequency={this.props.hourFrequency}
           date={this.props.date}
           selectionStart={this.props.selectionStart}
@@ -139,8 +142,13 @@ class Dashboard extends Component {
         {this.props.showWrf ?
           <WrfModal
             wrfModal={this.props.wrfModal}
+            allHeadings={this.props.allHeadings}
             inputFields={this.props.inputFields}
             defaultValues={this.props.defaultValues}
+            wrfBtnClick={this.props.wrfBtnClick}
+            headers={this.props.headers}
+            wrfSubBtnClick={this.props.wrfSubBtnClick}
+            subHeaders={this.props.subHeaders}
             // timeControl={this.props.timeControl}
             // timeControlSelect={this.props.timeControlSelect}
             // timeControlGeneral={this.props.timeControlGeneral}

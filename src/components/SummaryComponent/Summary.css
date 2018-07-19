@@ -4,11 +4,24 @@ html {
   line-height: 1.2;
 }
 
+.summary-div {
+  padding: 0px 20px;
+}
+
 .summary-container {
   background-color: white;
   display: flex;
   height: 100px;
   margin-bottom: 8px;
+}
+
+.main-summary-container {
+  margin: 0px !important;
+}
+
+.summary-inner-container {
+  margin: 0px !important;
+  padding-left: 45px !important;
 }
 
 .summary-title {
