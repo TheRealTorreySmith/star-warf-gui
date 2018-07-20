@@ -372,7 +372,7 @@ p.cycle-container {
 .bottom-right-corner-cycle-arrow {
   float: right;
   margin: 10px 0 0 0;
-  padding: 6px 0 0 0;
+  padding: 6px 24px 0 0;
   color: lightgray;
 }
 
@@ -384,7 +384,7 @@ p.cycle-container {
 .bottom-left-corner-cycle-arrow {
   float: left;
   transform: rotate(90deg);
-  margin: 26px 0 15px 20px;
+  margin: 26px 0 15px 16px;
   color: lightgray;
 }
 

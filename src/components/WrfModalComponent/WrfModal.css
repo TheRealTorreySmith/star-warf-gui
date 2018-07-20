@@ -46,6 +46,14 @@
   font-size: 15px;
 }
 
+.no-subhead {
+  padding-left: 20px !important;
+}
+
+.no-terthead {
+  padding-left: 30px !important;
+}
+
 .wrf-btn {
   cursor: pointer;
   padding-left: 5px;
@@ -53,12 +61,12 @@
 
 .wrf-sub-btn {
   cursor: pointer;
-  padding-left: 20px;
+  padding-left: 15px;
 }
 
 .wrf-tert-btn {
   cursor: pointer;
-  padding-left: 35px;
+  padding-left: 40px;
 }
 
 .wrf-btn:hover,
@@ -71,216 +79,109 @@
   background: rgb(0,128,255, 0.2) !important;
 }
 
-/* .time-control-btn,
-.time-control-general-btn,
-.time-control-history-files-btn,
-.time-control-history-files-intervals-btn,
-.time-control-history-files-time-btn,
-.domains-btn,
-.domains-general-btn,
-.domains-basic-time-step-btn,
-.domains-adaptive-time-step-btn,
-.domains-hor-vert-interpolation-btn,
-.domains-three-d-ocean-btn,
-.physics-btn,
-.physics-general-btn,
-.physics-microphysics-btn,
-.physics-radiation-btn,
-.physics-land-ocean-btn,
-.physics-boundary-layer-btn,
-.physics-cumulus-btn,
-.physics-lightning-btn,
-.stoch-btn,
-.stoch-general-btn,
-.stoch-sppt-btn,
-.stoch-skebs-btn,
-.stoch-spp-btn,
-.noah-mp-btn,
-.fdda-btn,
-.dynamics-btn,
-.bdy-control-btn,
-.namelist-quilt-btn,
-.dfi-control-btn {
-  background: white;
-  color: black;
-  border-radius: 1px;
-  box-shadow: none;
-  font-size: 12px;
-  padding: 5px 5px 5px 10px;
-  margin: 1px 0 0 5px;
-  height: auto;
-  max-height: 34px;
-  line-height: 12px;
-  text-transform: none;
-  text-align: left;
-  width: 140px;
-  -webkit-transition: none;
+.name-input-fields-container {
+  flex-wrap: wrap;
+  height: 360px;
+  overflow-y: auto;
+  padding-right: 20px !important;
 }
 
-.stoch-sppt-btn,
-.stoch-skebs-btn,
-.stoch-spp-btn {
-  max-height: 46px;
+.namelist-row {
+  margin: 0px;
+  width: 100%;
+  overflow: hidden;
 }
 
-.time-control-btn:hover,
-.time-control-general-btn:hover,
-.time-control-history-files-btn:hover,
-.time-control-history-files-intervals-btn:hover,
-.time-control-history-files-time-btn:hover,
-.domains-btn:hover,
-.domains-general-btn:hover,
-.domains-basic-time-step-btn:hover,
-.domains-adaptive-time-step-btn:hover,
-.domains-hor-vert-interpolation-btn:hover,
-.domains-three-d-ocean-btn:hover,
-.physics-btn:hover,
-.physics-general-btn:hover,
-.physics-microphysics-btn:hover,
-.physics-radiation-btn:hover,
-.physics-land-ocean-btn:hover,
-.physics-boundary-layer-btn:hover,
-.physics-cumulus-btn:hover,
-.physics-lightning-btn:hover,
-.stoch-btn:hover,
-.stoch-general-btn:hover,
-.stoch-sppt-btn:hover,
-.stoch-skebs-btn:hover,
-.stoch-spp-btn:hover,
-.noah-mp-btn:hover,
-.fdda-btn:hover,
-.dynamics-btn:hover,
-.bdy-control-btn:hover,
-.namelist-quilt-btn:hover,
-.dfi-control-btn:hover {
-  background: rgb(30,30,30,0.1) !important;
-  border-radius: 1px;
-  box-shadow: none;
+.namelist-row:hover {
+  background: rgb(30,30,30,0.1);
+  cursor: pointer;
 }
 
-.time-control-selected,
-.time-control-general-selected,
-.time-control-history-files-selected,
-.time-control-history-intervals-selected,
-.time-control-history-time-selected,
-.domains-selected,
-.domains-general-selected,
-.domains-basic-time-step-selected,
-.domains-adaptive-time-step-selected,
-.domains-hor-vert-interpolation-selected,
-.domains-three-d-ocean-selected,
-.physics-selected,
-.physics-general-selected,
-.physics-microphysics-selected,
-.physics-radiation-selected,
-.physics-land-ocean-selected,
-.physics-boundary-layer-selected,
-.physics-cumulus-selected,
-.physics-lightning-selected,
-.stoch-selected,
-.stoch-general-selected,
-.stoch-sppt-selected,
-.stoch-skebs-selected,
-.stoch-spp-selected,
-.noah-mp-selected,
-.fdda-selected,
-.dynamics-selected,
-.bdy-control-selected,
-.namelist-quilt-selected,
-.dfi-control-selected {
+.wrf-name-fields {
+  border: none;
+  float: left;
+  margin: 0 0 0 20px;
+  height: 34px;
+  padding: 8px 7px !important;
+  vertical-align: middle;
+}
+
+.wrf-input-fields {
+  width: auto;
+}
+
+.default-name-value {
+  padding: 8px 7px !important;
+}
+
+.wheel-tool {
+  height: 33px;
+  display: flex;
+  /* padding: 1px 0 !important; */
+  vertical-align: middle;
+}
+
+.squares {
+  padding-top: 34px;
+}
+
+.wheel-tool-options {
+  /* border: 1px solid black; */
+  padding: 8px 10px;
+  text-align: center;
+  width: 35px;
+  display: inline-block;
+  margin: 0;
+  border: 1px solid black;
+}
+
+.wheel-tool-container {
+ display: block;
+ width: calc(33px + 1px);
+ max-height: 100px;
+ /* margin: 0; */
+ /* padding-top: 1px; */
+ background: #abc;
+ overflow-y: auto;
+ overflow-x: hidden;
+ -webkit-transform: rotate(-90deg) translateY(-34px);
+         transform: rotate(-90deg) translateY(-34px);
+ -webkit-transform-origin: right top;
+         transform-origin: right top;
+}
+
+.wheel-tool-container > div{
+  display: block;
+    /* padding: 5px; */
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+    -webkit-transform-origin: right top;
+            transform-origin: right top;
+}
+
+.wheel-scroll-container {
+  width: 100px;
+}
+
+.wheel-tool-option-2 {
   background: rgb(0,128,255, 0.2) !important;
+  border-left: none;
+  border-right: none;
 }
 
-.time-control-selected:hover,
-.time-control-general-selected:hover,
-.time-control-history-files-selected:hover,
-.time-control-history-intervals-selected:hover,
-.time-control-history-time-selected:hover,
-.domains-selected:hover,
-.domains-general-selected:hover,
-.domains-basic-time-step-selected:hover,
-.domains-adaptive-time-step-selected:hover,
-.domains-hor-vert-interpolation-selected:hover,
-.domains-three-d-ocean-selected:hover,
-.physics-selected:hover,
-.physics-general-selected:hover,
-.physics-microphysics-selected:hover,
-.physics-radiation-selected:hover,
-.physics-land-ocean-selected:hover,
-.physics-boundary-layer-selected:hover,
-.physics-cumulus-selected:hover,
-.physics-lightning-selected:hover,
-.stoch-selected:hover,
-.stoch-general-selected:hover,
-.stoch-sppt-selected:hover,
-.stoch-skebs-selected:hover,
-.stoch-spp-selected:hover,
-.noah-mp-selected:hover,
-.fdda-selected:hover,
-.dynamics-selected:hover,
-.bdy-control-selected:hover,
-.namelist-quilt-selected:hover,
-.dfi-control-selected:hover {
-  background: -webkit-linear-gradient(rgb(43,115,164) 0%, rgb(37,75,112) 80%);
+.name-input-arrow {
+  font-size: 20px;
+  height: 10px;
 }
 
-.time-control-btn:focus,
-.time-control-general-btn:focus,
-.time-control-history-files-btn:focus,
-.time-control-history-files-intervals-btn:focus,
-.time-control-history-files-time-btn:focus,
-.domains-btn:focus,
-.domains-general-btn:focus,
-.domains-basic-time-step-btn:focus,
-.domains-adaptive-time-step-btn:focus,
-.domains-hor-vert-interpolation-btn:focus,
-.domains-three-d-ocean-btn:focus,
-.physics-btn:focus,
-.physics-general-btn:focus,
-.physics-microphysics-btn:focus,
-.physics-radiation-btn:focus,
-.physics-land-ocean-btn:focus,
-.physics-boundary-layer-btn:focus,
-.physics-cumulus-btn:focus,
-.physics-lightning-btn:focus,
-.stoch-btn:focus,
-.stoch-general-btn:focus,
-.stoch-sppt-btn:focus,
-.stoch-skebs-btn:focus,
-.stoch-spp-btn:focus,
-.noah-mp-btn:focus,
-.fdda-btn:focus,
-.dynamics-btn:focus,
-.bdy-control-btn:focus,
-.namelist-quilt-btn:focus,
-.dfi-control-btn:focus {
-  background: white;
-} */
-
-/* SUBHEADERS */
-/* .time-control-general-btn,
-.time-control-history-files-btn,
-.domains-general-btn,
-.domains-basic-time-step-btn,
-.domains-adaptive-time-step-btn,
-.domains-hor-vert-interpolation-btn,
-.domains-three-d-ocean-btn,
-.physics-general-btn,
-.physics-microphysics-btn,
-.physics-radiation-btn,
-.physics-land-ocean-btn,
-.physics-boundary-layer-btn,
-.physics-cumulus-btn,
-.physics-lightning-btn,
-.stoch-general-btn,
-.stoch-sppt-btn,
-.stoch-skebs-btn,
-.stoch-spp-btn {
-  margin: 1px 0 1px 30px;
-} */
-
-/* TERTIARY HEADERS */
-/* .time-control-history-files-intervals-btn,
-.time-control-history-files-time-btn {
-  margin: 1px 0 1px 40px;
-} */
+.name-input-button {
+  margin: 7px 10px;
+  padding: 0;
+  height: 20px;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  border: none;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  color: white;
+}
