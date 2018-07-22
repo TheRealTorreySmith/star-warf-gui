@@ -1,6 +1,19 @@
 import React, {Component} from 'react'
 import './WrfModal.css'
 
+
+const InputTool = ({ position }) => (
+  <div className="wheel-scroll-container">
+    <div className="wheel-tool-container">
+      <div className="wheel-tool-options wheel-tool-option-1">1</div>
+      <div className="wheel-tool-options wheel-tool-option-2">2</div>
+      <div className="wheel-tool-options wheel-tool-option-3">3</div>
+      <div className="wheel-tool-options wheel-tool-option-4">4</div>
+    </div>
+  </div>
+)
+
+
 class Wrf extends Component {
 
   // OPENS/CLOSES THE WRF MODAL
@@ -176,6 +189,12 @@ class Wrf extends Component {
     this.props.namelistInputField(x)
   }
 
+  inputOptionForward = () => {
+    console.log('forward')
+  }
+
+
+
   // FILTERS NAME FIELDS THAT SHOULD BE DISPLAYED ON THE HEADER SELECT
   headerNameInputFields = () => {
     let headSelected = this.props.headers.map(x => Object.values(x)[0] === true ? headSelected=Object.keys(x)[0] : '' ).filter(x => x.length > 0)[0]
@@ -189,20 +208,13 @@ class Wrf extends Component {
               {x.id === this.props.showNamelistInputField.id
                 ? <div className="wheel-tool">
                     <div>
-                      <button className="name-input-button waves-effect">
+                      <button className="name-input-button waves-effect" onClick={() => { this.inputOptionBack() }}>
                         <i className="material-icons name-input-arrow">chevron_left</i>
                       </button>
                     </div>
-                    <div className="wheel-scroll-container">
-                      <div className="wheel-tool-container squares">
-                        <div className="wheel-tool-options wheel-tool-option-1">1</div>
-                        <div className="wheel-tool-options wheel-tool-option-2">2</div>
-                        <div className="wheel-tool-options wheel-tool-option-3">3</div>
-                        <div className="wheel-tool-options wheel-tool-option-3">3</div>
-                      </div>
-                    </div>
+                    <InputTool />
                     <div>
-                      <button className="name-input-button waves-effect">
+                      <button className="name-input-button waves-effect" onClick={() => { this.inputOptionForward() }}>
                         <i className="material-icons name-input-arrow">chevron_right</i>
                       </button>
                     </div>

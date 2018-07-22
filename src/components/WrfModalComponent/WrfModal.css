@@ -84,6 +84,7 @@
   height: 360px;
   overflow-y: auto;
   padding-right: 20px !important;
+  padding-top: 1px !important;
 }
 
 .namelist-row {
@@ -115,48 +116,46 @@
 }
 
 .wheel-tool {
-  height: 33px;
+  height: 34px;
   display: flex;
   /* padding: 1px 0 !important; */
   vertical-align: middle;
-}
-
-.squares {
-  padding-top: 34px;
 }
 
 .wheel-tool-options {
   /* border: 1px solid black; */
   padding: 8px 10px;
   text-align: center;
-  width: 35px;
+  height: 34px;
+  width: 34px;
   display: inline-block;
   margin: 0;
   border: 1px solid black;
 }
 
 .wheel-tool-container {
- display: block;
+  width: 103px;
+ /* display: block;
  width: calc(33px + 1px);
- max-height: 100px;
+ max-height: 100px; */
  /* margin: 0; */
  /* padding-top: 1px; */
- background: #abc;
+ /* background: #abc;
  overflow-y: auto;
  overflow-x: hidden;
  -webkit-transform: rotate(-90deg) translateY(-34px);
          transform: rotate(-90deg) translateY(-34px);
  -webkit-transform-origin: right top;
-         transform-origin: right top;
+         transform-origin: right top; */
 }
 
 .wheel-tool-container > div{
-  display: block;
+  /* display: block; */
     /* padding: 5px; */
-    -webkit-transform: rotate(90deg);
+    /* -webkit-transform: rotate(90deg);
             transform: rotate(90deg);
     -webkit-transform-origin: right top;
-            transform-origin: right top;
+            transform-origin: right top; */
 }
 
 .wheel-scroll-container {
