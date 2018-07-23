@@ -1,6 +1,6 @@
 .modal-content {
   padding: 0 !important;
-  height: 360px;
+  height: 74%;
 }
 
 .modal-overlay {
@@ -14,13 +14,13 @@
   display: block;
   opacity: 1;
   transform: scaleX(1);
-  top: 5%;
+  top: 8%;
   background-color: white;
 }
 
 .modal {
-  max-height: 100%;
-  width: 720px;
+  max-height: 85%;
+  width: 820px;
 }
 
 .wrf-title {
@@ -36,10 +36,10 @@
 
 .wrf-search-form {
   display: flex;
-  width: 230px !important;
+  width: 280px !important;
   margin: 15px 0 0 0;
-  padding-right: 20px !important;
 }
+
 
 .file-arrow {
   vertical-align: middle;
@@ -108,64 +108,16 @@
 }
 
 .wrf-input-fields {
+  display: flex;
   width: auto;
+}
+
+.default-and-input {
+  display: flex;
 }
 
 .default-name-value {
   padding: 8px 7px !important;
-}
-
-.wheel-tool {
-  height: 34px;
-  display: flex;
-  /* padding: 1px 0 !important; */
-  vertical-align: middle;
-}
-
-.wheel-tool-options {
-  /* border: 1px solid black; */
-  padding: 8px 10px;
-  text-align: center;
-  height: 34px;
-  width: 34px;
-  display: inline-block;
-  margin: 0;
-  border: 1px solid black;
-}
-
-.wheel-tool-container {
-  width: 103px;
- /* display: block;
- width: calc(33px + 1px);
- max-height: 100px; */
- /* margin: 0; */
- /* padding-top: 1px; */
- /* background: #abc;
- overflow-y: auto;
- overflow-x: hidden;
- -webkit-transform: rotate(-90deg) translateY(-34px);
-         transform: rotate(-90deg) translateY(-34px);
- -webkit-transform-origin: right top;
-         transform-origin: right top; */
-}
-
-.wheel-tool-container > div{
-  /* display: block; */
-    /* padding: 5px; */
-    /* -webkit-transform: rotate(90deg);
-            transform: rotate(90deg);
-    -webkit-transform-origin: right top;
-            transform-origin: right top; */
-}
-
-.wheel-scroll-container {
-  width: 100px;
-}
-
-.wheel-tool-option-2 {
-  background: rgb(0,128,255, 0.2) !important;
-  border-left: none;
-  border-right: none;
 }
 
 .name-input-arrow {

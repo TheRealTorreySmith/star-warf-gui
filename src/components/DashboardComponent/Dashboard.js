@@ -22,6 +22,14 @@ class Dashboard extends Component {
       this.props.nextMonth(date)
   }
 
+  prevYear = (date) => {
+      this.props.prevYear(date)
+  }
+
+  nextYear = (date) => {
+      this.props.nextYear(date)
+  }
+
   setRange = (selectionStart, selectionEnd) => {
       this.props.setRange(selectionStart, selectionEnd)
   }
@@ -80,6 +88,8 @@ class Dashboard extends Component {
           selectionEnd={this.props.selectionEnd}
           prevMonth={this.prevMonth}
           nextMonth={this.nextMonth}
+          prevYear={this.prevYear}
+          nextYear={this.nextYear}
           setRange={this.setRange}
           lat={this.props.lat}
           lng={this.props.lng}
@@ -98,6 +108,10 @@ class Dashboard extends Component {
           saveMap={this.props.saveMap}
           wpsTypeSaved={this.props.wpsTypeSaved}
           mapSaved={this.props.mapSaved}
+          hourSelected={this.props.hourSelected}
+          hoursChange={this.props.hoursChange}
+          hourTranslation={this.props.hourTranslation}
+          hourTranslationChange={this.props.hourTranslationChange}
         />
         <Summary
           nwpShowClick={this.props.nwpShowClick}

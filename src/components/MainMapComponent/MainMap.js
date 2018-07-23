@@ -15,7 +15,7 @@ export default class MapComponent extends React.Component {
   	}
 
     initMap = () => {
-    		this.map = L.map('map').setView([30.505, -20.09], 0)
+    		this.map = L.map('map').setView([0.505, -20.09], 0)
     		this.featureGroup = L.featureGroup().addTo(this.map)
     		this.drawControl = new L.Control.Draw({
     			draw: {
@@ -88,8 +88,8 @@ export default class MapComponent extends React.Component {
             leafletImage(this.map, function(err, canvas) {
               let img = document.createElement('img')
               img.className = "animated fadeIn"
-              img.width = 55
-              img.height = 55
+              img.width = 85
+              img.height = 85
               img.src = canvas.toDataURL()
               document.getElementById('domain-box').innerHTML = ''
               document.getElementById('domain-box').appendChild(img)

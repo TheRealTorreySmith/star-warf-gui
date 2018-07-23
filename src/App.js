@@ -44,6 +44,8 @@ class App extends Component {
       minuteFrequency: 0,
       secondFrequency: 0,
       continueToWps: false,
+      hourSelected: 1,
+      hourTranslation: 0,
       // SUMMARY STATE
       mapSaved: false,
       wpsTypeSaved: false,
@@ -493,6 +495,20 @@ class App extends Component {
       })
   }
 
+  // CHANGES CALENDAR MONTH BACK
+  prevYear = (date) => {
+      this.setState({
+        date:date.getTime()
+      })
+  }
+
+  // CHANGES CALENDAR MONTH FORWARD
+  nextYear = (date) => {
+      this.setState({
+        date:date.getTime()
+      })
+  }
+
  // SET CALENDAR DATE RANGE
   setRange = (selectionStart, selectionEnd) => {
       this.setState({
@@ -616,6 +632,18 @@ class App extends Component {
     })
   }
 
+  hoursChange = (hour) => {
+    this.setState({
+      hourSelected: hour
+    })
+  }
+
+  hourTranslation = (hourTranslation) => {
+    this.setState({
+      hourTranslation: hourTranslation
+    })
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -710,6 +738,8 @@ class App extends Component {
                 selectionEnd={this.state.selectionEnd}
                 prevMonth={this.prevMonth}
                 nextMonth={this.nextMonth}
+                prevYear={this.prevYear}
+                nextYear={this.nextYear}
                 setRange={this.setRange}
                 lat={this.state.lat}
                 lng={this.state.lng}
@@ -745,6 +775,10 @@ class App extends Component {
                 tertHeaders={this.state.tertHeaders}
                 namelistInputField={this.namelistInputField}
                 showNamelistInputField={this.state.namelistInputField}
+                hourSelected={this.state.hourSelected}
+                hoursChange={this.hoursChange}
+                hourTranslation={this.state.hourTranslation}
+                hourTranslationChange={this.hourTranslation}
               />
             </div>
           )}

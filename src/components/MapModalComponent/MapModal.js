@@ -85,7 +85,6 @@ class MapModal extends Component {
       let southEast = {lat:(Math.round(this.featureGroup.getBounds()._southWest.lat*10000)/10000), lng: (Math.round(this.featureGroup.getBounds()._northEast.lng*10000)/10000)}
       let southWest = {lat:(Math.round(this.featureGroup.getBounds()._southWest.lat*10000)/10000), lng: (Math.round(this.featureGroup.getBounds()._southWest.lng*10000)/10000)}
       this.props.drawCoords(northWest, northEast, southEast, southWest)
-      console.log(this.featureGroup)
     }
 
   updateMap = () => {
@@ -109,8 +108,8 @@ class MapModal extends Component {
   saveMapModal = () => {
     leafletImage(this.modalMap, function(err, canvas) {
       let img = document.createElement('img')
-      img.width = 55
-      img.height = 55
+      img.width = 85
+      img.height = 85
       img.src = canvas.toDataURL()
       document.getElementById('domain-box').innerHTML = ''
       document.getElementById('domain-box').appendChild(img)

@@ -65,10 +65,10 @@ class Summary extends Component {
         {/* SUMMARY CONTAINER */}
         <Card className="main-summary-container">
         <div className="row summary-container">
-          <div className='col s11 m11 l11 summary-inner-container'>
+          <div className='col s12 m12 l12 summary-inner-container'>
             {/* NWP CARD */}
             <Card id="nwp-box" className={`col s2 m2 l2 ${this.props.showNwp ? 'summary-component-highlight' : 'summary-component'}`} onClick={this.nwpShowClick}>
-              <Row className={`${this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar || this.props.coldStartWrf ? 'wps-text-white' : 'wps-text-black'}`}>NWP
+              <Row className={`${this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar || this.props.coldStartWrf ? 'nwp-text-white' : 'nwp-text-black'}`}>NWP
                 <Icon className={`wps-job-icon ${this.props.threeDvar || this.props.threeDensvar || this.props.fourDensvar || this.props.coldStartWrf ? 'icon-white' : ''}`}>
                 {this.props.threeDvar ||
                   this.props.threeDensvar ||
@@ -150,7 +150,7 @@ class Summary extends Component {
             <div className='col s.5 m.5 l.5 top-cycle-arrow-placeholder'>
             </div>}
             <Card className={`col s2 m2 l2 ${this.props.showDa ? 'summary-component-highlight' : 'summary-component'}`} onClick={this.daShowClick}>
-              <Row className={this.props.gsi || this.props.wrfda ? 'wps-text-white' : 'wps-text-black'}>
+              <Row className={this.props.gsi || this.props.wrfda ? 'da-text-white' : 'da-text-black'}>
                 {this.props.gsi ? 'GSI': null}
                 {this.props.wrfda ? 'WRFDA': null}
                 {!this.props.wrfda && !this.props.gsi ? 'DA': null}
@@ -179,15 +179,19 @@ class Summary extends Component {
             :
             <div className='col s.5 m.5 l.5 top-cycle-arrow-placeholder'>
             </div>}
-            <Card className={`col s2 m2 l2 ${this.props.showWrf ? 'summary-component-highlight' : 'summary-component'}`} onClick={this.wrfShowClick}>
-              <Row className={`wps-text-black`}>WRF
+            <Card className={`col s3 m3 l3 ${this.props.showWrf ? 'summary-component-highlight' : 'summary-component'}`} onClick={this.wrfShowClick}>
+              <Row className={`wrf-text-black`}>WRF
                 <Icon className={`wps-job-icon ${this.props.wrfSaved ? 'icon-white' : ''}`}>
                 {this.props.wrfSaved ? 'done' : ''}</Icon>
               </Row>
             </Card>
             {this.props.threeDvar ?
             <div className='col s.5 m.5 l.5'>
-              <i className="material-icons top-cycle-arrow">keyboard_backspace</i>
+              {/* <i className="material-icons top-cycle-arrow">keyboard_backspace</i> */}
+              <i className="material-icons top-right-corner-cycle-arrow">subdirectory_arrow_left</i>
+              {/* <i className={`material-icons dot top-right-dot`}>brightness_1</i>
+              <i className={`material-icons dot bottom-right-dot`}>brightness_1</i>
+              <i className={`material-icons dot bottom-right-dot`}>brightness_1</i> */}
             </div>
             :null}
             {this.props.threeDensvar || this.props.fourDensvar ?
@@ -205,10 +209,10 @@ class Summary extends Component {
             :null}
             {this.props.threeDvar ?
             <div className='col s.5 m.5 l.5 top-right-arrow-div'>
-              <i className="material-icons top-right-corner-cycle-arrow">subdirectory_arrow_left</i>
+              {/* <i className="material-icons top-right-corner-cycle-arrow">subdirectory_arrow_left</i>
               <i className={`material-icons dot top-right-dot`}>brightness_1</i>
               <i className={`material-icons dot bottom-right-dot`}>brightness_1</i>
-              <i className={`material-icons dot bottom-right-dot`}>brightness_1</i>
+              <i className={`material-icons dot bottom-right-dot`}>brightness_1</i> */}
             </div>
             :null}
             {this.props.threeDensvar || this.props.fourDensvar ?
@@ -220,7 +224,7 @@ class Summary extends Component {
           <div className='col s.5 m.5 l.5 play-container'>
             <Button className="main-play-button waves-effect" onClick={this.setMainJob}>
               {this.props.runMainJob ? <i className="cache-icon material-icons">close</i> :
-              <i className="cache-icon material-icons">play_arrow</i>}
+              <i className="cache-icon material-icons main-play-icon">play_arrow</i>}
             </Button>
           </div>
         </div>
@@ -254,7 +258,7 @@ class Summary extends Component {
             <div className="row top-small-arrow-container small-arrow-container-two">
               <div className='col s2 m2 l2 bottom-arrow-div'></div>
               <div className='col s9 m9 l9 bottom-arrow-div'>
-                {/* <i className={`material-icons small-dot`}>brightness_1</i> */}
+                <i className={`material-icons small-dot`}>brightness_1</i>
                 <i className="material-icons bottom-left-corner-cycle-arrow-small">subdirectory_arrow_left</i>
                   {this.lineOfSmallDotsTop()}
                 <i className="material-icons bottom-cycle-arrow-small">keyboard_backspace</i>

@@ -1,18 +1,6 @@
 import React, {Component} from 'react'
+import WheelTool from '../WheelToolComponent/WheelTool'
 import './WrfModal.css'
-
-
-const InputTool = ({ position }) => (
-  <div className="wheel-scroll-container">
-    <div className="wheel-tool-container">
-      <div className="wheel-tool-options wheel-tool-option-1">1</div>
-      <div className="wheel-tool-options wheel-tool-option-2">2</div>
-      <div className="wheel-tool-options wheel-tool-option-3">3</div>
-      <div className="wheel-tool-options wheel-tool-option-4">4</div>
-    </div>
-  </div>
-)
-
 
 class Wrf extends Component {
 
@@ -206,18 +194,9 @@ class Wrf extends Component {
             <div className="wrf-name-fields">{`${x.name} =`}</div>
             <div className="wrf-input-fields">
               {x.id === this.props.showNamelistInputField.id
-                ? <div className="wheel-tool">
-                    <div>
-                      <button className="name-input-button waves-effect" onClick={() => { this.inputOptionBack() }}>
-                        <i className="material-icons name-input-arrow">chevron_left</i>
-                      </button>
-                    </div>
-                    <InputTool />
-                    <div>
-                      <button className="name-input-button waves-effect" onClick={() => { this.inputOptionForward() }}>
-                        <i className="material-icons name-input-arrow">chevron_right</i>
-                      </button>
-                    </div>
+                ? <div className="default-and-input">
+                    <div className="default-name-value">0</div>
+                    <WheelTool />
                   </div>
                 : <div className="default-name-value">0</div>
               }
@@ -267,10 +246,6 @@ class Wrf extends Component {
       <div>
         <div className='wrf-modal modal open animated fadeIn'>
           <div className="modal-header row">
-            <div className="col s4 m4 l4"></div>
-            <div className="col s4 m4 l4">
-              <h4 className="wrf-title">WRF</h4>
-            </div>
             {/* WRF SEARCH FORM */}
             <div className="col s4 m4 l4">
               <div className="wrf-search">
@@ -287,6 +262,12 @@ class Wrf extends Component {
                 </form>
               </div>
             </div>
+
+            <div className="col s4 m4 l4">
+              <h4 className="wrf-title">WRF</h4>
+            </div>
+            <div className="col s4 m4 l4"></div>
+
           </div>
           <div className="modal-content">
             <div className="row">

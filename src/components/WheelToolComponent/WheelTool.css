@@ -1,0 +1,132 @@
+/* .wheel-tool {
+  height: 34px;
+  display: flex; */
+  /* padding: 1px 0 !important; */
+  /* vertical-align: middle;
+} */
+
+/* .wheel-tool-options { */
+  /* border: 1px solid black; */
+  /* padding: 8px 10px;
+  text-align: center;
+  height: 34px;
+  width: 34px;
+  display: inline-block;
+  margin: 0;
+  border: 1px solid black;
+} */
+
+/* .wheel-tool-container {
+  width: 103px; */
+ /* display: block;
+ width: calc(33px + 1px);
+ max-height: 100px; */
+ /* margin: 0; */
+ /* padding-top: 1px; */
+ /* background: #abc;
+ overflow-y: auto;
+ overflow-x: hidden;
+ -webkit-transform: rotate(-90deg) translateY(-34px);
+         transform: rotate(-90deg) translateY(-34px);
+ -webkit-transform-origin: right top;
+         transform-origin: right top; */
+/* } */
+
+/* .wheel-tool-container {
+  float: left;
+}
+
+.wheel-scroll-container {
+  width: 100px;
+}
+
+.wheel-tool-option-2 {
+  background: rgb(0,128,255, 0.2) !important;
+  border-left: none;
+  border-right: none;
+} */
+
+.wheel-tool-container {
+  display: flex;
+}
+
+.wheel-tool {
+  font-size: 20px;
+  margin: 0 auto;
+  padding: 2px 5px 2px 10px;
+  float: left;
+  display: flex;
+}
+
+.wheel-tool-options {
+  float: left;
+  display: flex;
+  width: 96px;
+  overflow: hidden;
+}
+
+.wheel-tool-numbers-container {
+  border: 1px solid gray;
+  color: gray;
+  float: left;
+  cursor: pointer;
+  height: 29px;
+  transition: transform 300ms ease-in;
+  text-align: center;
+  margin-top: 1px;
+}
+
+.wheel-tool-numbers {
+  padding-top: 2px;
+  width: 30px;
+}
+
+.wheel-tool-numbers-container.active {
+  color: white;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  border-left: none;
+  border-right: none;
+  margin-top: 1px;
+}
+
+.wheel-tool-button {
+  margin-top: 3px;
+  color: white;
+  padding: 0;
+  float: left;
+  height: 20px;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  border: none;
+  border-radius: 3px;
+}
+
+.wheel-tool-backward {
+  margin: 5px 5px 0 0;
+}
+
+.wheel-tool-forward {
+  margin: 5px 0 0 5px;
+}
+
+.wheel-tool-revert,
+.wheel-tool-save,
+.wheel-tool-default-revert {
+  border-radius: 3px;
+  background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  color: white;
+  border: none;
+  height: 31px;
+  margin: 0 3px 0 25px;
+  padding: 0 5px !important;
+}
+
+.wheel-tool-save,
+.wheel-tool-default-revert {
+  margin: 0 3px 0 3px !important;
+}
+
+.wheel-tool-revert-arrow,
+.wheel-tool-save-icon,
+.wheel-tool-default-revert-arrow {
+  padding: 3px 0 0 0 !important;
+}

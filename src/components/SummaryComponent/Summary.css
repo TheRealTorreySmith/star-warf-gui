@@ -11,7 +11,7 @@ html {
 .summary-container {
   background-color: white;
   display: flex;
-  height: 100px;
+  height: 140px;
   margin-bottom: 8px;
 }
 
@@ -21,7 +21,7 @@ html {
 
 .summary-inner-container {
   margin: 0px !important;
-  padding-left: 45px !important;
+  padding: 10px 0 0 25px !important;
 }
 
 .summary-title {
@@ -29,18 +29,18 @@ html {
 }
 
 .summary-component {
-  height: 100px;
+  height: 135px;
   margin: 15px 0 0 0;
-  padding-right: 6px !important;
+  padding-right: 8px !important;
   vertical-align: middle;
   background: -webkit-linear-gradient(top, rgba(23,95,144, 0.7) 0%,rgba(17,55,92, 0.2) 100%) !important;
 }
 
 .summary-component-highlight {
   cursor: default;
-  height: 100px;
+  height: 135px;
   margin: 15px 0 0 0;
-  padding-right: 6px !important;
+  padding-right: 8px !important;
   vertical-align: middle;
   box-shadow: 0px 0px 12px 5px #11375c;
   background: -webkit-linear-gradient(top, rgba(23,95,144, 0.7) 0%,rgba(17,55,92, 0.2) 100%) !important;
@@ -52,15 +52,22 @@ html {
 }
 
 .play-container {
-  margin: 30px 10px 0 0;
-  padding-left: 0 !important;
+  padding: 0 !important;
   text-align: center;
+  vertical-align: middle;
 }
 
 .main-play-button {
-  margin: 20px 0 20px 0;
-  padding: 0 10px;
+  margin: 80px 20px 0 0;
+  padding: 0;
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
+  height: 45px;
+  width: 45px;
+}
+
+.main-play-icon {
+  font-size: 35px !important;
+  padding: 5px 0 !important;
 }
 
 .material-icons {
@@ -96,22 +103,47 @@ p.cycle-container {
 .icon-white {
   color: white;
   border: 1px solid white !important;
-  font-size: 18px;
+  font-size: 23px;
 }
 
 
 .wps-text-white {
+  font-size: 23px;
   text-align: center;
-  margin: 6px 0 1px 0;
-  padding-left: 20px;
+  margin: 5px 0 0 0;
+  padding-left: 35px;
+  line-height: 1.5;
+  color: white;
+  height: 31px;
+}
+
+.wps-text-black {
+  font-size: 23px;
+  text-align: center;
+  margin: 5px 0 0 0;
+  padding-left: 35px;
+  line-height: 1.5;
+  height: 31px;
+}
+
+.nwp-text-white,
+.da-text-white,
+.wrf-text-white {
+  font-size: 23px;
+  text-align: center;
+  margin: 5px 0 1px 0;
+  padding-left: 22px;
   line-height: 1.5;
   color: white;
 }
 
-.wps-text-black {
+.nwp-text-black,
+.da-text-black,
+.wrf-text-black {
+  font-size: 23px;
   text-align: center;
-  margin: 6px 0 1px 0;
-  padding-left: 20px;
+  margin: 5px 0 1px 0;
+  padding-left: 22px;
   line-height: 1.5;
 }
 
@@ -119,8 +151,6 @@ p.cycle-container {
 /* NWP CONTAINER */
 
 #nwp-box {
-  margin-right: 20px;
-  height: 130px;
   padding-right: 6px;
 }
 
@@ -178,27 +208,28 @@ p.cycle-container {
 /* WPS CONTAINER */
 
 #calendar-box {
-  height: 55px;
-  width: 55px;
+  height: 80px;
+  width: 60px;
   border-radius: 2px;
   display: inline-block;
-  margin: 0 10px 0 0;
+  margin: 0 auto !important;
 }
 
 #domain-box {
-  height: 55px;
-  width: 55px;
+  height: 85px;
+  width: 85px;
   border-radius: 2px;
   display: inline-block;
-  margin: 0 10px 0 0;
+  margin: 0 auto !important;
   overflow: hidden;
 }
 
 #jobType-box {
-  height: 55px;
-  width: 55px;
+  height: 85px;
+  width: 85px;
   border-radius: 100px;
   display: inline-block;
+  margin: 5px auto !important;
 }
 
 .initial-boundary-container {
@@ -210,8 +241,8 @@ p.cycle-container {
 .gfs-image,
 .hrrr-image,
 .nam-image {
-  height: 58px;
-  width: 58px;
+  height: 85px;
+  width: 85px;
   border-radius: 100px;
   -webkit-box-shadow: 0px 1px 8px rgba(0,0,0,.7);
   -moz-box-shadow: 0px 1px 8px rgba(0,0,0,.7);
@@ -222,28 +253,29 @@ p.cycle-container {
 .hrrr-summary-acronym-lettering,
 .nam-summary-acronym-lettering  {
   color: white;
-  font-size: 22px;
+  font-size: 30px;
   font-weight: bold;
-  padding: 17px 0;
+  padding: 25px 0;
   position: absolute;
   text-align: center;
-  top: 50%;
-  left: 50%;
+  top: 74%;
+  left: 73%;
   transform: translate(-50%, -50%);
   letter-spacing: 2px;
-  height: 58px;
-  width: 58px;
+  height: 84px;
+  width: 85px;
 }
 
 .hrrr-summary-acronym-lettering {
-  font-size: 17px;
+  font-size: 25px;
   letter-spacing: 1.5px;
-  padding: 18px 0;
+  padding: 28px 0;
 }
 
 .nam-summary-acronym-lettering {
-  font-size: 20px;
+  font-size: 28px;
   letter-spacing: 1.4px;
+  padding: 28px 0;
 }
 
 #wps-box {
@@ -253,13 +285,16 @@ p.cycle-container {
 
 .wps-three-boxes {
   text-align: center;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .wps-job-icon {
   float: right !important;
   border: 1px solid black;
-  height: 20px;
-  width: 20px;
+  margin-top: 3px;
+  height: 25px;
+  width: 25px;
 }
 
 /* DA CONTAINER */
@@ -278,8 +313,8 @@ p.cycle-container {
 .wrfda-summary-image {
   border-radius: 100px;
   box-shadow: 0px 1px 8px rgba(0,0,0,.7);
-  height: 58px;
-  width: 58px;
+  height: 84px;
+  width: 85px;
   margin: 0 auto;
 }
 
@@ -288,22 +323,20 @@ p.cycle-container {
   border-radius: 100px;
   background-color: rgba(21, 94, 101, 0.3);
   color: white;
-  /* margin-top: -42px;
-  margin-left: 6px; */
   font-weight: bold;
-  font-size: 17px;
-  padding: 20px 0;
+  font-size: 24px;
+  padding: 30px 0;
   position: absolute;
   top: 48%;
   left: 50%;
-  height: 57px;
-  width: 58px;
+  height: 84px;
+  width: 85px;
   transform: translate(-50%, -50%);
   text-align: center;
 }
 
 .wrfda-summary-text {
-  font-size: 15px !important;
+  font-size: 22px !important;
 }
 
 /* ARROWS */
@@ -311,12 +344,12 @@ p.cycle-container {
 .top-left-corner-cycle-arrow {
   transform: rotate(180deg);
   color: lightgray;
-  margin: 55px 5px 0 0;
+  margin: 75px 5px 0 0;
 }
 
 .top-right-corner-cycle-arrow {
   color: lightgray;
-  margin: 55px 0 0 0;
+  margin: 75px 0 0 0;
   transform: rotate(270deg);
 }
 
@@ -329,7 +362,7 @@ p.cycle-container {
 }
 
 .top-left-arrow-div {
-  margin: 0 12px;
+  margin: 0 12px 0 22px;
   padding: 0 !important;
   position: relative;
   width: 20px;
@@ -338,7 +371,7 @@ p.cycle-container {
 
 .top-cycle-arrow {
   color: lightgray;
-  margin: 50px 1px;
+  margin: 70px 1px;
   transform: rotate(180deg);
 }
 
@@ -492,9 +525,11 @@ p.cycle-container {
 }
 
 .bottom-arrow-spacer-threedensvar {
+  margin: 0 0 5px 0 !important;
   height: 12px;
 }
 
 .bottom-arrow-spacer-threedens {
+  margin: 20px 0 15px 0 !important;
   height: 42px;
 }

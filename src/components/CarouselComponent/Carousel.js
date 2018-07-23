@@ -159,6 +159,14 @@ class CarouselContainer extends Component {
       this.props.nextMonth(date)
   }
 
+  prevYear = (date) => {
+      this.props.prevYear(date)
+  }
+
+  nextYear = (date) => {
+      this.props.nextYear(date)
+  }
+
   setRange = (selectionStart, selectionEnd) => {
       this.props.setRange(selectionStart, selectionEnd)
   }
@@ -244,7 +252,7 @@ class CarouselContainer extends Component {
                               <input type="range" id="hour-cycling-frequency" min="0" max="24" onChange={this.hourFrequencyOnChange} onInput={this.hourFrequencyOnChange} value={this.props.hourFrequency}/>
                             </div>
                             <div className="show-hours-container">
-                              <div className="col s8 m8 l8 hours-title">Hours:</div>
+                              <div className="col s8 m8 l8 hours-title">Hours =</div>
                               <div className="col s4 m4 l4 hours-number">{this.props.hourFrequency}</div>
                             </div>
                           </div>
@@ -343,7 +351,13 @@ class CarouselContainer extends Component {
                         selectionEnd = {this.props.selectionEnd}
                         prevMonth={this.prevMonth}
                         nextMonth={this.nextMonth}
+                        prevYear={this.prevYear}
+                        nextYear={this.nextYear}
                         setRange={this.setRange}
+                        hourSelected={this.props.hourSelected}
+                        hoursChange={this.props.hoursChange}
+                        hourTranslation={this.props.hourTranslation}
+                        hourTranslationChange={this.props.hourTranslationChange}
                       />
                     </div>
                     <div className="time-main-box">
@@ -361,7 +375,7 @@ class CarouselContainer extends Component {
                           </div>
                           <div className={`gfs-row row ${this.props.gfs ? 'gfs-row-selected' : ''}`} onClick={this.gfsSelect}>
                             <div className={`gfs-container ${this.props.gfs ? 'gfs-container-selected' : ''}`}>
-                              <img className="gfs" src={globeBackground} height="40" width="40" alt="blue globe background logo"></img>
+                              <img className="gfs" src={globeBackground} height="52" width="52" alt="blue globe background logo"></img>
                               <div className="gfs-acronym-lettering">GFS</div>
                             </div>
                             <div className="gfs-title-container">Global Forecast System</div>
@@ -369,7 +383,7 @@ class CarouselContainer extends Component {
                           </div>
                           <div className={`hrrr-row row ${this.props.hrrr ? 'hrrr-row-selected' : ''}`} onClick={this.hrrrSelect}>
                             <div className={`hrrr-container ${this.props.hrrr ? 'hrrr-container-selected' : ''}`}>
-                              <img className="hrrr" src={globeBackground} height="40" width="40" alt="blue globe background logo"></img>
+                              <img className="hrrr" src={globeBackground} height="52" width="52" alt="blue globe background logo"></img>
                               <div className="hrrr-acronym-lettering">HRRR</div>
                             </div>
                             <div className="hrrr-title-container">High-Resolution Rapid Refresh</div>
@@ -378,7 +392,7 @@ class CarouselContainer extends Component {
                           </div>
                           <div className={`nam-row row ${this.props.nam ? 'nam-row-selected' : ''}`} onClick={this.namSelect}>
                             <div className={`nam-container ${this.props.nam ? 'nam-container-selected' : ''}`}>
-                              <img className="nam" src={globeBackground} height="40" width="40" alt="blue globe background logo"></img>
+                              <img className="nam" src={globeBackground} height="52" width="52" alt="blue globe background logo"></img>
                               <div className="nam-acronym-lettering">NAM</div>
                             </div>
                             <div className="nam-title-container">North American Mesoscale Model</div>

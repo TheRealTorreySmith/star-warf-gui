@@ -1,5 +1,6 @@
 .modal-content {
   padding: 0 !important;
+  height: 78%;
 }
 
 .modal-overlay {
@@ -13,13 +14,13 @@
   display: block;
   opacity: 1;
   transform: scaleX(1);
-  top: 3.5%;
+  top: 8%;
   background-color: white;
 }
 
 .modal {
-  max-height: 100%;
-  width: 720px;
+  height: 100%;
+  width: 820px;
 }
 
 #modalMap {

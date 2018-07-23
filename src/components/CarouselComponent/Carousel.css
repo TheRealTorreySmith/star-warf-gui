@@ -8,7 +8,7 @@ h4 {
 }
 
 .main-card {
-  height: 280px;
+  height: 380px;
   margin: 25px 20px 0 20px !important;
 }
 
@@ -16,9 +16,9 @@ h4 {
   margin-bottom: 25px;
 }
 
-.card {
+/* .card {
   margin: 20px;
-}
+} */
 
 .card-content {
   padding: 0 !important;
@@ -46,7 +46,7 @@ h4 {
 .wps-main-container,
 .nwp-main-container {
   display: flex;
-  margin: 0;
+  margin: 10px 0 0 0;
 }
 
 /* NWP CAROUSEL CARD */
@@ -65,7 +65,7 @@ h4 {
 }
 
 .data-assimilation-options-title {
-  margin: 10px auto 10px auto;
+  margin: 15px auto;
 }
 
 .three-dvar-btn,
@@ -75,14 +75,15 @@ h4 {
   background: -webkit-linear-gradient(top, rgba(23,95,144, 0.7) 0%,rgba(17,55,92, 0.2) 100%);
   margin: 0 10px;
   line-height: 10px;
-  height: 30px;
-  width: 200px;
+  height: 40px;
+  width: 250px;
+  font-size: 20px;
 }
 
 .three-dvar-btn-container,
 .three-densvar-btn-container,
 .four-densvar-btn-container {
-  margin: 2px 0 10px 0;
+  margin: 2px 0 15px 0;
 }
 
 .three-dvar-btn:focus,
@@ -109,8 +110,9 @@ h4 {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   margin: 0 10px;
   line-height: 10px;
-  height: 30px;
-  width: 200px;
+  height: 40px;
+  width: 250px;
+  font-size: 20px;
 }
 
 .three-dvar-btn-selected:hover,
@@ -125,7 +127,7 @@ h4 {
 }
 
 .cycling-frequency-options-title {
-  margin: 20px auto 45px auto;
+  margin: 80px auto 45px auto;
 }
 
 .show-hours-container {
@@ -153,20 +155,20 @@ h4 {
 .nwp-next-btn-enabled {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   float: left;
-  margin: 102px 0 10px 0;
+  margin: 160px 0 10px 0;
   padding: 0 10px;
 }
 
 .nwp-next-btn-disabled {
   cursor: no-drop;
   float: left;
-  margin: 102px 0 10px 0;
+  margin: 160px 0 10px 0;
   padding: 0 10px;
 }
 
 .nwp-advanced-btn-enabled {
   float: left;
-  margin: 10px 0;
+  margin: 20px 0;
   padding: 0 10px;
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
 }
@@ -174,7 +176,7 @@ h4 {
 .nwp-advanced-btn-disabled {
   cursor: no-drop;
   float: left;
-  margin: 10px 0;
+  margin: 20px 0;
   padding: 0 10px;
 }
 
@@ -206,30 +208,30 @@ h4 {
 
 /* WPS CAROUSEL CARD */
 .domain-main-box {
-  margin: 0 auto;
-  height: 200px;
-  width: 200px;
+  margin: 12px auto 0 auto;
+  height: 250px;
+  width: 250px;
   -webkit-box-shadow: 0px 1px 15px rgba(0,0,0,.7);
   -moz-box-shadow: 0px 1px 15px rgba(0,0,0,.7);
   box-shadow: 0px 1px 15px rgba(0,0,0,.7);
 }
 
 .leaflet-container {
-  height: 200px;
-  width: 200px;
+  height: 250px;
+  width: 250px;
 }
 
 .wps-back-arrow {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   float: right;
-  margin: 157px 0 0 0;
+  margin: 237px 0 0 0;
   padding: 0 10px;
 }
 
 .wps-forward-arrow {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   float: left;
-  margin: 102px 0 10px 0;
+  margin: 160px 0 10px 0;
   padding: 0 10px;
 }
 
@@ -237,14 +239,14 @@ h4 {
 .da-back-arrow {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   float: right;
-  margin: 157px 0 0 0;
+  margin: 237px 0 0 0;
   padding: 0 10px;
 }
 
 .da-forward-arrow {
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   float: left;
-  margin: 102px 0 10px 0;
+  margin: 160px 0 10px 0;
   padding: 0 10px;
 }
 
@@ -291,7 +293,7 @@ h4 {
 
 .flip-back-btn {
   float: left;
-  margin: 10px 0;
+  margin: 20px 0;
   padding: 0 10px;
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
 }
@@ -348,7 +350,7 @@ h4 {
 
 .flip-btn {
   float: left;
-  margin: 10px 0;
+  margin: 20px 0;
   padding: 0 10px;
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
 }
@@ -372,36 +374,40 @@ button.btn.toast {
 /* BOUNDARY CONDITIONS BOX */
 
 .time-main-box-title-row {
-  margin: 5px 0 0 38px;
+  margin: 7px 0 3px 38px;
+  font-size: 18px;
 }
 
 .time-main-box-flip-btn {
   float: right;
-  margin: 8px 5px 0 0;
+  margin: 10px 8px 0 0;
   background: -webkit-linear-gradient(top, #175f90 0%,#11375c 100%);
   border-radius: 2px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
               0 1px 5px 0 rgba(0,0,0,0.12),
               0 3px 1px -2px rgba(0,0,0,0.2);
   font-size: 5px;
-  height: 22px;
-  padding: 0;
+  height: 30px;
+  width: 30px;
+  padding: 1px;
   line-height: 0 !important;
 }
 
 .boundary-conditions-flip {
   line-height: 1.1 !important;
-  padding: 2px !important;
+  padding: 1.5px !important;
+  font-size: 24px !important;
 }
 
 .auxiliary-boundary-conditions-title-row {
-  margin: 5px 0 0 28px;
+  margin: 7px 0 3px 38px;
+  font-size: 18px;
 }
 
 .time-main-box {
-  margin: 0 auto;
-  height: 200px;
-  width: 200px;
+  margin: 6px auto 0 auto;
+  height: 250px;
+  width: 250px;
 }
 
 .box {
@@ -444,8 +450,8 @@ button.btn.toast {
 }
 
 .gfs-container {
-  height: 40px;
-  width: 40px;
+  height: 52px;
+  width: 52px;
   float: left;
   position: relative;
   text-align: center;
@@ -456,17 +462,17 @@ button.btn.toast {
 }
 
 .gfs-title-container {
-  padding-top: 4px;
-  font-size: 12px;
+  padding-top: 6px;
+  font-size: 16px;
 }
 
 .gfs-text-container {
-  margin: 3% 0 0 0;
-  font-size: 8px;
+  margin: 4px 0 0 0;
+  font-size: 10px;
 }
 
 .gfs-acronym-lettering {
-  font-size: 16px;
+  font-size: 21px;
   font-weight: bold;
   position: absolute;
   top: 50%;
@@ -476,16 +482,18 @@ button.btn.toast {
 }
 
 .hrrr-title-container {
-  font-size: 12px;
+    margin-top: 2px;
+  font-size: 15px;
 }
 
 .hrrr-text-container {
-  font-size: 8px;
+  margin-top: 2px;
+  font-size: 11px;
 }
 
 .hrrr-container {
-  height: 40px;
-  width: 40px;
+  height: 52px;
+  width: 52px;
   float: left;
   position: relative;
   text-align: center;
@@ -496,7 +504,7 @@ button.btn.toast {
 }
 
 .hrrr-acronym-lettering {
-  font-size: 13px;
+  font-size: 17px;
   font-weight: bold;
   position: absolute;
   top: 50%;
@@ -506,8 +514,8 @@ button.btn.toast {
 }
 
 .nam-container {
-  height: 40px;
-  width: 40px;
+  height: 52px;
+  width: 52px;
   display: inline-block;
   float: left;
   position: relative;
@@ -519,15 +527,17 @@ button.btn.toast {
 }
 
 .nam-title-container {
-  font-size: 12px;
+  margin-top: 3px;
+  font-size: 14px;
 }
 
 .nam-text-container {
-  font-size: 8px;
+  margin-top: 3px;
+  font-size:10px;
 }
 
 .nam-acronym-lettering {
-  font-size: 14px;
+  font-size: 19px;
   font-weight: bold;
   position: absolute;
   top: 50%;
@@ -541,6 +551,7 @@ button.btn.toast {
 .da-container-front {
   display: flex;
   float: left;
+  margin-top: 9px;
 }
 
 .wrfda-container,
@@ -548,9 +559,9 @@ button.btn.toast {
   background-color: #EEEEEE;
   box-shadow: 0px 1px 5px rgba(0,0,0,.7);
   border-radius: 3px;
-  height: 185px;
-  width: 285px;
-  margin: 10px auto;
+  height: 250px;
+  width: 335px;
+  margin: 12px auto;
   vertical-align: middle;
   opacity: 0.6;
 }
@@ -572,27 +583,28 @@ button.btn.toast {
 }
 
 .NCAR-title {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .NCEP-title {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .ncep-image {
   border-radius: 100px;
   box-shadow: 0px 1px 15px rgba(255,255,255);
-  height: 120px;
-  width: 120px;
-  margin: 10px auto 4px auto;
+  height: 165px;
+  width: 165px;
+  margin: 18px auto 8px auto;
 }
 
 .wrfda-image {
   border-radius: 100px;
   box-shadow: 0px 1px 15px rgba(255,255,255);
-  height: 120px;
-  width: 120px;
-  margin: 10px auto 4px auto;
+  height: 165px;
+  width: 165px;
+  margin: 18px auto 8px auto;
+
 }
 
 .ncep-text,
@@ -601,13 +613,14 @@ button.btn.toast {
   background-color: rgba(21, 94, 101, 0.3);
   box-shadow: 0px 1px 15px 1px rgba(0, 0, 0, 0.8);
   color: white;
-  font-size: 28px;
+  font-size: 42px;
   font-weight:500;
-  padding: 45px 0;
+  padding: 62px 0;
   position: absolute;
-  top: 51%;
+  top: 51.5%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 119px;
-  width: 118px;
+  height: 163px;
+  width: 163px;
+  text-align: center;
 }
